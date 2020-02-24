@@ -22,6 +22,22 @@ router.get('/', async (req, res) => {
 });
 
 /**
+ * @route get api/product/:productId
+ * @description get single product route
+ * @access public
+ */
+
+router.get('/:productId', async (req, res) => {
+  try {
+    const { productId } = req.params;
+    let product = await Product.findOne({ _id: productId });
+    res.json(product);
+  } catch (err) {
+    res.status(400).json({ error: err.messaage });
+  }
+});
+
+/**
  * @route post api/product
  * @description product create route
  * @access Private
