@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 // Middleware
+// app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 

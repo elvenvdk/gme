@@ -6,8 +6,19 @@ const { tokenVerify } = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('product works!');
+/**
+ * @route get api/product
+ * @description get products route
+ * @access public
+ */
+
+router.get('/', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json({ products });
+  } catch (err) {
+    res.status(400).json({ error: err.messaage });
+  }
 });
 
 /**
@@ -74,6 +85,53 @@ router.post('/', async (req, res) => {
         if (err) return res.status(400).json({ error: err.message });
         res.json(result);
       });
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+/**
+ * @route put api/product
+ * @description product update route
+ * @access Private
+ */
+
+router.put('/:productId', async (req, res) => {
+  try {
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req, async (err, fields, files) => {
+      if (err) return res.status(400).json({ error: err.message });
+
+      let product = req.product;
+      const { productId } = req.params;
+      console.log(productId);
+      product = { ...fields };
+      console.log({ product_fields: product });
+
+      // 1kb = 1000
+
+      // 1mb = 1000000
+
+      if (files.photo) {
+        if (files.photo.size > 1000000)
+          res.status(400).json({
+            error: 'Image should be less than One Megabyte (1mb) in size...',
+          });
+
+        if (product.photo !== undefined) {
+          product.photo.data = fs.readFileSync(files.photo.path);
+          product.photo.contentType = files.photo.type;
+        }
+      }
+
+      await Product.findOneAndUpdate(
+        { _id: productId },
+        { ...product },
+        { new: true },
+      );
+      res.send('Product successfully updated');
     });
   } catch (err) {
     res.status(400).json({ error: err.message });
