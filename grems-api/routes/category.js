@@ -5,8 +5,19 @@ const { tokenVerify } = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('category works!');
+/**
+ * @route get api/category
+ * @description get all categories route
+ * @access Private
+ */
+
+router.get('/', async (req, res) => {
+  try {
+    const categories = await Category.find();
+    res.json(categories);
+  } catch (err) {
+    res.status(400).json({ error: err.messaeg });
+  }
 });
 
 /**
@@ -14,16 +25,6 @@ router.get('/', (req, res) => {
  * @description category create route
  * @access Private
  */
-
-// router.post('/create', async (req, res) => {
-//   try {
-//     const category = new Category(req.body);
-//     await category.save();
-//     res.send(`${category.name} successfully saved`);
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// });
 
 router.post('/', async (req, res) => {
   try {
@@ -39,9 +40,17 @@ router.post('/', async (req, res) => {
       });
     });
   } catch (err) {
-    res.status(400).json({ error: err.messae });
+    res.status(400).json({ error: err.messaeg });
   }
 });
+
+/**
+ * @route put api/category
+ * @description category update route
+ * @access Private
+ */
+
+router.put('/:categoryId', async (req, res) => {});
 
 /**
  * @route delete api/category

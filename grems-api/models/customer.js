@@ -23,31 +23,29 @@ const CustomerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    address: {
-      streetAddress: {
-        type: String,
-        // required: true,
-      },
-      unitNumber: {
-        type: Number,
-      },
-      city: {
-        type: String,
-        trim: true,
-        // required: true,
-      },
-      state: {
-        type: String,
-        trim: true,
-        // required: true,
-        maxLength: 2,
-      },
-      zipCode: {
-        type: Number,
-        trim: true,
-        // required: true,
-        maxLength: 5,
-      },
+    streetAddress: {
+      type: String,
+      // required: true,
+    },
+    unitNumber: {
+      type: Number,
+    },
+    city: {
+      type: String,
+      trim: true,
+      // required: true,
+    },
+    state: {
+      type: String,
+      trim: true,
+      // required: true,
+      maxLength: 2,
+    },
+    zipCode: {
+      type: Number,
+      trim: true,
+      // required: true,
+      maxLength: 5,
     },
   },
   { timestamps: true },
