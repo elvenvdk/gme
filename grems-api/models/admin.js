@@ -4,12 +4,10 @@ const AdminSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: true,
       trim: true,
     },
     lastName: {
       type: String,
-      required: true,
       trim: true,
     },
     email: {
@@ -23,6 +21,10 @@ const AdminSchema = new mongoose.Schema(
       required: true,
     },
     role: {
+      type: String,
+      default: 'admin',
+    },
+    level: {
       type: Number,
       default: 0,
     },

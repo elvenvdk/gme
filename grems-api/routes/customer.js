@@ -2,9 +2,11 @@ const express = require('express');
 const formidable = require('formidable');
 const Customer = require('../models/customer');
 
+const { tokenVerify } = require('../middleware/auth');
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', tokenVerify, (req, res) => {
   res.send('Customer works!');
 });
 

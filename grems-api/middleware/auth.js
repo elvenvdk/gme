@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const Admin = require('../models/admin');
 
 exports.tokenVerify = (req, res, next) => {
   // Get token form header
@@ -18,5 +19,31 @@ exports.tokenVerify = (req, res, next) => {
     res
       .status(401)
       .json({ error: 'Token is not valid', error_msg: error.message });
+  }
+};
+
+exports.isAdmin = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const admin = Admin.findOne({ email });
+    if (!admin.role)
+      return res.send({ error: 'You do not have authorization' });
+    if (admin.role !== 'admin')
+      return res.send({ error: 'You do not have authorization' });
+    next();
+  } catch (err) {
+    res.status(401).json({ error: err.message });
+  }
+};
+
+exports.isAdminLevelOne = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const admin = Admin.findOne({ email });
+    if (admin.level !== 1)
+      return res.send({ error: 'You do not have authorization' });
+    next();
+  } catch (err) {
+    res.status(401).json({ error: err.message });
   }
 };

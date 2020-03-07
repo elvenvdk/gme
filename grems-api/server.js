@@ -9,6 +9,7 @@ const customerRoute = require('./routes/customer');
 const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
 const categoryRoute = require('./routes/category');
+const braintreeRoute = require('./routes/braintree');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 // Middleware
-// app.use(express.json());
+app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
@@ -26,6 +27,7 @@ app.use('/api/customer', customerRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/product', productRoute);
 app.use('/api/category', categoryRoute);
+app.use('/api/braintree', braintreeRoute);
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);
