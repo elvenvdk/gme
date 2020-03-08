@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import GremsImg from '../../assets/grems_grandma_emma_bw.jpg';
 import CobblerCloseupImg from '../../assets/CobblerCloseUP.jpg';
@@ -33,16 +32,6 @@ const Home = () => {
     ));
   return (
     <div className='home'>
-      <nav className='home__nav'>
-        <ul className='home__nav__list'>
-          <Link className='home__nav__list__item-login' to='/shop'>
-            <li className='home__nav__list__item-shop'>Shop</li>
-          </Link>
-          <Link className='home__nav__list__item-login' to='/signin'>
-            <li className='home__nav__list__item-login-item'>Login</li>
-          </Link>
-        </ul>
-      </nav>
       <section className='home__section-top'>
         <h4 className='home__section-top__header1'>Homemade</h4>
         <h2 className='home__section-top__header2'>Peach Cobbler</h2>
