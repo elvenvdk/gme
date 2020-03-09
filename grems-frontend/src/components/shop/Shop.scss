@@ -4,27 +4,51 @@
   height: 100vh;
   overflow: scroll;
 
-  &__peach-cobbler {
-    position: relative;
-    width: 80%;
-    height: 60rem;
-    top: 100px;
-    margin: 0 auto;
+  &__buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    box-sizing: border-box;
-    border: #000000 1px solid;
 
-    &__img-wrapper {
-      &__title {
-        margin: 1rem 0;
+    &__amount {
+      font-size: 1.8rem;
+
+      &-label {
+        margin-right: 1rem;
       }
-      &__img {
-        height: 350px;
-        width: 350px;
-        border-radius: 5px;
+
+      &-number {
+        width: 5rem;
+      }
+
+      &-more,
+      &-less {
+        width: 3rem;
+        height: 2rem;
+        font-size: 1rem;
+        margin: 0 0.2rem 0.3rem 0;
+      }
+    }
+
+    &__add-cart {
+      margin-bottom: 1rem;
+    }
+
+    &__delete-cart {
+      margin-bottom: 1rem;
+      visibility: hidden;
+
+      &__show {
+        visibility: initial;
+        margin-bottom: 1rem;
+        height: 3rem;
+      }
+    }
+
+    &__checkout {
+      visibility: hidden;
+
+      &__show {
+        visibility: initial;
       }
     }
   }

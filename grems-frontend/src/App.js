@@ -5,6 +5,7 @@ import HomePage from './components/home/Home';
 import Signup from './components/auth/Signup';
 import Signin from './components/auth/Signin';
 import Shop from './components/shop/Shop';
+import Checkout from './components/checkout/Checkout';
 
 import Nav from './components/common/navbar/Nav';
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/signup' exact component={Signup} />
         <Route path='/signin' exact component={Signin} />
         <Route path='/shop' exact component={Shop} />
+        <Route path='/checkout' exact component={Checkout} />
       </Switch>
     </Router>
   );

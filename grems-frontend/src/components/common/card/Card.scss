@@ -1,0 +1,25 @@
+.card-default {
+  position: relative;
+  width: 80%;
+  height: 60rem;
+  top: 100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  border: #000000 1px solid;
+  border-radius: 0.3rem;
+
+  &__img-wrapper {
+    &__title {
+      margin: 1rem 0;
+    }
+    &__img {
+      height: 350px;
+      width: 350px;
+      border-radius: 5px;
+    }
+  }
+}

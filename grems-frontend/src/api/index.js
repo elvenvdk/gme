@@ -12,7 +12,7 @@ export const getBraintreeClientToken = (custId, token) => {
   setAuthToken(token);
   return axios
     .get(`${API}/braintree/get-token/${custId}`)
-    .then(res => res)
+    .then(res => res.data)
     .catch(err => {
       console.log(err);
       throw err;
