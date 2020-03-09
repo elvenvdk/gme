@@ -83,7 +83,9 @@ router.post('/signup', async (req, res) => {
  */
 
 router.post('/admin/signup', async (req, res) => {
-  const { email, password } = req.body;
+  const { firstName, lastName, email, password, role, level } = req.body;
+  if (!firstName) return res.send({ error: 'Your first name is required' });
+  if (!lastName) return res.send({ error: 'Your last name is required' });
   if (email === '' || password === '')
     return res.send({ error: 'Email and password are required' });
   if (email === '') return res.send({ error: 'Email is required' });
@@ -100,9 +102,68 @@ router.post('/admin/signup', async (req, res) => {
     hashedPassword = await bcrypt.hash(password, salt);
 
     admin = new Admin({
+      firstName,
+      lastName,
       email,
       password: hashedPassword,
+      role,
+      level,
     });
+
+    await admin.save();
+
+    // payload for session token
+    const payload = {
+      admin: {
+        id: admin._id,
+      },
+    };
+    // issue session token upon registration
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: 36000 },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token, id: payload.admin.id });
+      },
+    );
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+/**
+ * @route post api/admin
+ * @description customer registration route
+ * @access Public
+ */
+
+router.post('/admin/change-credentials', async (req, res) => {
+  const { email, password, newPassword } = req.body;
+
+  if (email === '' || password === '' || newPassword === '')
+    return res.send({ error: 'Email, password and new password are required' });
+  if (email === '') return res.send({ error: 'Email is required' });
+  if (!validateEmail(email))
+    return res.send({ error: 'A valid email address is required' });
+  if (password === '') return res.send({ error: 'Password is required' });
+  if (newPassword === '')
+    return res.send({ error: 'New password is required' });
+  try {
+    const { email, password } = req.body;
+    let admin = await Admin.findOne({ email });
+    if (!admin) return res.send({ error: 'Invalid credentials' });
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch)
+      return res.status(400).json({ error: 'Invalid credentials...' });
+
+    // encrypt password
+    const salt = await bcrypt.genSalt(10);
+    hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    await admin.update({ password: hashedPassword });
 
     await admin.save();
 

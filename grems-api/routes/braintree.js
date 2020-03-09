@@ -33,4 +33,34 @@ router.get('/get-token/:custId', tokenVerify, async (req, res) => {
   });
 });
 
+router.post('/v1/sandbox', async (req, res) => {
+  try {
+    // Use the payment method nonce here
+    const nonceFromTheClient = req.body.paymentMethodNonce;
+    // Create a new transaction for $10
+    const newTransaction = gateway.transaction.sale(
+      {
+        amount: '5.00',
+        paymentMethodNonce: nonceFromTheClient,
+        options: {
+          // This option requests the funds from the transaction once it has been
+          // authorized successfully
+          submitForSettlement: true,
+        },
+      },
+      (error, result) => {
+        if (result) {
+          res.send(result);
+        } else {
+          res.status(500).send(error);
+        }
+      },
+    );
+  } catch (err) {
+    // Deal with an error
+    console.log(err);
+    res.send(err);
+  }
+});
+
 module.exports = router;
