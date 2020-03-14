@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const Customer = require('../models/customer');
 const Admin = require('../models/admin');
+const Vendor = require('../models/vendors');
 
 const router = express.Router();
 
@@ -91,7 +92,7 @@ router.post('/admin/signup', async (req, res) => {
 
     // encrypt password
     const salt = await bcrypt.genSalt(10);
-    hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     admin = new Admin({
       firstName,
@@ -263,6 +264,73 @@ router.post('/admin/signin', async (req, res) => {
         res.json({ token, id: admin._id });
       },
     );
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+/**
+ * @route post apl/auth/vendor-signup
+ * @description Signup route for vendors - accessible on by admin
+ * @access private
+ */
+
+router.post('/vendor-signup', async (req, res) => {
+  try {
+    // check field requirements
+    if (!req.body.name) return res.send({ error: 'Vendor name is required' });
+    if (!req.body.primary_email)
+      return res.send({ error: 'Vendor primary email is require' });
+    if (!req.body.password) return res.send({ error: 'Password is required' });
+    if (!req.body.adddress_line1)
+      return res.send({ error: 'Vendor address is required' });
+    if (!req.body.city) return res.send({ error: 'City is required' });
+    if (!req.body.state) return res.send({ error: 'State is required' });
+    if (!req.body.zip) return res.send({ error: 'Zip code is required' });
+
+    // check if vendor exists
+    let vendor = Vendor.findOne({ email: req.body.email });
+    if (vendor) res.send({ error: 'This email is currently registered' });
+
+    // encrypt password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = bcrypt.hash(req.body.password, salt);
+    req.body.password = hashedPassword;
+
+    // create vendor
+    vendor = new Vendor({
+      ...req.body,
+    });
+    await vendor.save();
+
+    // create token for email confirmation
+    let vendor = await Vendor.findOne({ email: req.body.email });
+    const id = vendor._id;
+    const payload = { id };
+    const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: 360000,
+    });
+
+    // update vendors validation_token with token
+    const conditions = { _id: id };
+    const updated = { validation_token: token };
+    await vendor.update(conditions, updated);
+
+    // send vendor confirmation email
+    const link = `http://localhost:3000/email-verification/${token}`;
+    res.json({
+      email: {
+        from: 'Do-Not-Reply',
+        to: user.email,
+        subject: "Grandma Emma's Vendor Email Verification",
+        body: `You have signed up as a Grandma Emma\s vendor! 
+                Please click on the link below
+                to verify your email. Once verified you can log in. 
+                Link: ${link}`,
+      },
+      msg:
+        'Sign up successful.  Please check your email for the confirmation link.',
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

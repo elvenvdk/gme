@@ -51,11 +51,21 @@ const VendorSchema = mongoose.Schema(
         price: {
           type: Number,
         },
+        total_paid: {
+          type: Number,
+        },
         purchase_date: {
           type: Date,
         },
       },
     ],
+    validation_token: {
+      type: String,
+    },
+    active: {
+      type: Boolean,
+      default: false,
+    },
     createdAt: {
       type: Date.now,
     },
