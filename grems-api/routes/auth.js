@@ -304,7 +304,7 @@ router.post('/vendor-signup', async (req, res) => {
     await vendor.save();
 
     // create token for email confirmation
-    let vendor = await Vendor.findOne({ email: req.body.email });
+    vendor = await Vendor.findOne({ email: req.body.email });
     const id = vendor._id;
     const payload = { id };
     const token = await jwt.sign(payload, process.env.JWT_SECRET, {

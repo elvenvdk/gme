@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
 const VendorSchema = mongoose.Schema(
   {
@@ -67,7 +68,8 @@ const VendorSchema = mongoose.Schema(
       default: false,
     },
     createdAt: {
-      type: Date.now,
+      type: Date,
+      default: Date.now,
     },
   },
   { timestamp: true },
