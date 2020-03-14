@@ -8,14 +8,6 @@ const Admin = require('../models/admin');
 
 const router = express.Router();
 
-// const errorValidation = [
-//   check('email', 'Please include a valid email').isEmail(),
-//   check(
-//     'password',
-//     'Please enter a password with 6 or more characters',
-//   ).isLength({ min: 6 }),
-// ];
-
 const validateEmail = email => {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) return true;
   return false;

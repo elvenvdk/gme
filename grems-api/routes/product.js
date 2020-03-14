@@ -172,4 +172,15 @@ router.delete('/:productId', async (req, res) => {
   }
 });
 
+/**
+ * @route update api/product/sold
+ * @description update product sold route
+ * @access private
+ */
+
+//  router.put('/sold/:productId', async (req, res) => {
+//   const { productId } = req.params;
+//   const product = Product.findOne({_id: })
+//  })
+
 module.exports = router;
