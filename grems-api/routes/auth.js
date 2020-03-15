@@ -357,6 +357,9 @@ router.post('/vendor-signin', async (req, res) => {
     const { primary_email, password } = req.body;
     if (!primary_email) return res.send({ error: 'Email is required' });
     if (!password) return res.send({ error: 'Password is required' });
+    if (!active) return res.send({ error: 'Vendor credentials invalid' });
+    if (validation_token !== '')
+      return res.send({ error: 'You have not validated your email address.' });
 
     // check if vendor exists
     const vendor = await Vendor.findOne({ primary_email });
@@ -462,5 +465,45 @@ router.put('/vendor-password-reset/:id', async (req, res) => {
  * @description forgot password
  * @access public
  */
+
+router.post('/vendor-forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // check if vendor exists
+    if (!email) return res.send({ error: 'Email is required' });
+    const vendor = Vendor.findOne({ primary_email: email });
+    if (!vendor) return res.send({ error: 'Credentials invalid' });
+
+    // create new token for email
+    const payload = { id: vendor_id };
+    const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: 360000,
+    });
+
+    // add token to vendors validation_token
+    vendor.validation_token = token;
+    await vendor.save();
+
+    // send vendor confirmation email
+    const link = `http://localhost:3000/email-verification/${token}`;
+    res.json({
+      email: {
+        from: 'Do-Not-Reply',
+        to: req.body.email,
+        subject: "Grandma Emma's Vendor Email Verification",
+        body: `Dear Vendor,
+                You have reset your password at Grandma Emma\'s.
+                Please click on the link below
+                to verify your email. Once verified you can log in. 
+                Link: ${link}`,
+      },
+      msg:
+        'Sign up successful.  Please check your email for the confirmation link.',
+    });
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+});
 
 module.exports = router;
