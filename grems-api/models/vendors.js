@@ -40,6 +40,11 @@ const VendorSchema = mongoose.Schema(
       required: true,
       true: true,
     },
+    zip: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
     purchase_history: [
       {
         product: {
