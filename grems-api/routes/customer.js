@@ -1,5 +1,4 @@
 const express = require('express');
-const formidable = require('formidable');
 const Customer = require('../models/customer');
 
 const { tokenVerify } = require('../middleware/auth');
@@ -16,25 +15,12 @@ router.get('/', tokenVerify, (req, res) => {
  * @access private
  */
 
-router.post('/profile', async (req, res) => {
+router.post('/create-profile/:customerId', tokenVerify, async (req, res) => {
   try {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, (err, fields) => {
-      if (err) return res.status(400).json({ error: err.message });
-    });
-    const { firstName, lastName, streetAddress, city, state, zipCode } = fields;
-
-    if (
-      !firstName ||
-      !lastName ||
-      !streetAddress ||
-      !city ||
-      !state ||
-      !zipCode
-    ) {
-      return res.status(400).json({ error: 'All fields' });
-    }
+    const { customerId } = req.params;
+    const cust = new Customer({ ...req.body });
+    await cust.save();
+    res.send({ msg: 'Profile succcessfully saved' });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

@@ -113,15 +113,10 @@ router.post('/admin/signup', async (req, res) => {
       },
     };
     // issue session token upon registration
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: 36000 },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token, id: payload.admin.id });
-      },
-    );
+    const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: 36000,
+    });
+    res.json({ token, id: payload.admin.id });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

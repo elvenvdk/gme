@@ -45,26 +45,10 @@ const VendorSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    purchase_history: [
-      {
-        product: {
-          type: ObjectId,
-          ref: 'Product',
-        },
-        quatity: {
-          type: Number,
-        },
-        price: {
-          type: Number,
-        },
-        total_paid: {
-          type: Number,
-        },
-        purchase_date: {
-          type: Date,
-        },
-      },
-    ],
+    primary_phone: {
+      type: Number,
+      trim: true,
+    },
     validation_token: {
       type: String,
     },
