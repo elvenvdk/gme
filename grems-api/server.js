@@ -6,6 +6,7 @@ require('dotenv').config({ path: './.env' });
 const { connectDB } = require('./config/db');
 
 const customerRoute = require('./routes/customer');
+const venderRoute = require('./routes/vendor');
 const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
 const categoryRoute = require('./routes/category');
@@ -24,6 +25,7 @@ app.use(cors());
 
 // Routing
 app.use('/api/customer', customerRoute);
+app.use('/api/vendor', venderRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/product', productRoute);
 app.use('/api/category', categoryRoute);

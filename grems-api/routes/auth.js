@@ -357,13 +357,14 @@ router.post('/vendor-signin', async (req, res) => {
     const { primary_email, password } = req.body;
     if (!primary_email) return res.send({ error: 'Email is required' });
     if (!password) return res.send({ error: 'Password is required' });
-    if (!active) return res.send({ error: 'Vendor credentials invalid' });
-    if (validation_token !== '')
-      return res.send({ error: 'You have not validated your email address.' });
 
     // check if vendor exists
     const vendor = await Vendor.findOne({ primary_email });
     if (!vendor) return res.send({ error: 'Vendor credentials invalid' });
+    if (!vendor.active)
+      return res.send({ error: 'Vendor credentials invalid' });
+    if (vendor.validation_token !== '')
+      return res.send({ error: 'You have not validated your email address.' });
 
     // compare passwords
     const valid = bcrypt.compare(password, vendor.password);
@@ -397,7 +398,7 @@ router.put('/email-validate/:validationToken', async (req, res) => {
     const { validationToken } = req.params;
 
     // check if vendor/token exists
-    const vendor = await Vendor.find({ validation_token: validationToken });
+    const vendor = await Vendor.findOne({ validation_token: validationToken });
     if (!vendor) return res.send({ error: 'Token not valid' });
 
     // compare tokens
@@ -415,7 +416,56 @@ router.put('/email-validate/:validationToken', async (req, res) => {
     // save vendor
     await vendor.save();
     res.send({
-      msg: 'Email successfully validated.  Please set your email and log in',
+      msg:
+        'Email successfully validated.  Please reset your password and log in',
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+/**
+ * @route post api/auth/resend-email-validation
+ * @description validate email with token
+ * @access private
+ */
+
+router.put('/resend-email-validate/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // check if vendor/token exists
+    const vendor = await Vendor.find({ primary_email: email });
+    console.log({ vendor });
+    if (!vendor) return res.send({ error: 'Credentials invalid' });
+
+    // create new token for email
+    const payload = { id: vendor._id };
+    const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: 360000,
+    });
+
+    // add token to vendors validation_token
+    vendor.validation_token = token;
+    console.log({ newToken: token });
+    console.log({ ValidationToken: vendor.validation_token });
+    await vendor.save();
+
+    // send vendor confirmation email
+    const link = `http://localhost:3000/email-verification/${token}`;
+    res.json({
+      email: {
+        from: 'Do-Not-Reply',
+        to: req.body.email,
+        subject: "Grandma Emma's Vendor Email Verification",
+        body: `Dear Vendor,
+                 You have a new email verification for Grandma Emma\'s.
+                 Please click on the link below
+                 to verify your email. Once verified you can log in. 
+                 Link: ${link}`,
+      },
+      msg:
+        'Sign up successful.  Please check your email for the confirmation link.',
     });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -428,11 +478,11 @@ router.put('/email-validate/:validationToken', async (req, res) => {
  * @access private
  */
 
-router.put('/vendor-password-reset/:id', async (req, res) => {
+router.put('/vendor-password-reset', async (req, res) => {
   try {
-    const { id } = req.params;
+    // const { id } = req.params;
     const { email, newPassword, confirmNewPassword } = req.body;
-    if (!emai)
+    if (!email)
       return res.send({ error: 'You must enter your primary email address' });
     if (!newPassword)
       return res.send({ error: 'You must include your new password' });
@@ -442,7 +492,7 @@ router.put('/vendor-password-reset/:id', async (req, res) => {
       return res.send({ error: 'Passwords do not match.  Please try again' });
 
     // check if email exists;
-    const vendor = await Vendor.findOne({ _id: id });
+    const vendor = await Vendor.findOne({ primary_email: email });
     if (!vendor) return res.send({ error: 'Credentials not valid' });
     if (email !== vendor.primary_email)
       return res.send({ error: 'Credentials not valid' });
@@ -454,7 +504,7 @@ router.put('/vendor-password-reset/:id', async (req, res) => {
 
     // save vendor
     await vendor.save();
-    return;
+    res.send({ msg: 'Password successfully reset' });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -469,14 +519,16 @@ router.put('/vendor-password-reset/:id', async (req, res) => {
 router.post('/vendor-forgot-password', async (req, res) => {
   try {
     const { email } = req.body;
-
+    console.log({ email });
     // check if vendor exists
     if (!email) return res.send({ error: 'Email is required' });
-    const vendor = Vendor.findOne({ primary_email: email });
+    const vendor = await Vendor.findOne({ primary_email: email });
+    console.log({ vendor });
     if (!vendor) return res.send({ error: 'Credentials invalid' });
 
     // create new token for email
-    const payload = { id: vendor_id };
+    const payload = { id: vendor._id };
+    console.log({ VendorId: vendor._id });
     const token = await jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 360000,
     });

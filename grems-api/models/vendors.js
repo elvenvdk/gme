@@ -49,7 +49,7 @@ const VendorSchema = mongoose.Schema(
       {
         product: {
           type: ObjectId,
-          ref: 'product',
+          ref: 'Product',
         },
         quatity: {
           type: Number,

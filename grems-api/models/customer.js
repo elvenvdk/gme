@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 const { v4: uuidv4 } = require('uuid');
 
 const CustomerSchema = new mongoose.Schema(
@@ -47,8 +48,12 @@ const CustomerSchema = new mongoose.Schema(
       // required: true,
       maxLength: 5,
     },
+    history: {
+      type: ObjectId,
+      ref: 'Orders',
+    },
   },
   { timestamps: true },
 );
 
-module.exports = mongoose.model('customer', CustomerSchema);
+module.exports = mongoose.model('Customer', CustomerSchema);
