@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const CustomerSchema = new mongoose.Schema(
   {
-    first_name: {
+    firstName: {
       type: String,
       // required: true,
       trim: true,
     },
-    last_name: {
+    lastName: {
       type: String,
       // required: true,
       trim: true,
@@ -22,11 +22,11 @@ const CustomerSchema = new mongoose.Schema(
       type: String,
       // required: true,
     },
-    address_line1: {
+    addressLine1: {
       type: String,
       // required: true,
     },
-    address_line2: {
+    addressLine2: {
       type: String,
     },
     city: {
