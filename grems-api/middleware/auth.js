@@ -23,10 +23,11 @@ exports.tokenVerify = (req, res, next) => {
 };
 
 exports.isAdmin = async (req, res, next) => {
-  const { email } = req.body;
+  const { adminEmail } = req.query;
+  console.log({ adminEmail });
   try {
-    const admin = Admin.findOne({ email });
-    if (!admin.role)
+    const admin = await Admin.findOne({ email: adminEmail });
+    if (admin === null)
       return res.send({ error: 'You do not have authorization' });
     if (admin.role !== 'admin')
       return res.send({ error: 'You do not have authorization' });
@@ -37,9 +38,9 @@ exports.isAdmin = async (req, res, next) => {
 };
 
 exports.isAdminLevelOne = async (req, res, next) => {
-  const { email } = req.body;
+  const { adminEmail } = req.params;
   try {
-    const admin = Admin.findOne({ email });
+    const admin = await Admin.findOne({ email: adminEmail });
     if (admin.level !== 1)
       return res.send({ error: 'You do not have authorization' });
     next();

@@ -8,7 +8,7 @@ const VendorSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    primary_email: {
+    primaryEmail: {
       type: String,
       required: true,
       trim: true,
@@ -17,16 +17,16 @@ const VendorSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    secondary_email: {
+    secondaryEmail: {
       type: String,
       trim: true,
     },
-    address_line1: {
+    addressLine1: {
       type: String,
       required: true,
       trim: true,
     },
-    address_line2: {
+    addressLine2: {
       type: String,
       trim: true,
     },
@@ -45,11 +45,11 @@ const VendorSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    primary_phone: {
+    primaryPhone: {
       type: Number,
       trim: true,
     },
-    validation_token: {
+    validationToken: {
       type: String,
     },
     active: {

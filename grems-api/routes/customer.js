@@ -1,7 +1,7 @@
 const express = require('express');
 const Customer = require('../models/customer');
 
-const { tokenVerify } = require('../middleware/auth');
+const { tokenVerify, isAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -18,6 +18,22 @@ router.get('/profile/:customerId', tokenVerify, async (req, res) => {
       '-password',
     );
     res.send(customer);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+/**
+ * @route get api/customers?adminEmail
+ * @description get customers
+ * @access private
+ */
+
+router.get('/', tokenVerify, isAdmin, async (req, res) => {
+  console.log({ AdminEmail: req.query.adminEmail });
+  try {
+    const customers = await Customer.find().select('-password');
+    res.send(customers);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

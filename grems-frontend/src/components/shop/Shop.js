@@ -13,6 +13,7 @@ const Shop = () => {
   const [data, setData] = useState({
     productName: "Grandma Emma's Peach Cobbler",
     addedToCart: false,
+    showUpdateCart: false,
     products: [],
     price: defaultPrice,
     quantity: 1,
@@ -40,6 +41,7 @@ const Shop = () => {
       addedToCart: false,
       price: defaultPrice,
       quantity: 0,
+      showUpdateCart: false,
     });
     deleteCart();
   };
@@ -50,6 +52,7 @@ const Shop = () => {
     setData({
       ...data,
       quantity: e.target.value,
+      showUpdateCart: true,
     });
   };
   console.log({ quantity: data.quantity, price: data.price });
@@ -77,7 +80,9 @@ const Shop = () => {
             classname='shop__buttons__add-cart'
             clickhandler={addCartHandler}
           >
-            Add to cart
+            {data.addedToCart && data.showUpdateCart
+              ? 'Update cart'
+              : 'Add to cart'}
           </Button>
           <Button
             classname={`shop__buttons__delete-cart${

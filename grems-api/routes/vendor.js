@@ -4,43 +4,56 @@ const Product = require('../models/product');
 const Vendor = require('../models/vendors');
 const Orders = require('../models/orders');
 
-const { tokenVerify } = require('../middleware/auth');
+const { tokenVerify, isAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
 /**
- * @route post api/vendor/place-order
- * @description vendor place order
- * @access private
+ * @route get api/vendor
+ * @description get vendors
+ * @access private admin
  */
 
-router.post('/place-order', async (req, res) => {
+router.get('/', tokenVerify, isAdmin, async (req, res) => {
   try {
-    const newOrders = new Orders({ ...req.body });
-
-    await newOrders.save();
-
-    res.send({ msg: 'Order successfully saved' });
+    const vendors = await Vendor.find();
+    res.send(vendors);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
 
 /**
- * @route put api/vendor/cancel-order
- * @description vendor cencel order
+ * @route put api/vendor/update/:vendorNo
+ * @description update vendor
  * @access private
  */
 
-router.put('/cancel-order/orderNo', async (req, res) => {
+router.put('/update/:vendorNo', tokenVerify, async (req, res) => {
+  const { vendorNo } = req.params;
+  const {
+    primaryEmail,
+    secondaryEmail,
+    addressLine1,
+    addressLine2,
+    city,
+    state,
+    zip,
+    primaryPhone,
+  } = req.body;
+  const fields = {
+    primaryEmail,
+    secondaryEmail,
+    addressLine1,
+    addressLine2,
+    city,
+    state,
+    zip,
+    primaryPhone,
+  };
   try {
-    const { orderNo } = req.params;
-    const order = await Orders.findOne({ _id: orderNo });
-    if (!order) return res.send({ error: 'Order does not exist' });
-    order.canceled = true;
-
-    await order.save();
-    res.send({ msg: 'Order successfully saved' });
+    await Vendor.updateOne({ _id: vendorNo }, { $set: { fields } });
+    res.send({ msg: 'Vendor successfully updated' });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

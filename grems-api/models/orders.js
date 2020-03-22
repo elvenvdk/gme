@@ -7,11 +7,11 @@ const OrdersSchema = mongoose.Schema(
       type: ObjectId,
       ref: 'Product',
     },
-    vendor_id: {
+    vendorId: {
       type: ObjectId,
       ref: 'Vendor',
     },
-    customer_id: {
+    customerId: {
       type: ObjectId,
       ref: 'Customer',
     },
@@ -23,11 +23,11 @@ const OrdersSchema = mongoose.Schema(
       type: Number,
       trim: true,
     },
-    total_price: {
+    totalPrice: {
       type: Number,
       trim: true,
     },
-    canceled: {
+    cancelled: {
       type: Boolean,
       default: false,
     },
