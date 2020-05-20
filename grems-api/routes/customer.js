@@ -29,7 +29,7 @@ router.get('/profile/:customerId', tokenVerify, async (req, res) => {
  * @access private
  */
 
-router.get('/', tokenVerify, isAdmin, async (req, res) => {
+router.get('/', tokenVerify, async (req, res) => {
   console.log({ AdminEmail: req.query.adminEmail });
   try {
     const customers = await Customer.find().select('-password');

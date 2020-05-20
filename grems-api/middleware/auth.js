@@ -22,29 +22,29 @@ exports.tokenVerify = (req, res, next) => {
   }
 };
 
-exports.isAdmin = async (req, res, next) => {
-  const { adminEmail } = req.query;
-  console.log({ adminEmail });
-  try {
-    const admin = await Admin.findOne({ email: adminEmail });
-    if (admin === null)
-      return res.send({ error: 'You do not have authorization' });
-    if (admin.role !== 'admin')
-      return res.send({ error: 'You do not have authorization' });
-    next();
-  } catch (err) {
-    res.status(401).json({ error: err.message });
-  }
-};
+// exports.isAdmin = async (req, res, next) => {
+//   const { adminEmail } = req.query;
+//   console.log({ adminEmail });
+//   try {
+//     const admin = await Admin.findOne({ email: adminEmail });
+//     if (admin === null)
+//       return res.send({ error: 'You do not have authorization' });
+//     if (admin.role !== 'admin')
+//       return res.send({ error: 'You do not have authorization' });
+//     next();
+//   } catch (err) {
+//     res.status(401).json({ error: err.message });
+//   }
+// };
 
-exports.isAdminLevelOne = async (req, res, next) => {
-  const { adminEmail } = req.params;
-  try {
-    const admin = await Admin.findOne({ email: adminEmail });
-    if (admin.level !== 1)
-      return res.send({ error: 'You do not have authorization' });
-    next();
-  } catch (err) {
-    res.status(401).json({ error: err.message });
-  }
-};
+// exports.isAdminLevelOne = async (req, res, next) => {
+//   const { adminEmail } = req.params;
+//   try {
+//     const admin = await Admin.findOne({ email: adminEmail });
+//     if (admin.level !== 1)
+//       return res.send({ error: 'You do not have authorization' });
+//     next();
+//   } catch (err) {
+//     res.status(401).json({ error: err.message });
+//   }
+// };

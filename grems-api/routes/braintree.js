@@ -8,14 +8,14 @@ const { tokenVerify } = require('../middleware/auth');
 
 const router = express.Router();
 
-const gateway = braintree.connect({
+const gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
   publicKey: process.env.BRAINTREE_PUBLIC_KEY,
   privateKey: process.env.BRAINTREE_PRIVATE_KEY,
   merchantId: process.env.BRAINTREE_MERCHANT_ID,
 });
 
-router.get('/get-token/:custId', tokenVerify, async (req, res) => {
+router.get('/get-token/:custId', async (req, res) => {
   const { custId } = req.params;
   console.log(custId);
   const customer = await Customer.findOne({ _id: custId });
@@ -36,9 +36,10 @@ router.get('/get-token/:custId', tokenVerify, async (req, res) => {
 router.post('/v1/sandbox', async (req, res) => {
   try {
     // Use the payment method nonce here
-    const nonceFromTheClient = req.body.paymentMethodNonce;
+    const nonceFromTheClient = req.body.nonce;
+    console.log({ nonceFromTheClient });
     // Create a new transaction for $10
-    const newTransaction = gateway.transaction.sale(
+    const newTransaction = await gateway.transaction.sale(
       {
         amount: '5.00',
         paymentMethodNonce: nonceFromTheClient,
@@ -48,14 +49,21 @@ router.post('/v1/sandbox', async (req, res) => {
           submitForSettlement: true,
         },
       },
-      (error, result) => {
-        if (result) {
-          res.send(result);
-        } else {
-          res.status(500).send(error);
-        }
-      },
+      // (error, result) => {
+      //   if (result) {
+      //     res.send(result);
+      //   } else {
+      //     res.status(500).send(error);
+      //   }
+      // },
     );
+    if (newTransaction.success) {
+      console.log({ TRANSACTION_ID: newTransaction.transaction.id });
+      return res.send(newTransaction.transaction.id);
+    } else {
+      console.log(newTransaction.message);
+      return res.send({ error: newTransaction.message });
+    }
   } catch (err) {
     // Deal with an error
     console.log(err);

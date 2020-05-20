@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import PrivateRoute from './auth/PrivateRoute';
+
 import HomePage from './components/home/Home';
 import Signup from './components/auth/Signup';
 import Signin from './components/auth/Signin';
@@ -8,8 +10,6 @@ import Shop from './components/shop/Shop';
 import Checkout from './components/checkout/Checkout';
 
 import Nav from './components/common/navbar/Nav';
-
-import './App.scss';
 
 const App = () => {
   return (
@@ -20,6 +20,7 @@ const App = () => {
         <Route path='/signup' exact component={Signup} />
         <Route path='/signin' exact component={Signin} />
         <Route path='/shop' exact component={Shop} />
+        {/* <PrivateRoute path='/checkout' exact component={Checkout} /> */}
         <Route path='/checkout' exact component={Checkout} />
       </Switch>
     </Router>

@@ -14,7 +14,7 @@ const router = express.Router();
  * @access private admin
  */
 
-router.get('/', tokenVerify, isAdmin, async (req, res) => {
+router.get('/', tokenVerify, async (req, res) => {
   try {
     const vendors = await Vendor.find();
     res.send(vendors);

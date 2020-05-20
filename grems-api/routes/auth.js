@@ -10,7 +10,7 @@ const Vendor = require('../models/vendors');
 
 const router = express.Router();
 
-const validateEmail = email => {
+const validateEmail = (email) => {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) return true;
   return false;
 };
@@ -210,7 +210,7 @@ router.post('/signin', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: 36000 },
       (err, token) => {
-        console.log({ token, id: customer._id });
+        // console.log({ token, id: customer._id });
         if (err) throw err;
         res.json({ token, id: customer._id });
       },

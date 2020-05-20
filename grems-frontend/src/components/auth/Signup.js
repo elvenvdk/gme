@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
-import { signup, authenticate } from '../../auth';
-
+// import { signup, authenticate } from '../../auth';
+import { signup, authenticate } from '../../actions/authActions';
 import './Signup.scss';
 
-const Signup = () => {
+const Signup = props => {
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -34,33 +35,25 @@ const Signup = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    signup(email, password).then(data => {
-      if (data.error) {
-        console.log({ response_data: data });
-        setValues({
-          ...values,
-          error: data.data.error,
-        });
-      } else {
-        console.log({ data });
-        authenticate(data.data, () => {
-          setValues({
-            ...values,
-            email: '',
-            password: '',
-            redirectToReferrer: !data.data.error ? true : false,
-            message: data.data.error || data.msg,
-          });
-        });
-      }
+    props.signup(email, password);
+    setValues({
+      ...values,
+      email: '',
+      password: '',
     });
   };
 
-  const redirectUser = () => {
-    if (redirectToReferrer) return <Redirect to='/' />;
+  const renderError = () => {
+    if (props.auth.data && props.auth.data.error) {
+      return <p className='signup__confirmation'>{props.auth.data.error}</p>;
+    }
   };
 
-  console.log({ email, password, error, message });
+  const redirectUser = () => {
+    if (props.auth.isLoggedIn) return <Redirect to='/' />;
+  };
+
+  console.log({ auth: props.auth });
   return (
     <div className='signup'>
       <h3 className='signup__title'>Grandma Emmas Customer Signup</h3>
@@ -94,10 +87,14 @@ const Signup = () => {
           Already a user? Sign In &rsaquo;
         </Link>
       </form>
-      {message && <p className='signup__confirmation'>{message}</p>}
       {redirectUser()}
+      {renderError()}
     </div>
   );
 };
 
-export default Signup;
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { signup })(Signup);

@@ -14,6 +14,7 @@ const router = express.Router();
 router.post('/create', tokenVerify, async (req, res) => {
   try {
     const order = new Orders({ ...req.body });
+    console.log({ order });
     await order.save();
     res.send({ msg: 'Order successfully saved' });
   } catch (err) {
@@ -48,7 +49,7 @@ router.put('/update/:orderNo', tokenVerify, async (req, res) => {
  * @access private admin
  */
 
-router.get('/', tokenVerify, isAdmin, async (req, res) => {
+router.get('/', tokenVerify, async (req, res) => {
   try {
     const orders = await Orders.find();
     res.send(orders);

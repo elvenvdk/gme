@@ -5,6 +5,7 @@ import Card from '../common/card/Card';
 import Button from '../common/button/Button';
 import CobblerJar from '../../assets/CustomLabel.jpg';
 import { addItem, deleteCart } from '../helpers/carthelpers';
+import { createCustomerOrder } from '../../api';
 
 import './Shop.scss';
 
@@ -18,6 +19,7 @@ const Shop = () => {
     price: defaultPrice,
     quantity: 1,
   });
+  const [order, setOrder] = useState({});
 
   const addCartHandler = () => {
     setData({
@@ -33,6 +35,25 @@ const Shop = () => {
       price: data.price,
       quantity: data.quantity,
     });
+  };
+
+  const handleAddToCheckout = () => {
+    console.log('HELLO FROM CHECKOUT...');
+    console.log({ q: data.quantity, p: data.price });
+    setOrder({
+      ...order,
+      quantity: data.quantity,
+      price: data.price,
+      totalPrice: data.price,
+    });
+
+    createCustomerOrder(order)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   const deleteCartHandler = () => {
@@ -56,6 +77,7 @@ const Shop = () => {
     });
   };
   console.log({ quantity: data.quantity, price: data.price });
+  console.log({ ShowOrder: order });
   return (
     <div className='shop'>
       <Card imgSrc={CobblerJar} title="Grandma Emma's Peach Cobbler Original">
