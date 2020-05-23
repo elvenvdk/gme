@@ -15,16 +15,17 @@ const menuItems = [
   { name: 'Contact Us', url: 'contact-us' },
 ];
 
-const renderMenu = () =>
-  menuItems.map((i, idx) => (
-    <ul className='nav-menu'>
+const renderMenu = () => (
+  <ul className='nav-menu'>
+    {menuItems.map((i, idx) => (
       <li key={i.name} className='nav-item'>
         <Link className='nav-item-link' to={i.url}>
           {i.name}
         </Link>
       </li>
-    </ul>
-  ));
+    ))}
+  </ul>
+);
 
 const Nav = () => {
   return <div className='nav'>{renderMenu()}</div>;

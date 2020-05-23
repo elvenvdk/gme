@@ -5,6 +5,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
