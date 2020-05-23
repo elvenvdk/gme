@@ -10,7 +10,7 @@ import Shop from './Shop';
 import Checkout from './checkout/Checkout';
 
 import PageHeader from './pageHeader/PageHeader';
-import Nav from './common/Nav';
+import Nav from './common/nav/Nav';
 
 import './App.scss';
 
@@ -19,7 +19,7 @@ const App = () => {
     <div className='app'>
       <Router>
         <PageHeader />
-        {/* <Nav classname='app__nav' /> */}
+        <Nav classname='app__nav' />
         <Switch>
           <Route path='/' exact component={HomePage} />
           {/* <Route path='/signup' exact component={Signup} /> */}

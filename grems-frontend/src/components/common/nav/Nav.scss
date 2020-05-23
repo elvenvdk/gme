@@ -1,0 +1,28 @@
+@import '../../../utilities/variables.scss';
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: $font-nav-backgroundColor;
+  color: $font-nav-color;
+  font-size: 1.6rem;
+  font-family: $font-main;
+
+  &-menu {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+
+    list-style: none;
+
+    .nav-item {
+      padding: 3rem 0;
+      &-link {
+        color: $font-nav-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
