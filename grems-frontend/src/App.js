@@ -9,8 +9,10 @@ import Signin from './components/auth/Signin';
 import Shop from './components/Shop';
 import Checkout from './components/checkout/Checkout';
 
-import PageHeader from './components/PageHeader';
+import PageHeader from './components/pageHeader/PageHeader';
 import Nav from './components/common/Nav';
+
+import './App.scss';
 
 const App = () => {
   return (
