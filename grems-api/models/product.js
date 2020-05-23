@@ -21,12 +21,12 @@ const ProductSchema = new mongoose.Schema(
       trim: true,
       maxLength: 32,
     },
-    // category: {
-    //   type: ObjectId,
-    //   ref: 'category',
-    //   required: true,
-    //   trim: true,
-    // },
+    category: {
+      type: ObjectId,
+      ref: 'category',
+      // required: true,
+      trim: true,
+    },
     quantity: {
       type: Number,
       required: true,
@@ -51,4 +51,4 @@ const ProductSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-module.exports = mongoose.model('product', ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema);

@@ -46,6 +46,7 @@ export const isAuthenticated = () => {
 export const signout = fn => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('jwt');
+    if (localStorage.getItem('cart')) localStorage.removeItem('cart');
     fn();
   }
 };

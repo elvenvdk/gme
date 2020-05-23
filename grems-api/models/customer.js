@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
 
 const CustomerSchema = new mongoose.Schema(
   {
@@ -23,12 +22,12 @@ const CustomerSchema = new mongoose.Schema(
       type: String,
       // required: true,
     },
-    streetAddress: {
+    addressLine1: {
       type: String,
       // required: true,
     },
-    unitNumber: {
-      type: Number,
+    addressLine2: {
+      type: String,
     },
     city: {
       type: String,
@@ -51,4 +50,4 @@ const CustomerSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-module.exports = mongoose.model('customer', CustomerSchema);
+module.exports = mongoose.model('Customer', CustomerSchema);

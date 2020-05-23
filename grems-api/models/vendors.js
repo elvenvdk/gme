@@ -8,7 +8,7 @@ const VendorSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    primary_email: {
+    primaryEmail: {
       type: String,
       required: true,
       trim: true,
@@ -17,16 +17,16 @@ const VendorSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    secondary_email: {
+    secondaryEmail: {
       type: String,
       trim: true,
     },
-    address_line1: {
+    addressLine1: {
       type: String,
       required: true,
       trim: true,
     },
-    address_line2: {
+    addressLine2: {
       type: String,
       trim: true,
     },
@@ -40,27 +40,16 @@ const VendorSchema = mongoose.Schema(
       required: true,
       true: true,
     },
-    purchase_history: [
-      {
-        product: {
-          type: ObjectId,
-          ref: 'product',
-        },
-        quatity: {
-          type: Number,
-        },
-        price: {
-          type: Number,
-        },
-        total_paid: {
-          type: Number,
-        },
-        purchase_date: {
-          type: Date,
-        },
-      },
-    ],
-    validation_token: {
+    zip: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
+    primaryPhone: {
+      type: Number,
+      trim: true,
+    },
+    validationToken: {
       type: String,
     },
     active: {
