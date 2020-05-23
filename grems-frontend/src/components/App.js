@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from '../auth/PrivateRoute';
 
-import HomePage from './Home';
+import HomePage from './home/Home';
 // import Signup from '../auth/Signup';
 // import Signin from '../auth/Signin';
 import Shop from './Shop';
@@ -11,6 +11,7 @@ import Checkout from './checkout/Checkout';
 
 import PageHeader from './pageHeader/PageHeader';
 import Nav from './common/nav/Nav';
+import Footer from './common/footer/Footer';
 
 import './App.scss';
 
@@ -29,6 +30,7 @@ const App = () => {
           <Route path='/checkout' exact component={Checkout} />
         </Switch>
       </Router>
+      <Footer />
     </div>
   );
 };

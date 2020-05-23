@@ -1,0 +1,62 @@
+@import '../../../utilities/variables.scss';
+
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $font-footer-backgroundColor;
+  color: $font-footer-color;
+  font-family: $font-main;
+  padding: 3rem 0;
+
+  &-header {
+    font-size: $font-semiBold;
+    margin: 0 auto;
+    font-size: 3.8rem;
+  }
+
+  &-divider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+
+    &-dot {
+      border-radius: 50%;
+      height: 0.4rem;
+      width: 0.4rem;
+      background-color: #ffffff;
+      margin: 0 0.5rem;
+    }
+  }
+
+  &-link-icons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+
+    .footer-fb-link {
+      margin: 0 0.5rem;
+
+      .footer-fb-icon {
+        height: 3.6rem;
+        width: 3.6rem;
+      }
+    }
+
+    .footer-ig-link {
+      margin: 0 0.5rem;
+
+      .footer-ig-icon {
+        height: 3.6rem;
+        width: 3.6rem;
+      }
+    }
+  }
+
+  &-customer-service {
+    font-size: 2.1rem;
+    margin: 0 auto;
+  }
+}
