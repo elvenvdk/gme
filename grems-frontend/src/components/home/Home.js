@@ -1,9 +1,11 @@
 import React from 'react';
 
+import AppCarousel from '../common/appCarousel/AppCarousel';
+
 import GremsImg from '../../assets/grems_grandma_emma2.png';
 import PeachesImg from '../../assets/small-aples.png';
-
-import AppCarousel from '../common/appCarousel/AppCarousel';
+import CorporateImg from '../../assets/corporate1.jpg';
+import EventsGiftImg from '../../assets/events-gift.jpg';
 
 import './Home.scss';
 
@@ -18,7 +20,7 @@ const Home = () => {
           alt='Grandma Emma Large'
         />
         <div className='home-about-text-wrapper'>
-          <h2 className='home-about-header'>Old Fashioned Goodness</h2>
+          <h1 className='home-about-header'>Old Fashioned Goodness</h1>
           <p className='home-about-text'>
             Grandma Lucy Emma Dawson loved to bake and she loved sharing
             recipes. Among her favorites was her peach cobbler. I remember as a
@@ -31,14 +33,30 @@ const Home = () => {
             kitchen where I’d sit anxiously waiting for that amazing cobbler to
             be done.
           </p>
-          <h2 className='home-about-header'>Try it today.</h2>
+          <h1 className='home-about-header'>Try it today.</h1>
           <p className='home-about-text'>
             The taste is so incredibly rich and flavorful that everyone will
             think it came straight from your oven instead of ours. But we won’t
             tell!
           </p>
 
-          <img src={PeachesImg} alt='Peaches' />
+          <img
+            className='home-about-img-second'
+            src={PeachesImg}
+            alt='Peaches'
+          />
+        </div>
+      </section>
+
+      <section className='home-gift'>
+        <h1 className='home-gift-header'>Our Amazing Gift Pack</h1>
+        <div className='home-gift-images'>
+          <div>
+            <img src={CorporateImg} alt='Corporate' />
+          </div>
+          <div>
+            <img src={EventsGiftImg} alt='Events Gifts' />
+          </div>
         </div>
       </section>
     </div>

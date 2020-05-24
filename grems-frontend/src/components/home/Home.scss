@@ -1,18 +1,60 @@
 @import '../../utilities//variables.scss';
 
 .home {
+  background-color: $color-main-background;
   &-about {
     position: relative;
     display: flex;
     justify-content: center;
     padding: 5rem 10rem;
 
+    &-text-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
     &-header {
       font-family: $font-main2;
+      color: $color-main2;
+      font-size: 5rem;
+      line-height: 8rem;
     }
 
     &-img-main {
       z-index: 6;
+    }
+
+    &-text {
+      font-size: 1.8rem;
+      font-family: $font-main;
+    }
+
+    &-img-second {
+      margin-left: auto;
+    }
+  }
+
+  &-gift {
+    padding: 0 10rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &-header {
+      font-family: $font-main2;
+      color: $color-main2;
+      font-size: 5rem;
+      line-height: 8rem;
+      margin: 0 auto;
+    }
+
+    &-images {
+      position: relative;
+      display: flex;
+      justify-content: space-evenly;
+      margin: 0 auto;
+      width: 100%;
     }
   }
 }
