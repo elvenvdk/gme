@@ -1,11 +1,19 @@
 import React from 'react';
 
 import AppCarousel from '../common/appCarousel/AppCarousel';
+import AppCarousel2 from '../common/appCarousel2/AppCarousel2';
 
 import GremsImg from '../../assets/grems_grandma_emma2.png';
 import PeachesImg from '../../assets/small-aples.png';
 import CorporateImg from '../../assets/corporate1.jpg';
 import EventsGiftImg from '../../assets/events-gift.jpg';
+import img1 from '../../assets/gallery01.jpg';
+import img2 from '../../assets/gallery02.jpg';
+import img3 from '../../assets/gallery03.jpg';
+import img4 from '../../assets/gallery04.jpg';
+import img5 from '../../assets//gallery05.jpg';
+import img6 from '../../assets/video-img.png';
+import womanImg from '../../assets/woman-img.png';
 
 import './Home.scss';
 
@@ -63,6 +71,61 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section className='home-photo-gal'>
+        <h1 className='home-photo-gal-header'>Photo Gallery</h1>
+        <div className='home-photo-gal-gallery'>
+          <img className='gallery-img' src={img1} alt='' />
+          <img className='gallery-img' src={img2} alt='' />
+          <img className='gallery-img' src={img3} alt='' />
+          <img className='gallery-img' src={img4} alt='' />
+          <img className='gallery-img' src={img5} alt='' />
+          <img className='gallery-img' src={img6} alt='' />
+        </div>
+      </section>
+      <section className='home-order'>
+        <div className='order-today'>
+          <h2 className='order-today-header'>Order Today</h2>
+          <div className='order-row'>
+            <img
+              className='order-row-img'
+              src={womanImg}
+              alt='Woman smiling image'
+            />
+            <div className='order-info'>
+              <h4 className='order-info-header'>Call In Orders</h4>
+              <p className='order-info-text'>
+                Do you like the old fashioned way? Not a techie? Call us to
+                place your order.​We are here for you!
+              </p>
+              <p className='order-info-phone'>
+                Phone:<a href='tel: 908.481.5499'>908.481.5499</a>
+              </p>
+              <p className='order-info-andshop'>And Shop Online</p>
+              <button>Buy Now</button>
+            </div>
+          </div>
+        </div>
+        <div className='videowrapper'>
+          <h4 className='order-info-video-header'>Our Video</h4>
+          <iframe
+            className='order-video'
+            width='560'
+            height='315'
+            src='https://www.youtube.com/embed/aLXXDG6IRpY'
+            frameborder='0'
+            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+            allowfullscreen
+          />
+        </div>
+      </section>
+
+      {/* <section className='home-testemonials'>
+        <h1 className='home-testemonials-header'>
+          Here's what they're saying...
+        </h1>
+        <AppCarousel2 />
+      </section> */}
     </div>
   );
 };
