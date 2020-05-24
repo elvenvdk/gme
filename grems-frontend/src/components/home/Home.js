@@ -51,11 +51,15 @@ const Home = () => {
       <section className='home-gift'>
         <h1 className='home-gift-header'>Our Amazing Gift Pack</h1>
         <div className='home-gift-images'>
-          <div>
+          <div className='home-gift-images-wrapper'>
             <img src={CorporateImg} alt='Corporate' />
+            <p className='home-gift-images-wrapper-text'>Corporate Gift</p>
           </div>
-          <div>
+          <div className='home-gift-images-wrapper'>
             <img src={EventsGiftImg} alt='Events Gifts' />
+            <p className='home-gift-images-wrapper-text'>
+              Wedding & Events Gift
+            </p>
           </div>
         </div>
       </section>
