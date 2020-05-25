@@ -5,7 +5,7 @@ import PrivateRoute from '../auth/PrivateRoute';
 
 import HomePage from './home/Home';
 import Flavors from './flavors/Flavors';
-import Shop from './Shop';
+import Shop from './shop/Shop';
 import Checkout from './checkout/Checkout';
 
 import PageHeader from './pageHeader/PageHeader';
@@ -24,6 +24,7 @@ const App = () => {
           <Route path='/' exact component={HomePage} />
           <Route path='/flavors' exact component={Flavors} />
           <Route path='/checkout' exact component={Checkout} />
+          <Route path='/shop' exact component={Shop} />
         </Switch>
       </Router>
       <Footer />

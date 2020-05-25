@@ -1,0 +1,100 @@
+@import '../../utilities/variables.scss';
+
+.shop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-main;
+  padding: 5rem 10rem 10rem 10rem;
+
+  &-header {
+    color: $color-main2;
+    font-weight: $font-bold;
+    font-size: 4rem;
+  }
+
+  &-headertext {
+    font-family: $font-main;
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+  }
+
+  &-products {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+
+    &-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: $box-shadow1;
+      padding: 2rem;
+      cursor: pointer;
+
+      &-name {
+        font-size: 1.5rem;
+        font-weight: $font-semiBold;
+      }
+
+      &-price {
+        font-size: 1.5rem;
+        font-weight: $font-semiBold;
+      }
+
+      &-img {
+        width: 23.8rem;
+        height: 23.8rem;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  &-order {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &-header {
+      font-family: $font-main2;
+      font-weight: $font-bold;
+      color: $color-main2;
+      font-size: 5.3rem;
+      margin: 3rem auto;
+    }
+    &-row {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding: 0 10rem;
+
+      &-img-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        width: 40rem;
+        &-img {
+          border-radius: 50%;
+          border: solid 3px #000000;
+          height: 20rem;
+          width: 20rem;
+          margin-left: auto;
+        }
+      }
+
+      &-divider {
+        border-left: 1px solid #0000;
+        background-color: #000000;
+        margin: 0 5rem;
+      }
+
+      &-info {
+        width: 40rem;
+      }
+    }
+  }
+}
