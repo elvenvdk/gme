@@ -6,7 +6,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    padding: 5rem 10rem;
+    padding: 10rem 10rem;
 
     &-text-wrapper {
       position: relative;
@@ -36,7 +36,7 @@
   }
 
   &-gift {
-    padding: 0 10rem;
+    padding: 5rem 10rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@
       position: relative;
       display: flex;
       justify-content: space-evenly;
-      margin: 0 auto;
+      margin: 2rem auto;
       width: 100%;
 
       &-wrapper {
@@ -74,7 +74,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 0 10rem;
+    padding: 5rem 10rem;
 
     &-header {
       font-family: $font-main2;
@@ -90,7 +90,7 @@
       flex-direction: row;
       justify-content: center;
       flex-wrap: wrap;
-      margin: 0 auto;
+      margin: 2rem auto;
 
       .gallery-img {
         height: 36rem;
@@ -104,7 +104,8 @@
     position: relative;
     display: flex;
     justify-content: space-evenly;
-    padding: 0 15rem;
+    padding: 5rem 15rem;
+    // margin-top: 5rem;
 
     .order-today {
       position: relative;
@@ -157,6 +158,115 @@
             font-family: $font-main;
           }
         }
+      }
+    }
+  }
+
+  &-testemonials {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 10rem;
+    // margin: 5rem 0;
+    background-color: #ffffff;
+
+    &-header {
+      font-size: 6.6rem;
+      font-family: $font-main2;
+      color: $color-main2;
+      margin: 0 auto 5rem auto;
+    }
+
+    &-text-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: space-evenly;
+
+      .testemonials-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        text-align: center;
+
+        &-quote {
+          margin: 0 auto;
+          color: $color-main2;
+        }
+
+        .testemonials-header {
+          font-size: 2.4rem;
+          font-family: $font-main;
+          font-weight: $font-semiBold;
+          color: $color-main2;
+          margin: 1rem auto;
+        }
+
+        .testemonials-text {
+          font-size: 1.5rem;
+          font-family: $font-main;
+          margin: 2rem auto;
+        }
+
+        .testemonials-customer-name {
+          font-size: 1.4rem;
+          font-family: $font-main;
+          font-weight: $font-semiBold;
+          color: $color-main2;
+          margin: 2rem auto 0.5rem auto;
+        }
+
+        .testemonials-customer-type {
+          font-size: 1.5rem;
+          font-family: $font-main;
+          margin: 1rem auto;
+        }
+      }
+    }
+  }
+
+  &-emailform {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 15rem;
+
+    &-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 5rem 15rem;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 5px #000000;
+      top: 10rem;
+      z-index: 999;
+    }
+
+    .emailform-header {
+      font-size: 6.6rem;
+      font-family: $font-main2;
+      color: $color-main2;
+    }
+
+    .emailform-text {
+      font-size: 1.5rem;
+      font-family: $font-main;
+      // font-weight: $font-semiBold;
+    }
+
+    .emailform-form {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      &-input {
+        width: 100%;
+        border: 1px solid #c2c2c2;
+        border-width: 0 0 1px 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #646262;
+        margin: 0 0 5rem 0;
       }
     }
   }

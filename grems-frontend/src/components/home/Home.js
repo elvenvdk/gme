@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 
 import AppCarousel from '../common/appCarousel/AppCarousel';
 import AppCarousel2 from '../common/appCarousel2/AppCarousel2';
@@ -120,12 +122,83 @@ const Home = () => {
         </div>
       </section>
 
-      {/* <section className='home-testemonials'>
+      <section className='home-testemonials'>
         <h1 className='home-testemonials-header'>
           Here's what they're saying...
         </h1>
-        <AppCarousel2 />
-      </section> */}
+        <div className='home-testemonials-text-wrapper'>
+          <div className='testemonials-item'>
+            <FontAwesomeIcon
+              className='testemonials-item-quote'
+              icon={faQuoteRight}
+            />
+            <h3 className='testemonials-header'>Thank You!</h3>
+            <p className='testemonials-text'>
+              My mother loved the sweet treat. Her birthday is on the 27th and I
+              want to treat her to some Grandma Emmas peach cobbler, because she
+              hasn't tried it yet. It's one of my favorite desserts.
+            </p>
+            <hr />
+            <p className='testemonials-customer-name'>Felicia Hall</p>
+            <p className='testemonials-customer-type'>Customer</p>
+          </div>
+          <div className='testemonials-item'>
+            <FontAwesomeIcon
+              className='testemonials-item-quote'
+              icon={faQuoteRight}
+            />
+            <h3 className='testemonials-header'>Delicious!</h3>
+            <p className='testemonials-text'>
+              Awww man!!! I didn't know this was your family recipe. I was just
+              telling my son I tasted the best peach cobbler ever!!!! I picked
+              up two from Ambassadors on Dodd St. It's absolutely delicious!!!
+              Congratulations!!!
+            </p>
+            <hr />
+            <p className='testemonials-customer-name'>Jesse Jordan</p>
+            <p className='testemonials-customer-type'>Customer</p>
+          </div>
+        </div>
+      </section>
+
+      <section className='home-emailform'>
+        <div className='home-emailform-wrapper'>
+          <h1 className='emailform-header'>Try it today</h1>
+          <p className='emailform-text'>
+            The taste is so incredibly rich and flavorful that everyone will
+            think it came straight from your oven instead of ours.
+          </p>
+          <form className='emailform-form'>
+            <input
+              className='emailform-form-input'
+              name='name'
+              type='text'
+              placeholder='Name*'
+            />
+            <input
+              className='emailform-form-input'
+              name='email'
+              type='email'
+              placeholder='Email*'
+            />
+            <input
+              className='emailform-form-input'
+              name='phoneNumber'
+              type='tel'
+              placeholder='Phone Number'
+            />
+            <textarea
+              className='emailform-form-input'
+              name='message'
+              placeholder='Message'
+              id=''
+              cols='30'
+              rows='5'
+            ></textarea>
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 };

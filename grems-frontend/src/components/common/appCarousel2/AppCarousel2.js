@@ -10,7 +10,7 @@ const AppCarousel = () => {
     <Carousel autoplay>
       <div className='carousel-item-wrapper'>
         <h1 className='carousel-item-header'>Delicious</h1>
-        <img className='carousel-item' src='' alt='Peach Cobbler Large' />
+        <p className='carousel-item-text'></p>
       </div>
     </Carousel>
   );

@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../auth/PrivateRoute';
 
 import HomePage from './home/Home';
-// import Signup from '../auth/Signup';
-// import Signin from '../auth/Signin';
+import Flavors from './flavors/Flavors';
 import Shop from './Shop';
 import Checkout from './checkout/Checkout';
 
@@ -23,10 +22,7 @@ const App = () => {
         <Nav classname='app__nav' />
         <Switch>
           <Route path='/' exact component={HomePage} />
-          {/* <Route path='/signup' exact component={Signup} /> */}
-          {/* <Route path='/signin' exact component={Signin} /> */}
-          {/* <Route path='/shop' exact component={Shop} /> */}
-          {/* <PrivateRoute path='/checkout' exact component={Checkout} /> */}
+          <Route path='/flavors' exact component={Flavors} />
           <Route path='/checkout' exact component={Checkout} />
         </Switch>
       </Router>
