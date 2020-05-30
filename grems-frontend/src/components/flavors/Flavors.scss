@@ -1,6 +1,6 @@
 @import '../../utilities/variables.scss';
 
-.shop {
+.flavors {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     margin-bottom: 3rem;
 
     &-item {
@@ -44,6 +44,7 @@
       &-price {
         font-size: 1.5rem;
         font-weight: $font-semiBold;
+        width: 25rem;
       }
 
       &-img {
@@ -52,6 +53,12 @@
         margin-bottom: 3rem;
       }
     }
+  }
+
+  &-customize {
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   &-order {
