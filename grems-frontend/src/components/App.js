@@ -7,6 +7,7 @@ import HomePage from './home/Home';
 import Flavors from './flavors/Flavors';
 import Shop from './shop/Shop';
 import Checkout from './checkout/Checkout';
+import CorporateGifts from './corporateGifts/CorporateGifts';
 
 import PageHeader from './pageHeader/PageHeader';
 import Nav from './common/nav/Nav';
@@ -22,9 +23,10 @@ const App = () => {
         <Nav classname='app__nav' />
         <Switch>
           <Route path='/' exact component={HomePage} />
-          <Route path='/flavors' exact component={Flavors} />
-          <Route path='/checkout' exact component={Checkout} />
           <Route path='/shop' exact component={Shop} />
+          <Route path='/flavors' exact component={Flavors} />
+          <Route path='/corporate-gifts' exact component={CorporateGifts} />
+          <Route path='/checkout' exact component={Checkout} />
         </Switch>
       </Router>
       <Footer />

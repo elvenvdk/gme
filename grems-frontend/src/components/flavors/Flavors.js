@@ -4,6 +4,8 @@ import cobblerjarImg from '../../assets/cobblerJar_thumb.png';
 import cobblerCloseup from '../../assets/CobblerCloseUP.jpg';
 import smilingWoman from '../../assets/woman-img.png';
 
+import OrderSection from '../orderSection/OrderSection';
+
 import './Flavors.scss';
 
 const Flavors = () => {
@@ -80,29 +82,7 @@ const Flavors = () => {
           take care of the rest.
         </p>
       </section>
-      <section className='flavors-order'>
-        <h1 className='flavors-order-header'>Oder Today</h1>
-        <div className='flavors-order-row'>
-          <div className='flavors-order-row-img-wrapper'>
-            <img
-              src={smilingWoman}
-              alt='Smiling Woman'
-              className='flavors-order-row-img-wrapper-img'
-            />
-          </div>
-          <div className='flavors-order-row-divider' />
-          <div className='flavors-order-row-info'>
-            <h2 className='flavors-order-row-info-header'>Call In Orders</h2>
-            <div className='flavors-order-row-info-text'>
-              Do you like the old fashioned way? Not a techie? Call us to place
-              your order.​We are here for you!
-            </div>
-            <p className='flavors-order-row-info-phone'>Phone: 908.481.5499</p>
-            <p className='flavors-order-row-shop'>And Shop Online</p>
-            <button>Buy Now</button>
-          </div>
-        </div>
-      </section>
+      <OrderSection />
     </div>
   );
 };
