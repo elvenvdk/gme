@@ -1,0 +1,34 @@
+@import '../../utilities/variables.scss';
+
+.corporate-gifts {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 20rem;
+
+  &-header {
+    color: $color-main2;
+    font-weight: $font-bold;
+    font-size: 4rem;
+  }
+
+  &-main-wrapper {
+    position: relative;
+    display: flex;
+
+    .text-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      &-text {
+        font-family: $font-main;
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+      }
+
+      &-list {
+      }
+    }
+  }
+}

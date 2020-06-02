@@ -1,0 +1,45 @@
+@import '../../utilities/variables.scss';
+
+.order {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    font-family: $font-main2;
+    font-weight: $font-bold;
+    color: $color-main2;
+    font-size: 5.3rem;
+    margin: 3rem auto;
+  }
+  &-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0 10rem;
+
+    &-img-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      width: 40rem;
+      &-img {
+        border-radius: 50%;
+        border: solid 3px #000000;
+        height: 20rem;
+        width: 20rem;
+        margin-left: auto;
+      }
+    }
+
+    &-divider {
+      border-left: 1px solid #0000;
+      background-color: #000000;
+      margin: 0 5rem;
+    }
+
+    &-info {
+      width: 40rem;
+    }
+  }
+}

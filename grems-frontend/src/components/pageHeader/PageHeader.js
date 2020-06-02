@@ -1,12 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import logoHeader from '../../assets/grems_logo_header.png';
+
+import './PageHeader.scss';
+
 const PageHeader = () => {
   return (
-    <div className='lg: w-full h-20 border-solid border-grey-600 bg-white header-top flex justify-between'>
-      <p>Page header...</p>
-      <p>Page header...</p>
-      <p>Page header...</p>
+    <div className='pageHeader'>
+      <p className='pageHeader-phone'>908.481.5499</p>
+      <Link className='pageHeader-mainlink' to='/'>
+        <img
+          className='pageHeader-mainlink'
+          src={logoHeader}
+          alt="Grandma Emma's Header Logo"
+        />
+      </Link>
+      <Link className='pageHeader-login'>Login</Link>
     </div>
   );
 };

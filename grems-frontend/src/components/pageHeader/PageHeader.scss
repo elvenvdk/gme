@@ -1,2 +1,21 @@
+@import '../../utilities/variables.scss';
+
 .pageHeader {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 1rem;
+
+  &-phone {
+    font-size: 2.5rem;
+    color: $color-header-primary;
+  }
+
+  &-login {
+    font-size: 2rem;
+    color: $color-header-primary;
+  }
 }

@@ -1,0 +1,63 @@
+@import '../../utilities/variables.scss';
+
+.flavors {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-main;
+  padding: 5rem 15rem 10rem 15rem;
+
+  &-header {
+    color: $color-main2;
+    font-weight: $font-bold;
+    font-size: 4rem;
+  }
+
+  &-headertext {
+    font-family: $font-main;
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+  }
+
+  &-products {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    // flex-wrap: wrap;
+    margin-bottom: 3rem;
+
+    &-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: $box-shadow1;
+      padding: 2rem;
+      cursor: pointer;
+
+      &-name {
+        font-size: 1.5rem;
+        font-weight: $font-semiBold;
+      }
+
+      &-price {
+        font-size: 1.5rem;
+        font-weight: $font-semiBold;
+        width: 25rem;
+      }
+
+      &-img {
+        width: 23.8rem;
+        height: 23.8rem;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  &-customize {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+}
