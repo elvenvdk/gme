@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 
 import AppCarousel from '../common/appCarousel/AppCarousel';
-import AppCarousel2 from '../common/appCarousel2/AppCarousel2';
+import ContactUs from '../contactUs/ContactUs';
 
 import GremsImg from '../../assets/grems_grandma_emma2.png';
 import PeachesImg from '../../assets/small-aples.png';
@@ -161,44 +161,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='home-emailform'>
-        <div className='home-emailform-wrapper'>
-          <h1 className='emailform-header'>Try it today</h1>
-          <p className='emailform-text'>
-            The taste is so incredibly rich and flavorful that everyone will
-            think it came straight from your oven instead of ours.
-          </p>
-          <form className='emailform-form'>
-            <input
-              className='emailform-form-input'
-              name='name'
-              type='text'
-              placeholder='Name*'
-            />
-            <input
-              className='emailform-form-input'
-              name='email'
-              type='email'
-              placeholder='Email*'
-            />
-            <input
-              className='emailform-form-input'
-              name='phoneNumber'
-              type='tel'
-              placeholder='Phone Number'
-            />
-            <textarea
-              className='emailform-form-input'
-              name='message'
-              placeholder='Message'
-              id=''
-              cols='30'
-              rows='5'
-            ></textarea>
-            <button type='submit'>Submit</button>
-          </form>
-        </div>
-      </section>
+      <ContactUs />
     </div>
   );
 };

@@ -8,6 +8,10 @@
   font-size: 1.6rem;
   font-family: $font-main;
 
+  .selected {
+    color: red;
+  }
+
   &-menu {
     position: relative;
     display: flex;
