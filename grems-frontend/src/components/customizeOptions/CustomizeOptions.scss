@@ -1,0 +1,28 @@
+@import '../../utilities/variables.scss';
+
+.customize {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    color: $color-main2;
+    font-weight: $font-bold;
+    font-size: 4rem;
+  }
+
+  &-options {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      list-style: none;
+      font-size: 1.6rem;
+    }
+  }
+
+  &-text {
+    font-size: 1.6rem;
+  }
+}

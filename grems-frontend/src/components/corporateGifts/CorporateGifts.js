@@ -1,9 +1,8 @@
 import React from 'react';
 
-import cobblerjarImg from '../../assets/cobblerJar_thumb.png';
-import cobblerCloseup from '../../assets/CobblerCloseUP.jpg';
 import giftsImg from '../../assets/giftsImg1.jpg';
 
+import CustomizeOptions from '../customizeOptions/CustomizeOptions';
 import OrderSection from '../orderSection/OrderSection';
 
 import './CorporateGifts.scss';
@@ -44,6 +43,7 @@ const CorporateGifts = () => {
           <img src={giftsImg} alt='Gifts' />
         </div>
       </div>
+      <CustomizeOptions />
       <OrderSection />
     </div>
   );
