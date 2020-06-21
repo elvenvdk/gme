@@ -8,7 +8,7 @@ import './PageHeader.scss';
 const PageHeader = () => {
   return (
     <div className='pageHeader'>
-      <p className='pageHeader-phone'>908.481.5499</p>
+      <p className='pageHeader-phone'>973.544.8032</p>
       <Link className='pageHeader-mainlink' to='/'>
         <img
           className='pageHeader-mainlink'

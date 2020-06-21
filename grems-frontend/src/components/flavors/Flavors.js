@@ -20,7 +20,7 @@ const Flavors = () => {
       </p>
       <section className='flavors-products'>
         <div className='flavors-products-item'>
-          <h3 className='flavors-products-item-name'>Peach Cobbler Jar</h3>
+          <h3 className='flavors-products-item-name'>Peach</h3>
           <img
             className='flavors-products-item-img'
             src={cobblerCloseup}
@@ -36,7 +36,7 @@ const Flavors = () => {
           </p>
         </div>
         <div className='flavors-products-item'>
-          <h3 className='flavors-products-item-name'>Peach Cobbler Jar</h3>
+          <h3 className='flavors-products-item-name'>Black Cherry</h3>
           <img
             className='flavors-products-item-img'
             src={cobblerCloseup}
@@ -52,7 +52,7 @@ const Flavors = () => {
           </p>
         </div>
         <div className='flavors-products-item'>
-          <h3 className='flavors-products-item-name'>Peach Cobbler Jar</h3>
+          <h3 className='flavors-products-item-name'>Apple</h3>
           <img
             className='flavors-products-item-img'
             src={cobblerCloseup}

@@ -6,6 +6,8 @@ import PrivateRoute from '../auth/PrivateRoute';
 import HomePage from './home/Home';
 import Flavors from './flavors/Flavors';
 import Shop from './shop/Shop';
+import Cobbler12 from './shop/productDetail/Cobbler12';
+import CobblerJar from './shop/productDetail/CobblerJar';
 import Checkout from './checkout/Checkout';
 import CorporateGifts from './corporateGifts/CorporateGifts';
 import WeddingEventGifts from './weddingEventGifts/WeddingEventGifts';
@@ -26,6 +28,8 @@ const App = () => {
         <Switch>
           <Route path='/' exact component={HomePage} />
           <Route path='/shop' exact component={Shop} />
+          <Route path='/cobbler12' exact component={Cobbler12} />
+          <Route path='/cobbler-jar' exact component={CobblerJar} />
           <Route path='/flavors' exact component={Flavors} />
           <Route path='/corporate-gifts' exact component={CorporateGifts} />
           <Route

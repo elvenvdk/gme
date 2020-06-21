@@ -12,6 +12,7 @@ const productRoute = require('./routes/product');
 const ordersRoute = require('./routes/orders');
 const categoryRoute = require('./routes/category');
 const braintreeRoute = require('./routes/braintree');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -20,7 +21,7 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 // Middleware
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 

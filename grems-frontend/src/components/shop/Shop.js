@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import cobblerjarImg from '../../assets/cobblerJar_thumb.png';
 import cobblerCloseup from '../../assets/CobblerCloseUP.jpg';
@@ -7,6 +8,7 @@ import smilingWoman from '../../assets/woman-img.png';
 import './Shop.scss';
 
 const Shop = () => {
+  const history = useHistory();
   return (
     <div className='shop'>
       <h1 className='shop-header'>Shop</h1>
@@ -15,7 +17,10 @@ const Shop = () => {
         employees? We have the perfect solution for you. Our Fresh baked
         cobblers will make a lasting iimpression.
       </p>
-      <section className='shop-products'>
+      <section
+        className='shop-products'
+        onClick={() => history.push('/cobbler-jar')}
+      >
         <div className='shop-products-item'>
           <img
             className='shop-products-item-img'

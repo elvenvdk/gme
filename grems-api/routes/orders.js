@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Orders = require('../models/orders');
+const Product = require('../models/product');
 const { tokenVerify, isAdmin } = require('../middleware/auth');
 
 const router = express.Router();
@@ -14,8 +15,10 @@ const router = express.Router();
 router.post('/create', tokenVerify, async (req, res) => {
   try {
     const order = new Orders({ ...req.body });
-    console.log({ order });
+    const product = await Product.findOne({ _id: req.body.product });
     await order.save();
+    await product.update({ sold: product.sold + req.body.quantity });
+
     res.send({ msg: 'Order successfully saved' });
   } catch (err) {
     res.status(400).json({ error: err.messgage });

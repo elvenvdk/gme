@@ -1,5 +1,4 @@
 const express = require('express');
-const formidable = require('formidable');
 const Category = require('../models/category');
 const { tokenVerify } = require('../middleware/auth');
 
@@ -27,20 +26,16 @@ router.get('/', async (req, res) => {
  */
 
 router.post('/', async (req, res) => {
+  const { name } = req.body;
+  console.log({ name });
   try {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, (err, fields) => {
-      if (err) return res.status(400).json({ error: err.message });
-
-      const category = new Category(fields);
-      category.save((err, result) => {
-        if (err) return res.status(400).json({ error: err.message });
-        res.json(result);
-      });
+    const category = new Category({ name });
+    await category.save();
+    res.send({ msg: `Category: ${name} successully added` });
+  } catch (error) {
+    res.status(401).json({
+      error: 'There was a problem adding a new category',
     });
-  } catch (err) {
-    res.status(400).json({ error: err.messaeg });
   }
 });
 

@@ -1,7 +1,9 @@
 const express = require('express');
+const formidable = require('formidable');
 const fs = require('fs');
 const Product = require('../models/product');
 const { tokenVerify } = require('../middleware/auth');
+const product = require('../models/product');
 
 const router = express.Router();
 
@@ -43,12 +45,34 @@ router.get('/:productId', async (req, res) => {
  */
 
 router.post('/', async (req, res) => {
-  console.log({ Product: req.body });
   try {
-    const product = await new Product({ ...req.body });
-    await product.save();
+    console.log({ name: req.body });
+    const foundProduct = await Product.find({ name: req.body.name });
+    if (foundProduct.length) {
+      console.log({ foundProduct });
+      return res.status(400).json({ error: 'Product already in database' });
+    } else {
+      let form = new formidable.IncomingForm();
+      form.keepExtensions = true;
+      form.parse(req, async (err, fields, files) => {
+        if (err)
+          return res.status(404).json({ error: 'Image could not be uploaded' });
+        console.log({ fields });
+        let product = new Product(fields);
+        if (files.photo) {
+          product.photo.data = fs.readFileSync(files.photo.path);
+          product.photo.contentType = files.photo.type;
+        }
+
+        const response = await product.save();
+        res.send({ msg: `Product successfully added.`, data: response.data });
+      });
+    }
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({
+      error: 'There was a problem adding this product',
+      msg: err.message,
+    });
   }
 });
 
@@ -57,47 +81,6 @@ router.post('/', async (req, res) => {
  * @description product update route
  * @access Private
  */
-
-router.put('/:productId', async (req, res) => {
-  try {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, async (err, fields, files) => {
-      if (err) return res.status(400).json({ error: err.message });
-
-      let product = req.product;
-      const { productId } = req.params;
-      console.log(productId);
-      product = { ...fields };
-      console.log({ product_fields: product });
-
-      // 1kb = 1000
-
-      // 1mb = 1000000
-
-      if (files.photo) {
-        if (files.photo.size > 1000000)
-          res.status(400).json({
-            error: 'Image should be less than One Megabyte (1mb) in size...',
-          });
-
-        if (product.photo !== undefined) {
-          product.photo.data = fs.readFileSync(files.photo.path);
-          product.photo.contentType = files.photo.type;
-        }
-      }
-
-      await Product.findOneAndUpdate(
-        { _id: productId },
-        { ...product },
-        { new: true },
-      );
-      res.send('Product successfully updated');
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
 
 /**
  * @route delete api/product
