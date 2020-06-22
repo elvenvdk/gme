@@ -3,7 +3,6 @@ const formidable = require('formidable');
 const fs = require('fs');
 const Product = require('../models/product');
 const { tokenVerify } = require('../middleware/auth');
-const product = require('../models/product');
 
 const router = express.Router();
 
@@ -46,28 +45,27 @@ router.get('/:productId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    console.log({ name: req.body });
-    const foundProduct = await Product.find({ name: req.body.name });
-    if (foundProduct.length) {
-      console.log({ foundProduct });
-      return res.status(400).json({ error: 'Product already in database' });
-    } else {
-      let form = new formidable.IncomingForm();
-      form.keepExtensions = true;
-      form.parse(req, async (err, fields, files) => {
-        if (err)
-          return res.status(404).json({ error: 'Image could not be uploaded' });
-        console.log({ fields });
-        let product = new Product(fields);
-        if (files.photo) {
-          product.photo.data = fs.readFileSync(files.photo.path);
-          product.photo.contentType = files.photo.type;
-        }
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req, async (err, fields, files) => {
+      if (err)
+        return res.status(404).json({ error: 'Image could not be uploaded' });
 
-        const response = await product.save();
-        res.send({ msg: `Product successfully added.`, data: response.data });
-      });
-    }
+      console.log({ name: fields.name });
+      const foundProduct = await Product.find({ name: fields.name });
+      if (foundProduct.length) {
+        console.log({ foundProduct });
+        return res.status(400).json({ error: 'Product already in database' });
+      }
+      let product = new Product(fields);
+      if (files.photo) {
+        product.photo.data = fs.readFileSync(files.photo.path);
+        product.photo.contentType = files.photo.type;
+      }
+
+      await product.save();
+      res.send({ msg: `Product successfully added.` });
+    });
   } catch (err) {
     res.status(400).json({
       error: 'There was a problem adding this product',

@@ -29,7 +29,7 @@ app.use(cors());
 app.use('/api/customer', customerRoute);
 app.use('/api/vendor', venderRoute);
 app.use('/api/auth', authRoute);
-app.use('/api/product', productRoute);
+app.use('/api/products', productRoute);
 app.use('/api/category', categoryRoute);
 app.use('/api/braintree', braintreeRoute);
 app.use('/api/orders', ordersRoute);

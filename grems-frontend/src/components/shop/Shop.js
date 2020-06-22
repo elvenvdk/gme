@@ -1,14 +1,31 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import cobblerjarImg from '../../assets/cobblerJar_thumb.png';
 import cobblerCloseup from '../../assets/CobblerCloseUP.jpg';
 import smilingWoman from '../../assets/woman-img.png';
 
+import api from '../../api';
+
 import './Shop.scss';
 
 const Shop = () => {
+  const [_products, set_products] = useState([]);
   const history = useHistory();
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = async () => {
+    const products = await api.getProducts();
+    console.log({ products });
+    if (products.error) console.log(products.error);
+    set_products(products);
+  };
+
+  console.log({ _products });
+
   return (
     <div className='shop'>
       <h1 className='shop-header'>Shop</h1>
