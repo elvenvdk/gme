@@ -27,11 +27,24 @@ router.get('/', async (req, res) => {
  * @access public
  */
 
-router.get('/:productId', async (req, res) => {
+router.get('/:_id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log({ id });
+    let product = await Product.findOne({ _id: id });
+    console.log({ product });
+    res.json(product);
+  } catch (err) {
+    res.status(400).json({ error: err.messaage });
+  }
+});
+
+router.get('/photo/:productId', async (req, res) => {
   try {
     const { productId } = req.params;
     let product = await Product.findOne({ _id: productId });
-    res.json(product);
+    res.set('Content-Type', product.photo.contentType);
+    res.send(product.photo.data);
   } catch (err) {
     res.status(400).json({ error: err.messaage });
   }

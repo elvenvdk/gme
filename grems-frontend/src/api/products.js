@@ -25,3 +25,13 @@ export const getProducts = async () => {
     return error;
   }
 };
+
+export const getProductImage = async (productId) => {
+  console({ id_from_api: productId });
+  try {
+    const product = await axios.get(`${API}/products/photo/${productId}`);
+    return product.data;
+  } catch (error) {
+    return error;
+  }
+};

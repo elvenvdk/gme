@@ -23,8 +23,35 @@ const Shop = () => {
     if (products.error) console.log(products.error);
     set_products(products);
   };
-
   console.log({ _products });
+
+  const { products } = _products;
+
+  const renderProducts = () => {
+    return products.map((p, idx) => {
+      console.log({ id: p._id });
+
+      return (
+        <section
+          className='shop-products'
+          onClick={() => history.push('/cobbler-jar')}
+          key={idx}
+        >
+          <div className='shop-products-item'>
+            <img
+              className='shop-products-item-img'
+              src={`${process.env.REACT_APP_GREMS_API}/products/photo/${p._id}`}
+              alt='Peach Cobbler in Jar'
+            />
+            <h3 className='shop-products-item-name'>{p.name}</h3>
+            <p className='shop-products-item-price'>{p.price}</p>
+          </div>
+        </section>
+      );
+    });
+  };
+
+  if (!_products.products) return <h1>Loading Please Wait...</h1>;
 
   return (
     <div className='shop'>
@@ -34,7 +61,8 @@ const Shop = () => {
         employees? We have the perfect solution for you. Our Fresh baked
         cobblers will make a lasting iimpression.
       </p>
-      <section
+      {renderProducts()}
+      {/* <section
         className='shop-products'
         onClick={() => history.push('/cobbler-jar')}
       >
@@ -79,7 +107,7 @@ const Shop = () => {
             <button>Buy Now</button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
