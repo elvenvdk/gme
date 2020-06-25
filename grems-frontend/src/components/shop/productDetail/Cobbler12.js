@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import jarImg from '../../../assets/jarImg.png';
+import api from '../../../api';
 
 import './Cobbler12.scss';
 
