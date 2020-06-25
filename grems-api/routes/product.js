@@ -27,11 +27,11 @@ router.get('/', async (req, res) => {
  * @access public
  */
 
-router.get('/:_id', async (req, res) => {
+router.get('/:productId', async (req, res) => {
   try {
-    const { id } = req.params;
+    const { productId } = req.params;
     console.log({ id });
-    let product = await Product.findOne({ _id: id });
+    let product = await Product.findOne({ _id: productId });
     console.log({ product });
     res.json(product);
   } catch (err) {

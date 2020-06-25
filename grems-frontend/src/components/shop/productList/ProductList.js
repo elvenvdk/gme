@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { setGlobal } from 'reactn';
 
 import api from '../../../api';
 
@@ -18,6 +19,11 @@ const ProductList = () => {
     if (products.error) console.log(products.error);
     set_products(products);
   };
+
+  const getProductDetail = (productId) => {
+    history.push(`/product/${productId}`);
+  };
+
   console.log({ _products });
 
   const { products } = _products;
@@ -29,7 +35,7 @@ const ProductList = () => {
       return (
         <section
           className='products'
-          onClick={() => history.push('/cobbler-jar')}
+          onClick={() => getProductDetail(p._id)}
           key={idx}
         >
           <div className='products-item'>

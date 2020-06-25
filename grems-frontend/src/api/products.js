@@ -1,10 +1,9 @@
 import axios from 'axios';
-
+import { setGlobal } from 'reactn';
 const API = process.env.REACT_APP_GREMS_API;
 
 // get product
-export const getProduct = async () => {
-  const productId = '5e76f667bb01c35b25d229be';
+export const getProduct = async (productId) => {
   return axios
     .get(`${API}/products/${productId}`)
     .then((res) => {
@@ -26,6 +25,7 @@ export const getProducts = async () => {
   }
 };
 
+// get image for product
 export const getProductImage = async (productId) => {
   console({ id_from_api: productId });
   try {
