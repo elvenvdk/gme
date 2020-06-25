@@ -1,4 +1,5 @@
 const express = require('express');
+const formidable = require('formidable');
 const fs = require('fs');
 const Product = require('../models/product');
 const { tokenVerify } = require('../middleware/auth');
@@ -26,11 +27,24 @@ router.get('/', async (req, res) => {
  * @access public
  */
 
-router.get('/:productId', async (req, res) => {
+router.get('/:_id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log({ id });
+    let product = await Product.findOne({ _id: id });
+    console.log({ product });
+    res.json(product);
+  } catch (err) {
+    res.status(400).json({ error: err.messaage });
+  }
+});
+
+router.get('/photo/:productId', async (req, res) => {
   try {
     const { productId } = req.params;
     let product = await Product.findOne({ _id: productId });
-    res.json(product);
+    res.set('Content-Type', product.photo.contentType);
+    res.send(product.photo.data);
   } catch (err) {
     res.status(400).json({ error: err.messaage });
   }
@@ -43,12 +57,33 @@ router.get('/:productId', async (req, res) => {
  */
 
 router.post('/', async (req, res) => {
-  console.log({ Product: req.body });
   try {
-    const product = await new Product({ ...req.body });
-    await product.save();
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req, async (err, fields, files) => {
+      if (err)
+        return res.status(404).json({ error: 'Image could not be uploaded' });
+
+      console.log({ name: fields.name });
+      const foundProduct = await Product.find({ name: fields.name });
+      if (foundProduct.length) {
+        console.log({ foundProduct });
+        return res.status(400).json({ error: 'Product already in database' });
+      }
+      let product = new Product(fields);
+      if (files.photo) {
+        product.photo.data = fs.readFileSync(files.photo.path);
+        product.photo.contentType = files.photo.type;
+      }
+
+      await product.save();
+      res.send({ msg: `Product successfully added.` });
+    });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({
+      error: 'There was a problem adding this product',
+      msg: err.message,
+    });
   }
 });
 
@@ -57,47 +92,6 @@ router.post('/', async (req, res) => {
  * @description product update route
  * @access Private
  */
-
-router.put('/:productId', async (req, res) => {
-  try {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, async (err, fields, files) => {
-      if (err) return res.status(400).json({ error: err.message });
-
-      let product = req.product;
-      const { productId } = req.params;
-      console.log(productId);
-      product = { ...fields };
-      console.log({ product_fields: product });
-
-      // 1kb = 1000
-
-      // 1mb = 1000000
-
-      if (files.photo) {
-        if (files.photo.size > 1000000)
-          res.status(400).json({
-            error: 'Image should be less than One Megabyte (1mb) in size...',
-          });
-
-        if (product.photo !== undefined) {
-          product.photo.data = fs.readFileSync(files.photo.path);
-          product.photo.contentType = files.photo.type;
-        }
-      }
-
-      await Product.findOneAndUpdate(
-        { _id: productId },
-        { ...product },
-        { new: true },
-      );
-      res.send('Product successfully updated');
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
 
 /**
  * @route delete api/product

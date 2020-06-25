@@ -22,29 +22,13 @@ exports.tokenVerify = (req, res, next) => {
   }
 };
 
-// exports.isAdmin = async (req, res, next) => {
-//   const { adminEmail } = req.query;
-//   console.log({ adminEmail });
-//   try {
-//     const admin = await Admin.findOne({ email: adminEmail });
-//     if (admin === null)
-//       return res.send({ error: 'You do not have authorization' });
-//     if (admin.role !== 'admin')
-//       return res.send({ error: 'You do not have authorization' });
-//     next();
-//   } catch (err) {
-//     res.status(401).json({ error: err.message });
-//   }
-// };
-
-// exports.isAdminLevelOne = async (req, res, next) => {
-//   const { adminEmail } = req.params;
-//   try {
-//     const admin = await Admin.findOne({ email: adminEmail });
-//     if (admin.level !== 1)
-//       return res.send({ error: 'You do not have authorization' });
-//     next();
-//   } catch (err) {
-//     res.status(401).json({ error: err.message });
-//   }
-// };
+exports.userId = async (req, res, next) => {
+  const token = req.header('x-auth-token');
+  const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+  if (!decoded)
+    return res
+      .status(401)
+      .json({ error: 'There was a problem with your token' });
+  res.locals.userId = decoded.id;
+  next();
+};

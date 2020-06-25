@@ -1,19 +1,19 @@
 import React from 'react';
 
-import giftsImg from '../../assets/giftsImg1.jpg';
+import giftsImg from '../../assets/events-gift.jpg';
 
 import CustomizeOptions from '../customizeOptions/CustomizeOptions';
 import OrderSection from '../orderSection/OrderSection';
 
-import './CorporateGifts.scss';
+import './WeddingEventGifts.scss';
 
-const CorporateGifts = () => {
+const WeddingEventGifts = () => {
   return (
-    <div className='corporate-gifts'>
-      <h1 className='corporate-gifts-header'>
+    <div className='wedding-event-gifts'>
+      <h1 className='wedding-event-gifts-header'>
         Unique Gifts your Customers and Employees will Never Forget
       </h1>
-      <div className='corporate-gifts-main-wrapper'>
+      <div className='wedding-event-gifts-main-wrapper'>
         <div className='text-wrapper'>
           <p className='text-wrapper-text'>
             Looking for a unique gift for your customers, potential customers or
@@ -49,4 +49,4 @@ const CorporateGifts = () => {
   );
 };
 
-export default CorporateGifts;
+export default WeddingEventGifts;

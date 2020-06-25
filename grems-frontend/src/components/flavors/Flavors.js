@@ -4,6 +4,7 @@ import cobblerjarImg from '../../assets/cobblerJar_thumb.png';
 import cobblerCloseup from '../../assets/CobblerCloseUP.jpg';
 import smilingWoman from '../../assets/woman-img.png';
 
+import CustomizeOptions from '../customizeOptions/CustomizeOptions';
 import OrderSection from '../orderSection/OrderSection';
 
 import './Flavors.scss';
@@ -19,7 +20,7 @@ const Flavors = () => {
       </p>
       <section className='flavors-products'>
         <div className='flavors-products-item'>
-          <h3 className='flavors-products-item-name'>Peach Cobbler Jar</h3>
+          <h3 className='flavors-products-item-name'>Peach</h3>
           <img
             className='flavors-products-item-img'
             src={cobblerCloseup}
@@ -35,7 +36,7 @@ const Flavors = () => {
           </p>
         </div>
         <div className='flavors-products-item'>
-          <h3 className='flavors-products-item-name'>Peach Cobbler Jar</h3>
+          <h3 className='flavors-products-item-name'>Black Cherry</h3>
           <img
             className='flavors-products-item-img'
             src={cobblerCloseup}
@@ -51,7 +52,7 @@ const Flavors = () => {
           </p>
         </div>
         <div className='flavors-products-item'>
-          <h3 className='flavors-products-item-name'>Peach Cobbler Jar</h3>
+          <h3 className='flavors-products-item-name'>Apple</h3>
           <img
             className='flavors-products-item-img'
             src={cobblerCloseup}
@@ -67,21 +68,7 @@ const Flavors = () => {
           </p>
         </div>
       </section>
-      <section className='flavors-customize'>
-        <h1 className='flavors-customize-header'>Customization Options</h1>
-        <ul className='flavors-customize-options'>
-          <li className='flavors-customize-options-item'>Custom Top labels</li>
-          <li className='flavors-customize-options-item'>
-            Custom Wrap Around Labels
-          </li>
-        </ul>
-        <p className='flavors-customize-text'>
-          Let us do the work for you. Our customer car representatives will take
-          your gift list and take care of everything for you. Give us a call at
-          908.481.5499 or email us at customization@grandmaemmas.com and we’ll
-          take care of the rest.
-        </p>
-      </section>
+      <CustomizeOptions />
       <OrderSection />
     </div>
   );
