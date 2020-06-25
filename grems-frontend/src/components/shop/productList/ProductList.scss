@@ -7,6 +7,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-bottom: 3rem;
+  width: 100%;
 
   &-item {
     position: relative;
@@ -16,6 +17,7 @@
     box-shadow: $box-shadow1;
     padding: 2rem;
     cursor: pointer;
+    width: 25%;
 
     &-name {
       font-size: 1.5rem;

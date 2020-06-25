@@ -33,29 +33,27 @@ const ProductList = () => {
       console.log({ id: p._id });
 
       return (
-        <section
-          className='products'
-          onClick={() => getProductDetail(p._id)}
+        <div
           key={idx}
+          className='products-item'
+          onClick={() => getProductDetail(p._id)}
         >
-          <div className='products-item'>
-            <img
-              className='products-item-img'
-              src={`${process.env.REACT_APP_GREMS_API}/products/photo/${p._id}`}
-              alt='Peach Cobbler in Jar'
-            />
-            <h3 className='products-item-name'>{p.name}</h3>
-            <p className='products-item-desc'>{p.description}</p>
-            <p className='products-item-price'>{p.price}</p>
-          </div>
-        </section>
+          <img
+            className='products-item-img'
+            src={`${process.env.REACT_APP_GREMS_API}/products/photo/${p._id}`}
+            alt='Peach Cobbler in Jar'
+          />
+          <h3 className='products-item-name'>{p.name}</h3>
+          <p className='products-item-desc'>{p.description}</p>
+          <p className='products-item-price'>{p.price}</p>
+        </div>
       );
     });
   };
 
   if (!products) return <div>Loading products...</div>;
 
-  return <>{renderProducts()}</>;
+  return <section className='products'>{renderProducts()}</section>;
 };
 
 export default ProductList;
