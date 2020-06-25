@@ -61,4 +61,12 @@
       }
     }
   }
+  .related-section {
+    &-header {
+      font-family: $font-main2;
+      color: $color-header-primary;
+      font-size: 5rem;
+      font-weight: $font-bold;
+    }
+  }
 }

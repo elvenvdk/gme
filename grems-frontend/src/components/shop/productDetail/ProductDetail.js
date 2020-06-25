@@ -47,6 +47,9 @@ const ProductDetail = ({ match }) => {
           </div>
         </div>
       </div>
+      <section className='related-section'>
+        <h2 className='related-section-header'>Related Products</h2>
+      </section>
     </div>
   );
 };

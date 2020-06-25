@@ -1,0 +1,10 @@
+.tabs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &-tab-row {
+    position: relative;
+    display: flex;
+  }
+}
