@@ -25,8 +25,6 @@ const ProductList = () => {
     history.push(`/product/${productId}`);
   };
 
-  console.log({ _products });
-
   const { products } = _products;
 
   const renderProducts = () => {

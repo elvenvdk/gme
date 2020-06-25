@@ -40,7 +40,7 @@ const ProductDetail = ({ match }) => {
           <div className='product-text-wrapper-price'>
             {formatCurrency(product.price)}
           </div>
-          <p className='product-text-wrapper-desc'>{product.desc}</p>
+          <p className='product-text-wrapper-desc'>{product.description}</p>
           <div className='product-text-wrapper-quantity'>
             <input className='quantity-input' type='number' />
             <button className='add-to-cart'>Add To Cart</button>
