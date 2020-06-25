@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 router.get('/:productId', async (req, res) => {
   try {
     const { productId } = req.params;
-    console.log({ id });
+    console.log({ productId });
     let product = await Product.findOne({ _id: productId });
     console.log({ product });
     res.json(product);

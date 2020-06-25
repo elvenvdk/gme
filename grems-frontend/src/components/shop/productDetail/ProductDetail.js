@@ -14,6 +14,7 @@ const ProductDetail = ({ match }) => {
 
   const getProductDetail = async (productId) => {
     const _product = await api.getProduct(productId);
+    console.log({ _product });
     setProduct(_product);
   };
 
