@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { setGlobal } from 'reactn';
+
+import { formatCurrency } from '../../../helpers';
 
 import api from '../../../api';
 
@@ -30,8 +31,6 @@ const ProductList = () => {
 
   const renderProducts = () => {
     return products.map((p, idx) => {
-      console.log({ id: p._id });
-
       return (
         <div
           key={idx}
@@ -45,7 +44,7 @@ const ProductList = () => {
           />
           <h3 className='products-item-name'>{p.name}</h3>
           <p className='products-item-desc'>{p.description}</p>
-          <p className='products-item-price'>{p.price}</p>
+          <p className='products-item-price'>{formatCurrency(p.price)}</p>
         </div>
       );
     });
