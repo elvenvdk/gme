@@ -61,16 +61,26 @@
       }
     }
   }
-  .related-section {
-    &-header {
-      font-family: $font-main2;
-      color: $color-header-primary;
-      font-size: 5rem;
-      font-weight: $font-bold;
-    }
-  }
 
   .product-desc-reviews {
     padding: 10rem 3rem;
+
+    .product-description {
+      &-header {
+        font-family: $font-main2;
+        color: $color-header-primary;
+        font-size: 5rem;
+        font-weight: $font-bold;
+      }
+    }
+
+    .related-section {
+      &-header {
+        font-family: $font-main2;
+        color: $color-header-primary;
+        font-size: 5rem;
+        font-weight: $font-bold;
+      }
+    }
   }
 }

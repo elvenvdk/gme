@@ -53,9 +53,15 @@ const ProductDetail = ({ match }) => {
           tabLeftTitle='Description'
           tabRightTitle='Reviews'
           tabLeftChildren={
-            <section className='related-section'>
-              <h2 className='related-section-header'>Related Products</h2>
-            </section>
+            <>
+              <section className='product-description'>
+                <h2 className='product-description-header'>Description</h2>
+                <p>{product.description}</p>
+              </section>
+              <section className='related-section'>
+                <h2 className='related-section-header'>Related Products</h2>
+              </section>
+            </>
           }
           tabRightChildren={<div>No Reviews Yet</div>}
         />
