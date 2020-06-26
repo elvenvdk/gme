@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import RelatedProducts from '../relatedProducts/RelatedProducts';
 import Tabs from '../../common/tabs/Tabs';
 import { formatCurrency } from '../../../helpers';
 
@@ -60,6 +61,7 @@ const ProductDetail = ({ match }) => {
               </section>
               <section className='related-section'>
                 <h2 className='related-section-header'>Related Products</h2>
+                <RelatedProducts productId={_productId} />
               </section>
             </>
           }

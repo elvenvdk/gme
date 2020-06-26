@@ -14,6 +14,7 @@ const ProductList = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
   const getProducts = async () => {
     const products = await api.getProducts();
     console.log({ products });
