@@ -1,3 +1,5 @@
+@import '../../../utilities/variables.scss';
+
 .tabs {
   position: relative;
   display: flex;
@@ -6,5 +8,33 @@
   &-tab-row {
     position: relative;
     display: flex;
+
+    .tab-left,
+    .tab-right {
+      border-top: solid 1px #000000;
+      border-left: solid 1px #000000;
+      border-right: solid 1px #000000;
+      width: 12.7rem;
+      height: 4.2rem;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: $font-main;
+      font-weight: $font-bold;
+      cursor: pointer;
+    }
+
+    .tab-left {
+      margin-right: 1rem;
+    }
+
+    .tab-selected {
+      background-color: #f1d631;
+    }
+  }
+
+  &-content {
+    border-top: solid 1px #000000;
   }
 }

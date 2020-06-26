@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import Tabs from '../../common/tabs/Tabs';
 import { formatCurrency } from '../../../helpers';
 
 import api from '../../../api';
@@ -13,15 +14,15 @@ const ProductDetail = ({ match }) => {
 
   console.log({ _productId });
 
-  const getProductDetail = async (productId) => {
-    const _product = await api.getProduct(productId);
+  const getProductDetail = async () => {
+    const _product = await api.getProduct(_productId);
     console.log({ _product });
     setProduct(_product);
   };
 
   useEffect(() => {
-    getProductDetail(_productId);
-  }, []);
+    getProductDetail();
+  }, [_productId]);
 
   console.log({ product });
 
@@ -47,8 +48,17 @@ const ProductDetail = ({ match }) => {
           </div>
         </div>
       </div>
-      <section className='related-section'>
-        <h2 className='related-section-header'>Related Products</h2>
+      <section className='product-desc-reviews'>
+        <Tabs
+          tabLeftTitle='Description'
+          tabRightTitle='Reviews'
+          tabLeftChildren={
+            <section className='related-section'>
+              <h2 className='related-section-header'>Related Products</h2>
+            </section>
+          }
+          tabRightChildren={<div>No Reviews Yet</div>}
+        />
       </section>
     </div>
   );
