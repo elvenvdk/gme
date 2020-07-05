@@ -1,0 +1,11 @@
+@import '../../../utilities//variables.scss';
+
+.btn {
+  color: $buy-now-btn-txt-color;
+  background-color: $buy-now-btn-color;
+  width: 11.1rem;
+  height: 3.8rem;
+  font-family: $font-main;
+  border-radius: 5px;
+  border: none;
+}

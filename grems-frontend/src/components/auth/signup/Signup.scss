@@ -1,0 +1,14 @@
+.signup {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+
+  &-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    top: 30%;
+  }
+}

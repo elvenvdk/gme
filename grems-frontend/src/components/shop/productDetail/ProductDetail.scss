@@ -12,8 +12,8 @@
     justify-content: space-evenly;
 
     .product-img {
-      height: 34rem;
-      width: 53rem;
+      height: 53.2rem;
+      width: 53.1rem;
     }
 
     .product-text-wrapper {
@@ -58,6 +58,28 @@
           width: 10rem;
           cursor: pointer;
         }
+      }
+    }
+  }
+
+  .product-desc-reviews {
+    padding: 10rem 3rem;
+
+    .product-description {
+      &-header {
+        font-family: $font-main2;
+        color: $color-header-primary;
+        font-size: 5rem;
+        font-weight: $font-bold;
+      }
+    }
+
+    .related-section {
+      &-header {
+        font-family: $font-main2;
+        color: $color-header-primary;
+        font-size: 5rem;
+        font-weight: $font-bold;
       }
     }
   }

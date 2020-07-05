@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ProductList from './productList/ProductList';
+import OrderSection from '../orderSection/OrderSection';
 
 import './Shop.scss';
 
@@ -13,6 +14,7 @@ const Shop = () => (
       will make a lasting iimpression.
     </p>
     {ProductList()}
+    <OrderSection />
   </div>
 );
 

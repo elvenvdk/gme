@@ -12,7 +12,7 @@ const Nav = () => {
     { name: 'Flavors', url: '/flavors' },
     { name: 'Corporate Gifts', url: '/corporate-gifts' },
     {
-      name: 'Wedding and Event and Event Gifts',
+      name: 'Wedding and Event Gifts',
       url: '/wedding-and-event-gifts',
     },
     { name: 'Contact Us', url: 'contact-us' },

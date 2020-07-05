@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import 'braintree-web';
 import axios from 'axios';
 import DropIn from 'braintree-web-drop-in-react';
-import { isAuthenticated } from '../../auth';
+// import { isAuthenticated } from '../../auth';
 
 class Checkout extends Component {
   instance;
-  token = isAuthenticated().token;
-  id = isAuthenticated().id;
-  API = process.env.REACT_APP_GREMS_API || 'http://localhost:8000/api';
+  // token = isAuthenticated().token;
+  // id = isAuthenticated().id;
+  // API = process.env.REACT_APP_GREMS_API || 'http://localhost:8000/api';
 
   state = {
     clientToken: null,

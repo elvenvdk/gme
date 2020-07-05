@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { formatCurrency } from '../../../helpers';
-
+import Button from '../../common/button/Button';
 import api from '../../../api';
+import './FlavorsList.scss';
 
-import './ProductList.scss';
-
-const ProductList = () => {
+const FlavorsList = () => {
   const [_products, set_products] = useState([]);
   const history = useHistory();
 
@@ -31,27 +29,23 @@ const ProductList = () => {
   const renderProducts = () => {
     return products.map((p, idx) => {
       return (
-        <div
-          key={idx}
-          className='products-item'
-          onClick={() => getProductDetail(p._id)}
-        >
+        <div key={idx} className='flavors-wrapper-item'>
+          <h3 className='flavors-wrapper-item-name'>{p.name}</h3>
           <img
-            className='products-item-img'
+            className='flavors-wrapper-item-img'
             src={`${process.env.REACT_APP_GREMS_API}/products/photo/${p._id}`}
-            alt='Peach Cobbler in Jar'
+            alt="Grandma Emma's Cobbler"
           />
-          <h3 className='products-item-name'>{p.name}</h3>
-          <p className='products-item-desc'>{p.description}</p>
-          <p className='products-item-price'>{formatCurrency(p.price)}</p>
+          <p className='flavors-wrapper-item-desc'>{p.description}</p>
+          <Button>Buy Now</Button>
         </div>
       );
     });
   };
 
-  if (!products) return <div>Loading products...</div>;
+  if (!products) return <div>Loading flavors...</div>;
 
-  return <section className='products'>{renderProducts()}</section>;
+  return <section className='flavors-wrapper'>{renderProducts()}</section>;
 };
 
-export default ProductList;
+export default FlavorsList;

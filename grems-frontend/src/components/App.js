@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from '../auth/PrivateRoute';
 
+import Signup from './auth/signup/Signup';
+
 import HomePage from './home/Home';
 import Flavors from './flavors/Flavors';
 import Shop from './shop/Shop';
-import Cobbler12 from './shop/productDetail/Cobbler12';
-import CobblerJar from './shop/productDetail/CobblerJar';
 import Checkout from './checkout/Checkout';
 import CorporateGifts from './corporateGifts/CorporateGifts';
 import WeddingEventGifts from './weddingEventGifts/WeddingEventGifts';
 import Contact from './contact/Contact';
-import ProductDetail from './shop/productDetail/Cobbler12';
+import ProductDetail from './shop/productDetail/ProductDetail';
 
 import PageHeader from './pageHeader/PageHeader';
 import Nav from './common/nav/Nav';
@@ -27,11 +27,11 @@ const App = () => {
         <PageHeader />
         <Nav classname='app__nav' />
         <Switch>
+          <Route path='/signup' exact component={Signup} />
+
           <Route path='/' exact component={HomePage} />
           <Route path='/shop' exact component={Shop} />
-          <Route path='/product' exact component={ProductDetail} />
-          <Route path='/cobbler12' exact component={Cobbler12} />
-          <Route path='/cobbler-jar' exact component={CobblerJar} />
+          <Route path='/product/:productId' exact component={ProductDetail} />
           <Route path='/flavors' exact component={Flavors} />
           <Route path='/corporate-gifts' exact component={CorporateGifts} />
           <Route
