@@ -10,6 +10,7 @@ import './ProductDetail.scss';
 
 const ProductDetail = ({ match }) => {
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(0);
 
   const _productId = match.params.productId;
 
@@ -24,6 +25,14 @@ const ProductDetail = ({ match }) => {
   useEffect(() => {
     getProductDetail();
   }, [_productId]);
+
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+  };
 
   console.log({ product });
 
@@ -44,7 +53,12 @@ const ProductDetail = ({ match }) => {
           </div>
           <p className='product-text-wrapper-desc'>{product.description}</p>
           <div className='product-text-wrapper-quantity'>
-            <input className='quantity-input' type='number' />
+            <input
+              className='quantity-input'
+              type='number'
+              onChange={(e) => handleQuantityChange(e)}
+              value={quantity}
+            />
             <button className='add-to-cart'>Add To Cart</button>
           </div>
         </div>
