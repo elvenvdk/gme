@@ -17,6 +17,9 @@ const PageHeader = () => {
         />
       </Link>
       <Link className='pageHeader-login'>Login</Link>
+      <Link className='pageHeader-login' to='/signup'>
+        Signup
+      </Link>
     </div>
   );
 };

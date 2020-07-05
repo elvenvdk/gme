@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from '../auth/PrivateRoute';
 
+import Signup from './auth/signup/Signup';
+
 import HomePage from './home/Home';
 import Flavors from './flavors/Flavors';
 import Shop from './shop/Shop';
@@ -25,6 +27,8 @@ const App = () => {
         <PageHeader />
         <Nav classname='app__nav' />
         <Switch>
+          <Route path='/signup' exact component={Signup} />
+
           <Route path='/' exact component={HomePage} />
           <Route path='/shop' exact component={Shop} />
           <Route path='/product/:productId' exact component={ProductDetail} />
