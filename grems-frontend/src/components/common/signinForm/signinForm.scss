@@ -1,0 +1,43 @@
+@import '../../../utilities//variables.scss';
+
+.signin-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 53.2rem;
+  width: 43.5rem;
+  margin: 0 auto;
+
+  &-title {
+    font-family: $font-main2;
+    font-size: 6.2rem;
+  }
+
+  .signin-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    margin: 0;
+
+    &-label {
+      font-size: 1.6rem;
+      font-family: $font-main;
+      margin-bottom: 1rem;
+    }
+
+    &-email,
+    &-password {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .remember-me {
+    font-family: $font-main;
+    margin-bottom: 1rem;
+    &-label {
+      margin-left: 1rem;
+    }
+  }
+}

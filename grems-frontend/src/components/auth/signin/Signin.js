@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import SignupForm from '../../common/signinForm/signinForm';
 import api from '../../../api';
 
-Signin = () => {
+const Signin = () => {
   const [credentials, setCredentials] = useState({
     email: null,
     password: null,
   });
-  return <div className='signin'></div>;
+  return (
+    <div className='signin'>
+      <h1 className='signin-title'>My Account</h1>
+      <div className='signin-container'>
+        <SignupForm />
+      </div>
+    </div>
+  );
 };
 
 export default Signin;
