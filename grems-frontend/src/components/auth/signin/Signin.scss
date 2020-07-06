@@ -1,2 +1,14 @@
+@import '../../../utilities/variables.scss';
+
 .signin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &-container {
+    position: relative;
+    display: flex;
+    // justify-content: center;
+    margin: 0;
+  }
 }

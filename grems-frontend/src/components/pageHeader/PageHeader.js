@@ -16,7 +16,9 @@ const PageHeader = () => {
           alt="Grandma Emma's Header Logo"
         />
       </Link>
-      <Link className='pageHeader-login'>Login</Link>
+      <Link className='pageHeader-login' to='/signin'>
+        Login
+      </Link>
       <Link className='pageHeader-login' to='/signup'>
         Signup
       </Link>

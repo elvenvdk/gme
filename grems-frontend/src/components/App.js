@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from '../auth/PrivateRoute';
 
-import Signup from './auth/signup/Signup';
+import Signin from './auth/signin/Signin';
 
 import HomePage from './home/Home';
 import Flavors from './flavors/Flavors';
@@ -27,7 +27,7 @@ const App = () => {
         <PageHeader />
         <Nav classname='app__nav' />
         <Switch>
-          <Route path='/signup' exact component={Signup} />
+          <Route path='/signin' exact component={Signin} />
 
           <Route path='/' exact component={HomePage} />
           <Route path='/shop' exact component={Shop} />
