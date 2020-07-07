@@ -1,3 +1,2 @@
 node_modules/
-.env/
-grems-mail-server/.env/
+.env
