@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from '../../common/button/Button';
 import api from '../../../api';
@@ -42,6 +43,21 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
           confirmation: res.msg,
         });
       }
+    } else if (!isSignup) {
+      const res = await api.signin(email, password);
+      if (res.error) {
+        console.log({ ERROR: res.error });
+        setMessage({
+          ...message,
+          error: res.error,
+        });
+        return;
+      } else {
+        setMessage({
+          ...message,
+          confirmation: res.msg,
+        });
+      }
     }
   };
 
@@ -49,7 +65,9 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
 
   return (
     <div className='signin-wrapper'>
-      <h1 className='signin-wrapper-title'>{!isSignup ? 'Login' : 'Signup'}</h1>
+      <h1 className='signin-wrapper-title'>
+        {!isSignup ? 'Login' : 'Register'}
+      </h1>
       <form action='' className='signin-form'>
         <label htmlFor='signin-form-email' className='signin-form-label'>
           Email Address
@@ -90,7 +108,12 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
         )}
         {!isSignup ? <Button>Log in</Button> : <Button>Register</Button>}
         {!isSignup && <p>Forgot password?</p>}
-        {!isSignup && <p>Don't have an account? Click to register.</p>}
+        {!isSignup && (
+          <Link to='/signup'>
+            {' '}
+            <p>Don't have an account? Click to register.</p>
+          </Link>
+        )}
       </form>
     </div>
   );
