@@ -24,12 +24,18 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
       ...credentials,
       [e.target.name]: e.target.value,
     });
+    setMessage({
+      ...message,
+      error: '',
+      confirmation: '',
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSignup) {
-      const res = await api.signup(email, password);
+      const res = await api.register(email, password);
+      console.log(res.error);
       if (res.error) {
         console.log({ ERROR: res.error });
         setMessage({
@@ -38,14 +44,20 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
         });
         return;
       } else {
+        setCredentials({
+          // ...credentials,
+          username: '',
+          email: '',
+          password: '',
+        });
         setMessage({
           ...message,
-          confirmation: res.msg,
+          confirmation: 'Signup successful!  Continue shopping.',
         });
       }
     } else if (!isSignup) {
       const res = await api.signin(email, password);
-      if (res.error) {
+      if (res && res.error) {
         console.log({ ERROR: res.error });
         setMessage({
           ...message,
@@ -55,7 +67,7 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
       } else {
         setMessage({
           ...message,
-          confirmation: res.msg,
+          confirmation: 'Login in successful',
         });
       }
     }
@@ -77,6 +89,7 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
           id='signin-form-email'
           type='email'
           name='email'
+          value={email}
           onChange={(e) => handleChange(e)}
         />
         {!hasForgottenPassword && (
@@ -89,6 +102,7 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
               id='signin-form-password'
               type='password'
               name='password'
+              value={password}
               onChange={(e) => handleChange(e)}
             />
           </>
@@ -109,6 +123,10 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
         <Button onClick={(e) => handleSubmit(e)}>
           {!isSignup ? 'Log in' : 'Register'}
         </Button>
+        {message.confirmation && !message.error && (
+          <p>{message.confirmation}</p>
+        )}
+        {message.error && !message.confirmation && <p>{message.error}</p>}
         {!isSignup && <p>Forgot password?</p>}
         {!isSignup && (
           <Link to='/signup'>

@@ -2,24 +2,24 @@ import axios from 'axios';
 
 const API = process.env.REACT_APP_GREMS_API || 'http://localhost:8000/api';
 
-// customer signup
-export const signup = (email, password) => {
-  console.log({ API });
-  return axios
-    .post(`${API}/auth/signup`, { email, password })
-    .then((res) => {
-      console.log(res);
-      return res;
-    })
-    .catch((err) => {
-      throw err;
-    });
+// customer registration
+
+const register = async (email, password) => {
+  try {
+    const res = await axios.post(`${API}/auth/register`, { email, password });
+    if (!res.data.error)
+      authenticate(res.data, () => console.log('User authenticated...'));
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    console.log(error.response.data);
+  }
 };
 
 // customer signin
-export const signin = (email, password) => {
+const signin = (email, password) => {
   return axios
-    .post(`${API}/auth/signin`, { email, password })
+    .post(`${API}/auth/login`, { email, password })
     .then((res) => {
       return res;
     })
@@ -29,7 +29,7 @@ export const signin = (email, password) => {
 };
 
 // authenticate
-export const authenticate = (data, fn) => {
+const authenticate = (data, fn) => {
   if (typeof window !== 'undefined') {
     localStorage.setItem('jwt', JSON.stringify(data));
     fn();
@@ -37,16 +37,24 @@ export const authenticate = (data, fn) => {
 };
 
 // check authentication
-export const isAuthenticated = () => {
+const isAuthenticated = () => {
   if (typeof window === 'undefined') return false;
   return JSON.parse(localStorage.getItem('jwt'));
 };
 
 // customer signout
-export const signout = (fn) => {
+const signout = (fn) => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('jwt');
     if (localStorage.getItem('cart')) localStorage.removeItem('cart');
     fn();
   }
+};
+
+export default {
+  signin,
+  authenticate,
+  isAuthenticated,
+  signout,
+  register,
 };

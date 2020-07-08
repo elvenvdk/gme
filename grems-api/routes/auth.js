@@ -27,7 +27,7 @@ router.post('/register', register);
  * @access Public
  */
 
-router.post('/signin', login);
+router.post('/login', login);
 
 /**
  * @route post api/auth/vendor-signup

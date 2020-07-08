@@ -3,7 +3,7 @@ import { setGlobal } from 'reactn';
 const API = process.env.REACT_APP_GREMS_API;
 
 // get product
-export const getProduct = async (productId) => {
+const getProduct = async (productId) => {
   return axios
     .get(`${API}/products/${productId}`)
     .then((res) => {
@@ -15,7 +15,7 @@ export const getProduct = async (productId) => {
 };
 
 // get all products
-export const getProducts = async () => {
+const getProducts = async () => {
   try {
     const products = await axios.get(`${API}/products`);
     return products.data;
@@ -26,7 +26,7 @@ export const getProducts = async () => {
 };
 
 // get image for product
-export const getProductImage = async (productId) => {
+const getProductImage = async (productId) => {
   console({ id_from_api: productId });
   try {
     const product = await axios.get(`${API}/products/photo/${productId}`);
@@ -34,4 +34,10 @@ export const getProductImage = async (productId) => {
   } catch (error) {
     return error;
   }
+};
+
+export default {
+  getProduct,
+  getProducts,
+  getProductImage,
 };

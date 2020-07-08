@@ -3,7 +3,7 @@ import { getGlobal, setGlobal } from 'reactn';
 
 import * as orders from './orders';
 import * as products from './products';
-import * as auth from './auth';
+import auth from './auth';
 
 // attach token to every request
 // axios.interceptors.request.use(
