@@ -61,7 +61,7 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
     }
   };
 
-  console.log({ credentials });
+  console.log({ credentials, message });
 
   return (
     <div className='signin-wrapper'>
@@ -106,7 +106,9 @@ const SigninForm = ({ isSignup, hasForgottenPassword }) => {
             </label>
           </section>
         )}
-        {!isSignup ? <Button>Log in</Button> : <Button>Register</Button>}
+        <Button onClick={(e) => handleSubmit(e)}>
+          {!isSignup ? 'Log in' : 'Register'}
+        </Button>
         {!isSignup && <p>Forgot password?</p>}
         {!isSignup && (
           <Link to='/signup'>

@@ -5,7 +5,9 @@ import './Button.scss';
 const Button = ({ children, ...rest }) => {
   return (
     <>
-      <button className='btn'>{children}</button>
+      <button className='btn' {...rest}>
+        {children}
+      </button>
     </>
   );
 };

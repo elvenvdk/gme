@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
+const { sendMail } = require('../controllers/emailService');
 const { check, validationResult } = require('express-validator');
 const Customer = require('../models/customer');
 const Admin = require('../models/admin');
@@ -62,6 +63,14 @@ router.post('/signup', async (req, res) => {
       { expiresIn: 36000 },
       (err, token) => {
         if (err) throw err;
+        sendMail({
+          from: 'test@testmail.com',
+          to: email,
+          subject: 'This is a test from grems backend...',
+          text: 'Test TExt...',
+          html:
+            '<div>This is test text from Grems API.  If you are recieving this.  Then you are doing very good my friend</div>',
+        });
         res.json({ token, id: payload.customer.id });
       },
     );
