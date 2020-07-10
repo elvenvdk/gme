@@ -11,7 +11,7 @@ const ProductList = () => {
   const [_products, set_products] = useState([]);
   const history = useHistory();
 
-  useEffect(async () => {
+  useEffect(() => {
     getProducts();
   }, []);
 

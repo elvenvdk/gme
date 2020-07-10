@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { getGlobal, setGlobal } from 'reactn';
 
-import * as orders from './orders';
-import * as products from './products';
+import orders from './orders';
+import products from './products';
 import auth from './auth';
 
 // attach token to every request
