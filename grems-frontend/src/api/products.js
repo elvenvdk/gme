@@ -18,10 +18,11 @@ const getProduct = async (productId) => {
 const getProducts = async () => {
   try {
     const products = await axios.get(`${API}/products`);
+    console.log({ products: products.data });
     return products.data;
   } catch (error) {
-    console.log(error);
-    return error;
+    console.log(error.response.data);
+    return error.response.data;
   }
 };
 

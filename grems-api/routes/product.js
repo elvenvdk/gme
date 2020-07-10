@@ -13,6 +13,7 @@ const router = express.Router();
  */
 
 router.get('/', async (req, res) => {
+  console.log({ test: 'test' });
   try {
     const products = await Product.find();
     res.json({ products });
