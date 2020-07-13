@@ -32,6 +32,14 @@ const ProductDetail = ({ match }) => {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    // const order = {
+    //   product,
+    //   customerId,
+    //   quantity,
+    //   price,
+    //   totalPrice,
+    // };
+    // console.log(order);
   };
 
   console.log({ product });

@@ -1,8 +1,11 @@
 const express = require('express');
-const formidable = require('formidable');
-const fs = require('fs');
-const Product = require('../models/product');
 const { tokenVerify } = require('../middleware/auth');
+const {
+  getProducts,
+  getProductImage,
+  createProduct,
+  deleteProduct,
+} = require('../controllers/products');
 
 const router = express.Router();
 
@@ -12,15 +15,7 @@ const router = express.Router();
  * @access public
  */
 
-router.get('/', async (req, res) => {
-  console.log({ test: 'test' });
-  try {
-    const products = await Product.find();
-    res.json({ products });
-  } catch (err) {
-    res.status(400).json({ error: err.messaage });
-  }
-});
+router.get('/', getProducts);
 
 /**
  * @route get api/product/:productId
@@ -28,28 +23,9 @@ router.get('/', async (req, res) => {
  * @access public
  */
 
-router.get('/:productId', async (req, res) => {
-  try {
-    const { productId } = req.params;
-    console.log({ productId });
-    let product = await Product.findOne({ _id: productId });
-    console.log({ product });
-    res.json(product);
-  } catch (err) {
-    res.status(400).json({ error: err.messaage });
-  }
-});
+router.get('/:productId', getProducts);
 
-router.get('/photo/:productId', async (req, res) => {
-  try {
-    const { productId } = req.params;
-    let product = await Product.findOne({ _id: productId });
-    res.set('Content-Type', product.photo.contentType);
-    res.send(product.photo.data);
-  } catch (err) {
-    res.status(400).json({ error: err.messaage });
-  }
-});
+router.get('/photo/:productId', getProductImage);
 
 /**
  * @route post api/product
@@ -57,36 +33,7 @@ router.get('/photo/:productId', async (req, res) => {
  * @access Private
  */
 
-router.post('/', async (req, res) => {
-  try {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, async (err, fields, files) => {
-      if (err)
-        return res.status(404).json({ error: 'Image could not be uploaded' });
-
-      console.log({ name: fields.name });
-      const foundProduct = await Product.find({ name: fields.name });
-      if (foundProduct.length) {
-        console.log({ foundProduct });
-        return res.status(400).json({ error: 'Product already in database' });
-      }
-      let product = new Product(fields);
-      if (files.photo) {
-        product.photo.data = fs.readFileSync(files.photo.path);
-        product.photo.contentType = files.photo.type;
-      }
-
-      await product.save();
-      res.send({ msg: `Product successfully added.` });
-    });
-  } catch (err) {
-    res.status(400).json({
-      error: 'There was a problem adding this product',
-      msg: err.message,
-    });
-  }
-});
+router.post('/', createProduct);
 
 /**
  * @route put api/product
@@ -100,17 +47,7 @@ router.post('/', async (req, res) => {
  * @access Private
  */
 
-router.delete('/:productId', async (req, res) => {
-  const { productId } = req.params;
-  try {
-    let product = await Product.findOne({ _id: productId });
-    const productName = product.name;
-    await Product.remove({ _id: productId });
-    res.send(`${productName} has been removed`);
-  } catch (err) {
-    res.status(400).json({ error: err.messaage });
-  }
-});
+router.delete('/:productId', deleteProduct);
 
 /**
  * @route update api/product/sold

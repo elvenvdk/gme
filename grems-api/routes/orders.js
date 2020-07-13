@@ -16,7 +16,7 @@ const router = express.Router();
  * @access private
  */
 
-router.post('/create', tokenVerify, createOrder);
+router.post('/create', createOrder);
 
 /**
  * @route put api/orders/edit
@@ -24,7 +24,7 @@ router.post('/create', tokenVerify, createOrder);
  * @access private
  */
 
-router.put('/update/:orderNo', tokenVerify, updateOrder);
+router.put('/update/:orderNo', updateOrder);
 
 /**
  * @route get api/orders
@@ -32,7 +32,7 @@ router.put('/update/:orderNo', tokenVerify, updateOrder);
  * @access private admin
  */
 
-router.get('/', tokenVerify, getOrders);
+router.get('/', getOrders);
 
 /**
  * @route put api/orders/cancel/:orderNo
@@ -40,6 +40,6 @@ router.get('/', tokenVerify, getOrders);
  * @access private
  */
 
-router.put('/cancel/:orderNo', tokenVerify, cancelOrder);
+router.put('/cancel/:orderNo', cancelOrder);
 
 module.exports = router;
