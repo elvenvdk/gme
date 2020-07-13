@@ -50,7 +50,7 @@ const ProductDetail = ({ match }) => {
     <div className='product-detail'>
       <div className='product-detail-toprow'>
         <img
-          src={`${process.env.REACT_APP_GREMS_API}/products/photo/${product._id}`}
+          src={`${process.env.REACT_APP_GREMS_API}/products/photo/${_productId}`}
           alt='Cobbler Jar Image'
           className='product-img'
         />
