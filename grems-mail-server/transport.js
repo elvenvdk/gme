@@ -1,12 +1,12 @@
 const nodemailer = require('nodemailer');
 
 const transport = nodemailer.createTransport({
-  host: process.env.GOOGLE_HOST,
-  port: process.env.TLS_PORT,
-  secure: false,
+  host: process.env.GREMS_HOST,
+  port: process.env.SSL_PORT,
+  secure: true,
   auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASSWORD,
+    user: process.env.GEMS_USER,
+    pass: process.env.GREMS_PASSWORD,
   },
 });
 

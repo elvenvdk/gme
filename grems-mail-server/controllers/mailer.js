@@ -1,6 +1,6 @@
 const transport = require('../transport');
 
-exports.purchaseConfirmation = async (req, res) => {
+exports.sendMail = async (req, res) => {
   const { from, to, subject, text, html } = req.body;
   try {
     console.log({ REQUEST_BODY: req.body });
@@ -11,8 +11,6 @@ exports.purchaseConfirmation = async (req, res) => {
       text,
       html,
     });
-
-    console.log({ confirmation });
 
     res.send({ msg: 'Message Sent...', msgId: confirmation.messageId });
   } catch (error) {

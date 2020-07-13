@@ -17,13 +17,15 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+const corsOptions = { origin: process.env.FRONTEND_API };
+
 // Connect DB
 connectDB();
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Routing
 app.use('/api/customer', customerRoute);

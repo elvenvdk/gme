@@ -16,10 +16,14 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    const products = await api.getProducts();
-    console.log({ products });
-    if (products.error) console.log(products.error);
-    set_products(products);
+    try {
+      const products = await api.getProducts();
+      console.log({ products });
+      if (products.error) console.log({ ERROR: products.error });
+      set_products(products);
+    } catch (err) {
+      console.log({ err });
+    }
   };
 
   const getProductDetail = (productId) => {

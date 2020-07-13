@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import SignupForm from '../../common/signinForm/signinForm';
+import SigninForm from '../../common/signinForm/signinForm';
 import api from '../../../api';
 
 const Signin = () => {
@@ -13,7 +13,7 @@ const Signin = () => {
     <div className='signin'>
       <h1 className='signin-title'>My Account</h1>
       <div className='signin-container'>
-        <SignupForm />
+        <SigninForm />
       </div>
     </div>
   );

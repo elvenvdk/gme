@@ -3,7 +3,7 @@ import axios from 'axios';
 const API = process.env.api;
 
 // create order
-export const createCustomerOrder = (order) => {
+const createCustomerOrder = (order) => {
   console.log({ APIOrder: order });
   order.product = '5e76f667bb01c35b25d229be';
   console.log({ APIOrder: order });
@@ -16,3 +16,5 @@ export const createCustomerOrder = (order) => {
       throw err;
     });
 };
+
+export default { createCustomerOrder };
