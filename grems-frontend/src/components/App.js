@@ -14,6 +14,7 @@ import CorporateGifts from './corporateGifts/CorporateGifts';
 import WeddingEventGifts from './weddingEventGifts/WeddingEventGifts';
 import Contact from './contact/Contact';
 import ProductDetail from './shop/productDetail/ProductDetail';
+import Cart from './cart/Cart';
 
 import PageHeader from './pageHeader/PageHeader';
 import Nav from './common/nav/Nav';
@@ -42,6 +43,7 @@ const App = () => {
             component={WeddingEventGifts}
           />
           <Route path='/contact-us' exact component={Contact} />
+          <Route path='/cart' exact component={Cart} />
           <Route path='/checkout' exact component={Checkout} />
         </Switch>
       </Router>

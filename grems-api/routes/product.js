@@ -1,6 +1,7 @@
 const express = require('express');
 const { tokenVerify } = require('../middleware/auth');
 const {
+  getProduct,
   getProducts,
   getProductImage,
   createProduct,
@@ -23,7 +24,7 @@ router.get('/', getProducts);
  * @access public
  */
 
-router.get('/:productId', getProducts);
+router.get('/:productId', getProduct);
 
 router.get('/photo/:productId', getProductImage);
 

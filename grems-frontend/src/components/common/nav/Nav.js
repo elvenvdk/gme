@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Nav.scss';
+import CartButton from '../../cartButton/CartButton';
 
 const Nav = () => {
   const [selected, setSelected] = useState(null);
@@ -31,6 +32,7 @@ const Nav = () => {
           </Link>
         </li>
       ))}
+      <CartButton />
     </ul>
   );
 

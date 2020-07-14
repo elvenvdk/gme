@@ -27,9 +27,7 @@ exports.getProducts = async (req, res) => {
 exports.getProduct = async (req, res) => {
   try {
     const { productId } = req.params;
-    console.log({ productId });
     let product = await Product.findOne({ _id: productId });
-    console.log({ product });
     res.json(product);
   } catch (err) {
     res.status(400).json({ error: err.messaage });
@@ -67,10 +65,8 @@ exports.createProduct = async (req, res) => {
       if (err)
         return res.status(404).json({ error: 'Image could not be uploaded' });
 
-      console.log({ name: fields.name });
       const foundProduct = await Product.find({ name: fields.name });
       if (foundProduct.length) {
-        console.log({ foundProduct });
         return res.status(400).json({ error: 'Product already in database' });
       }
       let product = new Product(fields);

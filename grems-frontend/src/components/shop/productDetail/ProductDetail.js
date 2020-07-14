@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { setGlobal } from 'reactn';
 
 import RelatedProducts from '../relatedProducts/RelatedProducts';
 import Tabs from '../../common/tabs/Tabs';
@@ -7,12 +9,16 @@ import { formatCurrency } from '../../../helpers';
 import api from '../../../api';
 
 import './ProductDetail.scss';
+import products from '../../../api/products';
 
 const ProductDetail = ({ match }) => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
 
+  const history = useHistory();
+
   const _productId = match.params.productId;
+  const customerId = api.isAuthenticated().id;
 
   console.log({ _productId });
 
@@ -30,16 +36,18 @@ const ProductDetail = ({ match }) => {
     setQuantity(e.target.value);
   };
 
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-    // const order = {
-    //   product,
-    //   customerId,
-    //   quantity,
-    //   price,
-    //   totalPrice,
-    // };
-    // console.log(order);
+  const getTotalPrice = () => product.price * quantity;
+
+  const handleAddToCart = () => {
+    const order = {
+      product: _productId,
+      customerId,
+      quantity: quantity,
+      price: product.price,
+      totalPrice: getTotalPrice(),
+    };
+    setGlobal({ order });
+    console.log({ order });
   };
 
   console.log({ product });
@@ -67,7 +75,9 @@ const ProductDetail = ({ match }) => {
               onChange={(e) => handleQuantityChange(e)}
               value={quantity}
             />
-            <button className='add-to-cart'>Add To Cart</button>
+            <button className='add-to-cart' onClick={handleAddToCart}>
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
