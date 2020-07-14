@@ -23,9 +23,10 @@ const Nav = () => {
     <ul className={`nav-menu`}>
       {menuItems.map((i, idx) => (
         <li
+          id={idx}
           key={i.name}
           className={`nav-item ${selected}`}
-          onMouseOver={(i) => console.log({ idx })}
+          onMouseOver={(e) => console.log({ idx, e: e.target.id })}
         >
           <Link className='nav-item-link' to={i.url}>
             {i.name}

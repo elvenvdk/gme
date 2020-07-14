@@ -17,6 +17,7 @@
     position: relative;
     bottom: 14px;
     margin-right: auto;
+    cursor: pointer;
 
     &-container {
       position: relative;
@@ -43,5 +44,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-left: 1px solid black;
+    width: 6.4rem;
+    height: 3.8rem;
   }
 }
