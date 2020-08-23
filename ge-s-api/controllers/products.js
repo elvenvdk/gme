@@ -1,46 +1,46 @@
-const express = require('express');
 const formidable = require('formidable');
 const fs = require('fs');
 const Product = require('../models/product');
 const { tokenVerify } = require('../middleware/auth');
 
-const router = express.Router();
-
 /**
- * @route get api/product
- * @description get products route
+ * @function getProducts
+ * @description get products all products
  * @access public
  */
 
-router.get('/', async (req, res) => {
-  console.log({ test: 'test' });
+exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find();
     res.json({ products });
   } catch (err) {
     res.status(400).json({ error: err.messaage });
   }
-});
+};
 
 /**
- * @route get api/product/:productId
- * @description get single product route
+ * @function getProduct()
+ * @description get single product
  * @access public
  */
 
-router.get('/:productId', async (req, res) => {
+exports.getProduct = async (req, res) => {
   try {
     const { productId } = req.params;
-    console.log({ productId });
     let product = await Product.findOne({ _id: productId });
-    console.log({ product });
     res.json(product);
   } catch (err) {
     res.status(400).json({ error: err.messaage });
   }
-});
+};
 
-router.get('/photo/:productId', async (req, res) => {
+/**
+ * @function getProductImage()
+ * @description get product's image
+ * @access public
+ */
+
+exports.getProductImage = async (req, res) => {
   try {
     const { productId } = req.params;
     let product = await Product.findOne({ _id: productId });
@@ -49,15 +49,15 @@ router.get('/photo/:productId', async (req, res) => {
   } catch (err) {
     res.status(400).json({ error: err.messaage });
   }
-});
+};
 
 /**
- * @route post api/product
- * @description product create route
+ * @function  createProduct()
+ * @description product create
  * @access Private
  */
 
-router.post('/', async (req, res) => {
+exports.createProduct = async (req, res) => {
   try {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -65,10 +65,8 @@ router.post('/', async (req, res) => {
       if (err)
         return res.status(404).json({ error: 'Image could not be uploaded' });
 
-      console.log({ name: fields.name });
       const foundProduct = await Product.find({ name: fields.name });
       if (foundProduct.length) {
-        console.log({ foundProduct });
         return res.status(400).json({ error: 'Product already in database' });
       }
       let product = new Product(fields);
@@ -86,21 +84,15 @@ router.post('/', async (req, res) => {
       msg: err.message,
     });
   }
-});
+};
 
 /**
- * @route put api/product
- * @description product update route
+ * @function deleteProduct
+ * @description product delete
  * @access Private
  */
 
-/**
- * @route delete api/product
- * @description product create route
- * @access Private
- */
-
-router.delete('/:productId', async (req, res) => {
+exports.deleteProduct = async (req, res) => {
   const { productId } = req.params;
   try {
     let product = await Product.findOne({ _id: productId });
@@ -110,17 +102,4 @@ router.delete('/:productId', async (req, res) => {
   } catch (err) {
     res.status(400).json({ error: err.messaage });
   }
-});
-
-/**
- * @route update api/product/sold
- * @description update product sold route
- * @access private
- */
-
-//  router.put('/sold/:productId', async (req, res) => {
-//   const { productId } = req.params;
-//   const product = Product.findOne({_id: })
-//  })
-
-module.exports = router;
+};

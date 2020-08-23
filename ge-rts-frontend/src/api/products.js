@@ -28,7 +28,7 @@ const getProducts = async () => {
 
 // get image for product
 const getProductImage = async (productId) => {
-  console({ id_from_api: productId });
+  console({ ID_FROM_API: productId });
   try {
     const product = await axios.get(`${API}/products/photo/${productId}`);
     return product.data;

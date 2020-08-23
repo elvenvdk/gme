@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { setGlobal, getGlobal } from 'reactn';
 
 const API = process.env.api;
-
 // create order
 const createCustomerOrder = (order) => {
   console.log({ APIOrder: order });
@@ -17,4 +17,13 @@ const createCustomerOrder = (order) => {
     });
 };
 
-export default { createCustomerOrder };
+const addToCart = (order) => {
+  setGlobal({ order });
+};
+
+const getOrder = () => {
+  const { order } = getGlobal();
+  return order;
+};
+
+export default { createCustomerOrder, addToCart, getOrder };

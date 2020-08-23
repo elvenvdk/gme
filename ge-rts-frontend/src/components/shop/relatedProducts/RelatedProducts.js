@@ -14,12 +14,11 @@ const RelatedProducts = ({ productId }) => {
 
   const getProducts = async () => {
     const _products = await api.getProducts();
-    if (!_products.error) console.log(_products.error);
+    if (_products.error) console.log(_products.error);
     setProducts(_products);
   };
 
   const getRelatedProducts = () => {
-    console.log({ productId, products });
     return products.products
       .filter((p) => p._id !== productId)
       .map((p, idx) => {

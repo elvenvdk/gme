@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Nav.scss';
+import CartButton from '../../cartButton/CartButton';
 
 const Nav = () => {
   const [selected, setSelected] = useState(null);
@@ -22,15 +23,17 @@ const Nav = () => {
     <ul className={`nav-menu`}>
       {menuItems.map((i, idx) => (
         <li
+          id={idx}
           key={i.name}
           className={`nav-item ${selected}`}
-          onMouseOver={(i) => console.log({ idx })}
+          onMouseOver={(e) => console.log({ idx, e: e.target.id })}
         >
           <Link className='nav-item-link' to={i.url}>
             {i.name}
           </Link>
         </li>
       ))}
+      <CartButton />
     </ul>
   );
 
