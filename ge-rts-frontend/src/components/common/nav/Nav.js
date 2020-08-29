@@ -9,13 +9,13 @@ const Nav = () => {
 
   const menuItems = [
     { name: 'Home', url: '/' },
-    { name: 'Shop', url: '/shop' },
-    { name: 'Flavors', url: '/flavors' },
-    { name: 'Corporate Gifts', url: '/corporate-gifts' },
-    {
-      name: 'Wedding and Event Gifts',
-      url: '/wedding-and-event-gifts',
-    },
+    // { name: 'Shop', url: '/shop' },
+    // { name: 'Flavors', url: '/flavors' },
+    // { name: 'Corporate Gifts', url: '/corporate-gifts' },
+    // {
+    //   name: 'Wedding and Event Gifts',
+    //   url: '/wedding-and-event-gifts',
+    // },
     { name: 'Contact Us', url: 'contact-us' },
   ];
 
@@ -33,7 +33,7 @@ const Nav = () => {
           </Link>
         </li>
       ))}
-      <CartButton />
+      {/* <CartButton /> */}
     </ul>
   );
 
