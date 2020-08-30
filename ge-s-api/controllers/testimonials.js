@@ -27,9 +27,9 @@ exports.createTestimonial = async (req, res) => {
       lastName,
       email,
       mobile,
-      [socialMedia.facebook]: facebook,
-      [socialMedia.instragram]: instagram,
-      [socialMedia.twitter]: twitter,
+      'socialMedia.facebook': facebook,
+      'socialMedia.instragram': instagram,
+      'socialMedia.twitter': twitter,
       testimony,
     });
     await testimonial.save();

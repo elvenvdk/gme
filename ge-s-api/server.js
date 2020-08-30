@@ -13,7 +13,7 @@ const ordersRoute = require('./routes/orders');
 const categoryRoute = require('./routes/category');
 const braintreeRoute = require('./routes/braintree');
 const bodyParser = require('body-parser');
-const testmonialsRoute = require('./controllers/testimonials');
+const testmonialsRoute = require('./routes/testimionials');
 
 const app = express();
 const PORT = process.env.PORT || 8000;

@@ -1,4 +1,5 @@
 const express = require('express');
+const { createTestimonial } = require('../controllers/testimonials');
 
 const router = express.Router();
 
@@ -7,6 +8,6 @@ const router = express.Router();
  * @access public
  */
 
-router.post('/create');
+router.post('/create', createTestimonial);
 
 module.exports = router;
