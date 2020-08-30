@@ -1,53 +1,62 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
-const CustomerSchema = new mongoose.Schema(
+const TestimonialSchema = new mongoose.Schema(
   {
+    isCustomer: {
+      type: Boolean,
+    },
+    customer: {
+      type: ObjectId,
+      ref: 'Customer',
+      trim: true,
+    },
+    call: {
+      type: Boolean,
+    },
+    eventDate: {
+      type: Date,
+    },
+    eventType: {
+      type: String,
+      trim: true,
+    },
     firstName: {
       type: String,
-      // required: true,
       trim: true,
     },
     lastName: {
       type: String,
-      // required: true,
       trim: true,
     },
     email: {
       type: String,
-      required: true,
       trim: true,
-      unique: 100,
     },
-    password: {
-      type: String,
-      // required: true,
-    },
-    addressLine1: {
-      type: String,
-      // required: true,
-    },
-    addressLine2: {
-      type: String,
-    },
-    city: {
-      type: String,
-      trim: true,
-      // required: true,
-    },
-    state: {
-      type: String,
-      trim: true,
-      // required: true,
-      maxLength: 2,
-    },
-    zipCode: {
+    mobile: {
       type: Number,
       trim: true,
-      // required: true,
-      maxLength: 5,
+    },
+    socialMedia: {
+      facebook: {
+        type: String,
+        trim: true,
+      },
+      instagram: {
+        type: String,
+        trim: true,
+      },
+      twitter: {
+        type: String,
+        trim: true,
+      },
+    },
+    testimony: {
+      type: String,
+      trim: true,
     },
   },
   { timestamps: true },
 );
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model('Testimonial', TestimonialSchema);

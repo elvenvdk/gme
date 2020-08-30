@@ -13,6 +13,7 @@ const ordersRoute = require('./routes/orders');
 const categoryRoute = require('./routes/category');
 const braintreeRoute = require('./routes/braintree');
 const bodyParser = require('body-parser');
+const testmonialsRoute = require('./routes/testimionials');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -35,6 +36,7 @@ app.use('/api/products', productRoute);
 app.use('/api/category', categoryRoute);
 app.use('/api/braintree', braintreeRoute);
 app.use('/api/orders', ordersRoute);
+app.use('/api/testimonials', testmonialsRoute);
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);
