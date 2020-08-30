@@ -14,5 +14,31 @@
       height: 2rem;
       width: 2rem;
     }
+
+    &-input {
+      margin: 0 0 1rem 0;
+      width: inherit;
+      width: 80rem;
+      height: 3.5rem;
+    }
+
+    &-textarea {
+      margin: 0 0 1rem 0;
+      width: inherit;
+      width: 80rem;
+      height: 30em;
+    }
+
+    &-responsecheckbox-wrapper {
+      margin: 0 0 1rem 0;
+      &-label {
+        margin: 0 0 0 1rem;
+      }
+
+      &-checkbox {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
   }
 }

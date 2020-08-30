@@ -10,7 +10,7 @@ const Nav = () => {
   const menuItems = [
     { name: 'Home', url: 'http://localhost:3000' },
     { name: 'About', url: 'http://localhost:3000#home_about' },
-    { name: 'Survey', url: 'http://localhost:3000#home_contact' },
+    { name: 'Survey', url: 'http://localhost:3000/survey' },
     // { name: 'Shop', url: '/shop' },
     // { name: 'Flavors', url: '/flavors' },
     // { name: 'Corporate Gifts', url: '/corporate-gifts' },
