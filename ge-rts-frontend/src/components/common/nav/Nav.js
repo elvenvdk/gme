@@ -8,14 +8,16 @@ const Nav = () => {
   const [selected, setSelected] = useState(null);
 
   const menuItems = [
-    { name: 'Home', url: '/' },
-    { name: 'Shop', url: '/shop' },
-    { name: 'Flavors', url: '/flavors' },
-    { name: 'Corporate Gifts', url: '/corporate-gifts' },
-    {
-      name: 'Wedding and Event Gifts',
-      url: '/wedding-and-event-gifts',
-    },
+    { name: 'Home', url: 'http://localhost:3000' },
+    { name: 'About', url: 'http://localhost:3000#home_about' },
+    { name: 'Survey', url: 'http://localhost:3000#home_contact' },
+    // { name: 'Shop', url: '/shop' },
+    // { name: 'Flavors', url: '/flavors' },
+    // { name: 'Corporate Gifts', url: '/corporate-gifts' },
+    // {
+    //   name: 'Wedding and Event Gifts',
+    //   url: '/wedding-and-event-gifts',
+    // },
     { name: 'Contact Us', url: 'contact-us' },
   ];
 
@@ -28,12 +30,15 @@ const Nav = () => {
           className={`nav-item ${selected}`}
           onMouseOver={(e) => console.log({ idx, e: e.target.id })}
         >
-          <Link className='nav-item-link' to={i.url}>
+          <a className='nav-item-link' href={i.url}>
             {i.name}
-          </Link>
+          </a>
+          {i.name === 'Contact Us' && (
+            <p className='nav-item-phone'>973-544-8032</p>
+          )}
         </li>
       ))}
-      <CartButton />
+      {/* <CartButton /> */}
     </ul>
   );
 

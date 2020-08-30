@@ -18,12 +18,16 @@ import img6 from '../../assets/video-img.png';
 import womanImg from '../../assets/woman-img.png';
 
 import './Home.scss';
+import TestimonialSection from '../testimonialSection/TestimonialSection';
 
 const Home = () => {
   return (
     <div className='home'>
-      <AppCarousel />
-      <section className='home-about'>
+      <section className='home-top-section' id='home_top'>
+        <AppCarousel />
+      </section>
+
+      <section className='home-about' id='home_about'>
         <img
           className='home-about-img-main'
           src={GremsImg}
@@ -101,10 +105,10 @@ const Home = () => {
                 place your order.​We are here for you!
               </p>
               <p className='order-info-phone'>
-                Phone:<a href='tel: 908.481.5499'>908.481.5499</a>
+                Phone:<a href='tel: 908.481.5499'> 908-481-5499</a>
               </p>
-              <p className='order-info-andshop'>And Shop Online</p>
-              <button>Buy Now</button>
+              {/* <p className='order-info-andshop'>And Shop Online</p>
+              <button>Buy Now</button> */}
             </div>
           </div>
         </div>
@@ -122,46 +126,12 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='home-testemonials'>
-        <h1 className='home-testemonials-header'>
-          Here's what they're saying...
-        </h1>
-        <div className='home-testemonials-text-wrapper'>
-          <div className='testemonials-item'>
-            <FontAwesomeIcon
-              className='testemonials-item-quote'
-              icon={faQuoteRight}
-            />
-            <h3 className='testemonials-header'>Thank You!</h3>
-            <p className='testemonials-text'>
-              My mother loved the sweet treat. Her birthday is on the 27th and I
-              want to treat her to some Grandma Emmas peach cobbler, because she
-              hasn't tried it yet. It's one of my favorite desserts.
-            </p>
-            <hr />
-            <p className='testemonials-customer-name'>Felicia Hall</p>
-            <p className='testemonials-customer-type'>Customer</p>
-          </div>
-          <div className='testemonials-item'>
-            <FontAwesomeIcon
-              className='testemonials-item-quote'
-              icon={faQuoteRight}
-            />
-            <h3 className='testemonials-header'>Delicious!</h3>
-            <p className='testemonials-text'>
-              Awww man!!! I didn't know this was your family recipe. I was just
-              telling my son I tasted the best peach cobbler ever!!!! I picked
-              up two from Ambassadors on Dodd St. It's absolutely delicious!!!
-              Congratulations!!!
-            </p>
-            <hr />
-            <p className='testemonials-customer-name'>Jesse Jordan</p>
-            <p className='testemonials-customer-type'>Customer</p>
-          </div>
-        </div>
+      {/* <section className='home-testemonials' id='home_testimonials'> */}
+      <TestimonialSection />
+      {/* </section> */}
+      <section className='home_contact' id='home_contact'>
+        <ContactUs />
       </section>
-
-      <ContactUs />
     </div>
   );
 };
