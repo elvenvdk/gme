@@ -162,66 +162,66 @@
     }
   }
 
-  &-testemonials {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 5rem 10rem;
-    // margin: 5rem 0;
-    background-color: #ffffff;
+  // &-testemonials {
+  //   position: relative;
+  //   display: flex;
+  //   flex-direction: column;
+  //   padding: 5rem 10rem;
+  //   // margin: 5rem 0;
+  //   background-color: #ffffff;
 
-    &-header {
-      font-size: 6.6rem;
-      font-family: $font-main2;
-      color: $color-main2;
-      margin: 0 auto 5rem auto;
-    }
+  //   &-header {
+  //     font-size: 6.6rem;
+  //     font-family: $font-main2;
+  //     color: $color-main2;
+  //     margin: 0 auto 5rem auto;
+  //   }
 
-    &-text-wrapper {
-      position: relative;
-      display: flex;
-      justify-content: space-evenly;
+  //   &-text-wrapper {
+  //     position: relative;
+  //     display: flex;
+  //     justify-content: space-evenly;
 
-      .testemonials-item {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 35%;
-        text-align: center;
+  //     .testemonials-item {
+  //       position: relative;
+  //       display: flex;
+  //       flex-direction: column;
+  //       width: 35%;
+  //       text-align: center;
 
-        &-quote {
-          margin: 0 auto;
-          color: $color-main2;
-        }
+  //       &-quote {
+  //         margin: 0 auto;
+  //         color: $color-main2;
+  //       }
 
-        .testemonials-header {
-          font-size: 2.4rem;
-          font-family: $font-main;
-          font-weight: $font-semiBold;
-          color: $color-main2;
-          margin: 1rem auto;
-        }
+  //       .testemonials-header {
+  //         font-size: 2.4rem;
+  //         font-family: $font-main;
+  //         font-weight: $font-semiBold;
+  //         color: $color-main2;
+  //         margin: 1rem auto;
+  //       }
 
-        .testemonials-text {
-          font-size: 1.5rem;
-          font-family: $font-main;
-          margin: 2rem auto;
-        }
+  //       .testemonials-text {
+  //         font-size: 1.5rem;
+  //         font-family: $font-main;
+  //         margin: 2rem auto;
+  //       }
 
-        .testemonials-customer-name {
-          font-size: 1.4rem;
-          font-family: $font-main;
-          font-weight: $font-semiBold;
-          color: $color-main2;
-          margin: 2rem auto 0.5rem auto;
-        }
+  //       .testemonials-customer-name {
+  //         font-size: 1.4rem;
+  //         font-family: $font-main;
+  //         font-weight: $font-semiBold;
+  //         color: $color-main2;
+  //         margin: 2rem auto 0.5rem auto;
+  //       }
 
-        .testemonials-customer-type {
-          font-size: 1.5rem;
-          font-family: $font-main;
-          margin: 1rem auto;
-        }
-      }
-    }
-  }
+  //       .testemonials-customer-type {
+  //         font-size: 1.5rem;
+  //         font-family: $font-main;
+  //         margin: 1rem auto;
+  //       }
+  //     }
+  //   }
+  // }
 }

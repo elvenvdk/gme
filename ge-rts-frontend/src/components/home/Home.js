@@ -126,9 +126,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='home-testemonials' id='home_testimonials'>
-        <TestimonialSection />
-      </section>
+      {/* <section className='home-testemonials' id='home_testimonials'> */}
+      <TestimonialSection />
+      {/* </section> */}
       <section className='home_contact' id='home_contact'>
         <ContactUs />
       </section>
