@@ -8,7 +8,7 @@ const Nav = () => {
   const [selected, setSelected] = useState(null);
 
   const menuItems = [
-    { name: 'Home', url: 'http://localhost:3000#home_top' },
+    { name: 'Home', url: 'http://localhost:3000' },
     { name: 'About', url: 'http://localhost:3000#home_about' },
     { name: 'Survey', url: 'http://localhost:3000#home_contact' },
     // { name: 'Shop', url: '/shop' },

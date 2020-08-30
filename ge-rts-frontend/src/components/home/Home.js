@@ -105,10 +105,10 @@ const Home = () => {
                 place your order.​We are here for you!
               </p>
               <p className='order-info-phone'>
-                Phone:<a href='tel: 908.481.5499'>908.481.5499</a>
+                Phone:<a href='tel: 908.481.5499'> 908-481-5499</a>
               </p>
-              <p className='order-info-andshop'>And Shop Online</p>
-              <button>Buy Now</button>
+              {/* <p className='order-info-andshop'>And Shop Online</p>
+              <button>Buy Now</button> */}
             </div>
           </div>
         </div>
