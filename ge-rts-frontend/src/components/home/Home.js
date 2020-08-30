@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
-
-import AppCarousel from '../common/appCarousel/AppCarousel';
-import ContactUs from '../contactUs/ContactUs';
-
-import GremsImg from '../../assets/grems_grandma_emma2.png';
-import PeachesImg from '../../assets/small-aples.png';
+import React from 'react';
+import img5 from '../../assets//gallery05.jpg';
 import CorporateImg from '../../assets/corporate1.jpg';
 import EventsGiftImg from '../../assets/events-gift.jpg';
 import img1 from '../../assets/gallery01.jpg';
 import img2 from '../../assets/gallery02.jpg';
 import img3 from '../../assets/gallery03.jpg';
 import img4 from '../../assets/gallery04.jpg';
-import img5 from '../../assets//gallery05.jpg';
+import GremsImg from '../../assets/grems_grandma_emma2.png';
+import PeachesImg from '../../assets/small-aples.png';
 import img6 from '../../assets/video-img.png';
 import womanImg from '../../assets/woman-img.png';
-
-import './Home.scss';
+import AppCarousel from '../common/appCarousel/AppCarousel';
+import ContactUs from '../contactUs/ContactUs';
 import TestimonialSection from '../testimonialSection/TestimonialSection';
+import './Home.scss';
 
 const Home = () => {
   return (
@@ -126,9 +121,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* <section className='home-testemonials' id='home_testimonials'> */}
-      <TestimonialSection />
-      {/* </section> */}
+      <section className='home-testemonials' id='home_testimonials'>
+        <TestimonialSection />
+      </section>
       <section className='home_contact' id='home_contact'>
         <ContactUs />
       </section>

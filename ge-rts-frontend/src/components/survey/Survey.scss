@@ -1,0 +1,18 @@
+@import '../../utilities/variables.scss';
+
+.survey {
+  position: relative;
+  width: 100vw;
+  padding: 0 30rem;
+  &-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-call-checkbox {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+}
