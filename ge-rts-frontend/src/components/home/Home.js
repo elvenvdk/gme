@@ -22,8 +22,11 @@ import './Home.scss';
 const Home = () => {
   return (
     <div className='home'>
-      <AppCarousel />
-      <section className='home-about'>
+      <section className='home-top-section' id='home_top'>
+        <AppCarousel />
+      </section>
+
+      <section className='home-about' id='home_about'>
         <img
           className='home-about-img-main'
           src={GremsImg}
@@ -160,8 +163,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <ContactUs />
+      <section className='home_contact' id='home_contact'>
+        <ContactUs />
+      </section>
     </div>
   );
 };
