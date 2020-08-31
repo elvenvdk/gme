@@ -72,7 +72,6 @@ const Survey = () => {
     }
   };
 
-  console.log(message);
   return (
     <div className='survey' id='survey'>
       <form className='survey-form' onSubmit={(e) => onFormSubmit(e)}>
