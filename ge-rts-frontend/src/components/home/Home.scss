@@ -2,11 +2,34 @@
 
 .home {
   background-color: $color-main-background;
+
+  // @media screen and (max-width: 48em) {
+  //   padding: 5rem;
+  // }
+
+  // @media screen and (min-width: 60em) {
+  //   padding: 12rem;
+  // }
+
+  // @media screen and (min-width: 65em) {
+  //   padding: 15rem;
+  // }
+
+  @media screen and (min-width: 70em) {
+    // padding: 20rem;
+  }
+
   &-about {
     position: relative;
     display: flex;
     justify-content: center;
     padding: 10rem 10rem;
+
+    @media screen and (max-width: 70em) {
+      // padding: 20rem;
+      flex-direction: column;
+      align-items: center;
+    }
 
     &-text-wrapper {
       position: relative;
@@ -56,10 +79,33 @@
       margin: 2rem auto;
       width: 100%;
 
+      @media screen and (max-width: 70em) {
+        // padding: 20rem;
+        flex-direction: column;
+        align-items: center;
+      }
+
       &-wrapper {
         position: relative;
         display: flex;
         flex-direction: column;
+
+        // @media screen and (max-width: 48em) {
+        //   padding: 5rem;
+        // }
+
+        // @media screen and (min-width: 60em) {
+        //   padding: 12rem;
+        // }
+
+        // @media screen and (min-width: 65em) {
+        //   padding: 15rem;
+        // }
+
+        // @media screen and (min-width: 70em) {
+        //   // padding: 20rem;
+        //   flex-direction: row;
+        // }
 
         &-text {
           font-family: $font-main;
@@ -106,6 +152,12 @@
     justify-content: space-evenly;
     padding: 5rem 15rem;
     // margin-top: 5rem;
+
+    @media screen and (max-width: 70em) {
+      // padding: 20rem;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .order-today {
       position: relative;

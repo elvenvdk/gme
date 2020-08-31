@@ -10,6 +10,22 @@
   font-family: $font-main;
   padding: 1.5rem 5rem;
 
+  @media screen and (max-width: 48em) {
+    padding: 2rem;
+  }
+
+  // @media screen and (min-width: 60em) {
+  //   padding: 12rem;
+  // }
+
+  // @media screen and (min-width: 65em) {
+  //   padding: 15rem;
+  // }
+
+  // @media screen and (min-width: 70em) {
+  //   padding: 20rem;
+  // }
+
   .selected {
     color: red;
   }

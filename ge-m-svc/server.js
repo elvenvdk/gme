@@ -7,6 +7,8 @@ const app = express();
 
 require('dotenv').config({ path: './.env' });
 
+const corsOptions = { origin: process.env.GREMS_API_ORIGIN };
+
 // PORT
 const PORT = process.env.PORT;
 
@@ -14,7 +16,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.GREMS_API_ORIGIN,
+    origin: process.env.GREMS_FRONTEND_ORIGIN,
     optionsSuccessStatus: 200,
   }),
 );

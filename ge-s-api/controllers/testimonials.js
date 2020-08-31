@@ -2,7 +2,6 @@ const Testimonial = require('../models/testimonials');
 
 exports.createTestimonial = async (req, res) => {
   const {
-    isCustomer,
     customer,
     call,
     eventDate,
@@ -15,10 +14,10 @@ exports.createTestimonial = async (req, res) => {
     instagram,
     twitter,
     testimony,
+    emailResponse,
   } = req.body;
   try {
     const testimonial = await new Testimonial({
-      isCustomer,
       customer,
       call,
       eventDate,
@@ -28,9 +27,10 @@ exports.createTestimonial = async (req, res) => {
       email,
       mobile,
       'socialMedia.facebook': facebook,
-      'socialMedia.instragram': instagram,
+      'socialMedia.instagram': instagram,
       'socialMedia.twitter': twitter,
       testimony,
+      emailResponse,
     });
     await testimonial.save();
     res.send({ msg: 'Testimonial successfully saved' });
