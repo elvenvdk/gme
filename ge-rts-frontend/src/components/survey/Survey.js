@@ -33,7 +33,6 @@ const Survey = () => {
   };
 
   const onInputChange = (e) => {
-    console.log(e.target.checked);
     setData({
       ...data,
       [e.target.name]:
@@ -46,7 +45,6 @@ const Survey = () => {
   const onFormSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log({ data });
     try {
       const res = await createTestimony({ data });
       setMessage(res);

@@ -30,7 +30,6 @@ router.get('/profile/:customerId', tokenVerify, async (req, res) => {
  */
 
 router.get('/', tokenVerify, async (req, res) => {
-  console.log({ AdminEmail: req.query.adminEmail });
   try {
     const customers = await Customer.find().select('-password');
     res.send(customers);
@@ -46,7 +45,6 @@ router.get('/', tokenVerify, async (req, res) => {
  */
 
 router.put('/edit-profile/:customerId', tokenVerify, async (req, res) => {
-  console.log('Edit Profile Hit...');
   try {
     const { customerId } = req.params;
 

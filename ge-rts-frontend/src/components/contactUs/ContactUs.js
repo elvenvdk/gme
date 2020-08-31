@@ -42,6 +42,12 @@ const ContactUs = () => {
             <div>${message}</div>
           </div>`,
       });
+      setMail({
+        name: '',
+        email: '',
+        phoneNumber: '',
+        message: '',
+      });
       setConfirmationMessage(res);
     } catch (error) {
       console.log(error);
@@ -112,6 +118,11 @@ const ContactUs = () => {
           >
             Please take our survey
           </button>
+          {confirmationMessage && (
+            <>
+              <h4>{confirmationMessage}</h4>
+            </>
+          )}
         </form>
       </div>
     </section>
