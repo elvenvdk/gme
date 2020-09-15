@@ -6,6 +6,7 @@ const {
   getProductImage,
   createProduct,
   deleteProduct,
+  updateProduct,
 } = require('../controllers/products');
 
 const router = express.Router();
@@ -56,9 +57,6 @@ router.delete('/:productId', deleteProduct);
  * @access private
  */
 
-//  router.put('/sold/:productId', async (req, res) => {
-//   const { productId } = req.params;
-//   const product = Product.findOne({_id: })
-//  })
+router.put('/:productId', updateProduct);
 
 module.exports = router;

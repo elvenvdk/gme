@@ -19,7 +19,7 @@ const messagesRoute = require('./routes/messages');
 const app = express();
 const PORT = process.env.PORT;
 
-const corsOptions = { origin: process.env.FRONTEND_API };
+const corsOptions = { origin: [process.env.FRONTEND_API, process.env.GE_NP_S_FRONTEND] };
 
 // Connect DB
 connectDB();

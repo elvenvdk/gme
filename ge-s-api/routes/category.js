@@ -27,14 +27,14 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { name } = req.body;
-  console.log({ name });
   try {
     const category = new Category({ name });
     await category.save();
     res.send({ msg: `Category: ${name} successully added` });
   } catch (error) {
     res.status(401).json({
-      error: 'There was a problem adding a new category',
+      error:
+        'There was a problem adding a new category.  Might be due to category names',
     });
   }
 });
