@@ -33,11 +33,23 @@ exports.addCustomerInfo = async (req, res) => {
       sameBilling,
     });
     await customer.save();
-    res.send({ msg: 'Shipping address successfully added.' });
+    console.log({ custEmail: email, ID: customer._id });
+    res.send({
+      msg: 'Shipping address successfully added.',
+      custId: customer._id,
+    });
   } catch (error) {
     res
       .status(404)
       .json({ error: 'A customer with the same email exists already' });
+  }
+};
+
+exports.getCustIdFromDb = async (id) => {
+  try {
+    const id = await Customer.findById(id);
+  } catch (error) {
+    res.status(401).json({ error: error.message });
   }
 };
 

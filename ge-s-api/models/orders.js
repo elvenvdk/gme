@@ -3,9 +3,11 @@ const { ObjectId } = mongoose.Schema;
 
 const OrdersSchema = mongoose.Schema(
   {
-    product: {
-      type: ObjectId,
-      ref: 'Product',
+    orderType: {
+      type: String,
+    },
+    products: {
+      any: [],
     },
     vendorId: {
       type: ObjectId,
