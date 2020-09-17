@@ -3,9 +3,10 @@ const Product = require('../models/product');
 
 exports.createOrder = async (req, res) => {
   try {
-    const order = new Orders({ ...req.body });
+    const { order, custId } = req.body;
+    const orders = new Orders({ products: order, customerId: custId });
     // const product = await Product.findOne({ _id: req.body.product });
-    await order.save();
+    await orders.save();
     // await product.update({ sold: product.sold + req.body.quantity });
 
     res.send({ msg: 'Order successfully saved' });

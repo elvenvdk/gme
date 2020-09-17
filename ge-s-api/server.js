@@ -38,7 +38,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
 app.use('/api/category', categoryRoute);
 app.use('/api/braintree', braintreeRoute);
-app.use('/api/ordPers', ordersRoute);
+app.use('/api/orders', ordersRoute);
 app.use('/api/testimonials', testmonialsRoute);
 app.use('/api/messages', messagesRoute);
 
