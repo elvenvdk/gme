@@ -15,6 +15,7 @@ const braintreeRoute = require('./routes/braintree');
 const bodyParser = require('body-parser');
 const testmonialsRoute = require('./routes/testimionials');
 const messagesRoute = require('./routes/messages');
+const salesRoute = require('./routes/sales');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -45,6 +46,7 @@ app.use('/api/braintree', braintreeRoute);
 app.use('/api/orders', ordersRoute);
 app.use('/api/testimonials', testmonialsRoute);
 app.use('/api/messages', messagesRoute);
+app.use('/api/sales', salesRoute);
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);

@@ -7,7 +7,7 @@ const OrdersSchema = mongoose.Schema(
       type: String,
     },
     products: {
-      type: [],
+      type: {},
     },
     vendorId: {
       type: ObjectId,
