@@ -8,7 +8,11 @@ const app = express();
 require('dotenv').config({ path: './.env' });
 
 const corsOptions = {
-  origin: [process.env.GREMS_API_ORIGIN, process.env.GREMS_FRONTEND_ORIGIN],
+  origin: [
+    process.env.GREMS_API_ORIGIN,
+    process.env.GREMS_FRONTEND_ORIGIN,
+    process.env.GE_NP_API,
+  ],
   optionsSuccessStatus: 200,
 };
 

@@ -20,7 +20,11 @@ const app = express();
 const PORT = process.env.PORT;
 
 const corsOptions = {
-  origin: [process.env.FRONTEND_API, process.env.GE_NP_S_FRONTEND],
+  origin: [
+    process.env.FRONTEND_API,
+    process.env.GE_NP_S_FRONTEND,
+    process.env.GE_NP_API,
+  ],
 };
 
 // Connect DB

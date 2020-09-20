@@ -33,6 +33,10 @@ const OrdersSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    purchased: {
+      type: Boolean,
+      default: false,
+    },
     dateAdded: {
       type: Date,
       default: Date.now,

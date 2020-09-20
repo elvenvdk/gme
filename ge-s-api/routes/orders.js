@@ -24,7 +24,7 @@ router.post('/create', createOrder);
  * @access private
  */
 
-router.put('/update/:orderNo', updateOrder);
+router.put('/update/', updateOrder);
 
 /**
  * @route get api/orders
@@ -40,6 +40,6 @@ router.get('/', getOrders);
  * @access private
  */
 
-router.put('/cancel/:orderNo', cancelOrder);
+router.put('/cancel/', cancelOrder);
 
 module.exports = router;

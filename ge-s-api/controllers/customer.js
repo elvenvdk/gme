@@ -33,7 +33,6 @@ exports.addCustomerInfo = async (req, res) => {
       sameBilling,
     });
     await customer.save();
-    console.log({ custEmail: email, ID: customer._id });
     res.send({
       msg: 'Shipping address successfully added.',
       custId: customer._id,
@@ -54,6 +53,7 @@ exports.getCustIdFromDb = async (id) => {
 };
 
 exports.addCustomerBillingAddress = async (req, res) => {
+  const { custId } = req.query;
   const {
     firstName,
     lastName,
@@ -66,7 +66,7 @@ exports.addCustomerBillingAddress = async (req, res) => {
   } = req.body;
 
   try {
-    const customer = await Customer.findOne({ email });
+    const customer = await Customer.findOne({ _id: custId });
     if (!customer)
       return res.status(404).json({ error: 'Customer email not found' });
     const customerBilling = await new CustomerBillingAddress({
