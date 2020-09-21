@@ -42,3 +42,19 @@ exports.salesPerDay = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const salesPerPeriod = async (req, res) => {
+  const { startDate, endDate } = res.body;
+  try {
+    const orders = await Orders.find({
+      dateAdded: {
+        $gte: startDate,
+        $lt: endDate,
+      },
+    });
+
+    res.send(orders);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
