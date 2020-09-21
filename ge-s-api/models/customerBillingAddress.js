@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
-const CustomerSchema = new mongoose.Schema(
+const CustomerBillingAddressSchema = new mongoose.Schema(
   {
+    customerId: {
+      type: ObjectId,
+      ref: 'Customer',
+    },
     firstName: {
       type: String,
       // required: true,
@@ -16,7 +21,6 @@ const CustomerSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      unique: 100,
     },
     password: {
       type: String,
@@ -53,4 +57,7 @@ const CustomerSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model(
+  'CustomerBillingAddress',
+  CustomerBillingAddressSchema,
+);

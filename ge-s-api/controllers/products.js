@@ -87,6 +87,62 @@ exports.createProduct = async (req, res) => {
 };
 
 /**
+ * @function  updateProduct()
+ * @description updates product fields
+ * @access Private
+ */
+
+exports.updateProduct = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req, async (err, fields, files) => {
+      if (err)
+        return res.status(404).json({ error: 'Files could not be uploaded' });
+      const {
+        name,
+        description,
+        price,
+        category,
+        quantity,
+        sold,
+        sale_type,
+      } = fields;
+
+      const { photo } = files;
+
+      const product = await Product.findOne({ _id: productId });
+      if (!product)
+        return res.status(404).json({
+          error:
+            'Product name not found.  Maybe try again using the id?? Idk...',
+        });
+
+      const productName = product.name;
+
+      if (name) product.name = name;
+      if (description) product.description = description;
+      if (price) product.price = price;
+      if (category) product.category = category;
+      if (quantity) product.quantity = quantity;
+      if (sold) product.sold = sold;
+      if (sale_type) product.sale_type = sale_type;
+      if (photo) {
+        product.photo.data = fs.readFileSync(photo.path);
+        product.photo.contentType = photo.type;
+      }
+      await product.save();
+      res.send({ msg: `${productName} successfully updated` });
+    });
+  } catch (err) {
+    res
+      .status(400)
+      .json({ error: 'There was an error updating this product...' });
+  }
+};
+
+/**
  * @function deleteProduct
  * @description product delete
  * @access Private

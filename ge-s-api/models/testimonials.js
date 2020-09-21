@@ -3,9 +3,6 @@ const { ObjectId } = mongoose.Schema;
 
 const TestimonialSchema = new mongoose.Schema(
   {
-    isCustomer: {
-      type: Boolean,
-    },
     customer: {
       type: ObjectId,
       ref: 'Customer',
@@ -54,6 +51,9 @@ const TestimonialSchema = new mongoose.Schema(
     testimony: {
       type: String,
       trim: true,
+    },
+    emailResponse: {
+      type: Boolean,
     },
   },
   { timestamps: true },

@@ -14,11 +14,19 @@ const categoryRoute = require('./routes/category');
 const braintreeRoute = require('./routes/braintree');
 const bodyParser = require('body-parser');
 const testmonialsRoute = require('./routes/testimionials');
+const messagesRoute = require('./routes/messages');
+const salesRoute = require('./routes/sales');
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
-const corsOptions = { origin: process.env.FRONTEND_API };
+const corsOptions = {
+  origin: [
+    process.env.FRONTEND_API,
+    process.env.GE_NP_S_FRONTEND,
+    process.env.GE_NP_API,
+  ],
+};
 
 // Connect DB
 connectDB();
@@ -37,6 +45,8 @@ app.use('/api/category', categoryRoute);
 app.use('/api/braintree', braintreeRoute);
 app.use('/api/orders', ordersRoute);
 app.use('/api/testimonials', testmonialsRoute);
+app.use('/api/messages', messagesRoute);
+app.use('/api/sales', salesRoute);
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);
