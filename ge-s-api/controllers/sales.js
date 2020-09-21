@@ -37,7 +37,7 @@ exports.salesPerDay = async (req, res) => {
 
     const orderTotal = reducer(totals);
 
-    res.send({ salesCount: orders.length, orderTotal, totals });
+    res.send({ salesCount: orders.length, orderTotal });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -53,7 +53,20 @@ exports.salesPerPeriod = async (req, res) => {
       },
     });
 
-    res.send(orders);
+    if (!orders || !orders.length)
+      return res
+        .status(400)
+        .json({ error: 'There are no sales for this period' });
+
+    const totals = [];
+    for (let o of orders) {
+      totals.push(parseInt(o.products.orderTotal, 10));
+    }
+
+    const orderTotal = reducer(totals);
+    const salesCount = totals.length;
+
+    res.send({ orderTotal, salesCount });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
