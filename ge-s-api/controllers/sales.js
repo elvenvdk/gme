@@ -43,7 +43,7 @@ exports.salesPerDay = async (req, res) => {
   }
 };
 
-export const salesPerPeriod = async (req, res) => {
+exports.salesPerPeriod = async (req, res) => {
   const { startDate, endDate } = res.body;
   try {
     const orders = await Orders.find({
