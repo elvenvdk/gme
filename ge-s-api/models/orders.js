@@ -6,6 +6,11 @@ const OrdersSchema = mongoose.Schema(
     orderType: {
       type: String,
     },
+    org: {
+      ref: 'Org',
+      type: ObjectId,
+      $db: 'grems-non-profit',
+    },
     products: {
       type: {},
     },

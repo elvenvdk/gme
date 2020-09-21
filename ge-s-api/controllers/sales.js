@@ -18,7 +18,7 @@ const reducer = (arr) => arr.reduce((acc, currVal) => acc + currVal);
  */
 
 exports.salesPerDay = async (req, res) => {
-  const { startDate, endDate } = req.body;
+  const { startDate, endDate, type } = req.body;
 
   try {
     const today = moment().startOf('day');
@@ -27,6 +27,7 @@ exports.salesPerDay = async (req, res) => {
         $gte: today.toDate(),
         $lt: moment(today).endOf('day').toDate(),
       },
+      type: type && type,
     });
     if (!orders || !orders.length)
       return res.status(400).json({ error: 'There are no sales today' });
@@ -44,13 +45,14 @@ exports.salesPerDay = async (req, res) => {
 };
 
 exports.salesPerPeriod = async (req, res) => {
-  const { startDate, endDate } = res.body;
+  const { startDate, endDate, type } = res.body;
   try {
     const orders = await Orders.find({
       dateAdded: {
         $gte: startDate,
         $lt: endDate,
       },
+      type: type && type,
     });
 
     if (!orders || !orders.length)
