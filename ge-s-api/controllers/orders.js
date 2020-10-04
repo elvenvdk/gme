@@ -51,7 +51,7 @@ exports.createOrderFromSalesPerson = async (req, res) => {
 
     res.send({ msg: 'Order successfully saved' });
   } catch (err) {
-    res.status(400).json({ error: err });
+    res.status(400).json({ error: 'There was a problem saving this order...' });
   }
 };
 
