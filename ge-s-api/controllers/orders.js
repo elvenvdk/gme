@@ -27,6 +27,35 @@ exports.createOrder = async (req, res) => {
 };
 
 /**
+ * @function createOrderFromSalesPerson
+ * @description Creates a sales order
+ * @param {*} req order, custId, orderType
+ * @param {*} res confirmation msg
+ */
+
+exports.createOrderFromSalesPerson = async (req, res) => {
+  const { org, orgSalesPerson } = req.query;
+  try {
+    const { order, customerId, orderType } = req.body;
+
+    const orders = new Orders({
+      orderType,
+      products: order,
+      customerId,
+      org,
+      orgSalesPerson,
+    });
+    // const product = await Product.findOne({ _id: req.body.product });
+    await orders.save();
+    // await product.update({ sold: product.sold + req.body.quantity });
+
+    res.send({ msg: 'Order successfully saved' });
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+};
+
+/**
  * @function updateOrder
  * @description Updates a sales order
  * @param {*} query orderNo

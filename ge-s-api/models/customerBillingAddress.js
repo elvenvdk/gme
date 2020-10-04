@@ -17,15 +17,6 @@ const CustomerBillingAddressSchema = new mongoose.Schema(
       // required: true,
       trim: true,
     },
-    email: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    password: {
-      type: String,
-      // required: true,
-    },
     addressLine1: {
       type: String,
       // required: true,
@@ -49,9 +40,6 @@ const CustomerBillingAddressSchema = new mongoose.Schema(
       trim: true,
       // required: true,
       maxLength: 5,
-    },
-    sameBilling: {
-      type: Boolean,
     },
   },
   { timestamps: true },

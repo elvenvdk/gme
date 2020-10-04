@@ -6,6 +6,7 @@ const {
   updateOrder,
   getOrders,
   cancelOrder,
+  createOrderFromSalesPerson,
 } = require('../controllers/orders');
 
 const router = express.Router();
@@ -17,6 +18,14 @@ const router = express.Router();
  */
 
 router.post('/create', createOrder);
+
+/**
+ * @route post api/orders/create-sales-order
+ * @description organization - customers create order
+ * @access private
+ */
+
+router.post('/create-sales-order', createOrderFromSalesPerson);
 
 /**
  * @route put api/orders/edit

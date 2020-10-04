@@ -41,7 +41,7 @@ const CustomerSchema = new mongoose.Schema(
       maxLength: 2,
     },
     zipCode: {
-      type: Number,
+      type: String,
       trim: true,
       // required: true,
       maxLength: 5,

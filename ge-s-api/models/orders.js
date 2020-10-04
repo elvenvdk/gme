@@ -11,6 +11,11 @@ const OrdersSchema = mongoose.Schema(
       type: ObjectId,
       $db: 'grems-non-profit',
     },
+    orgSalesPerson: {
+      ref: 'Users',
+      type: ObjectId,
+      $db: 'grems-non-profit',
+    },
     products: {
       type: {},
     },
