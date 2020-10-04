@@ -1,5 +1,5 @@
 const Orders = require('../models/orders');
-const Product = require('../models/product');
+const Customer = require('../models/customer');
 
 /**
  * @function createOrder
@@ -43,7 +43,7 @@ exports.createOrderFromSalesPerson = async (req, res) => {
       products: order,
       customerId,
       org,
-      orgSalesPerson,
+      orgSalesPersonRundRaising: orgSalesPerson,
     });
     // const product = await Product.findOne({ _id: req.body.product });
     await orders.save();

@@ -87,17 +87,32 @@ exports.addCustomerBillingAddress = async (req, res) => {
     const customer = await Customer.findOne({ _id: customerId });
 
     if (!customer) return res.status(404).json({ error: 'Customer not found' });
-    const customerBilling = await new CustomerBillingAddress({
-      customerId: customer._id,
-      firstName,
-      lastName,
-      addressLine1,
-      addressLine2,
-      city,
-      state,
-      zipCode,
-    });
-    await customerBilling.save();
+
+    let customerBilling = await CustomerBillingAddress.findOne({ customerId });
+    if (!customerBilling) {
+      customerBilling = await new CustomerBillingAddress({
+        customerId: customer._id,
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        zipCode,
+      });
+      await customerBilling.save();
+    }
+
+    customerBilling._id = customerId;
+    customerBilling.firstName = firstName;
+    customerBilling.lastName = lastName;
+    customerBilling.addressLine1 = addressLine1;
+    customerBilling.addressLine2 =
+      addressLine2 !== '' ? customerBilling.addressLine2 : null;
+    customerBilling.city = city;
+    customerBilling.state = state;
+    customerBilling.zipCode = zipCode;
+
     res.send({ msg: 'Billing address successfully added.' });
   } catch (error) {
     res

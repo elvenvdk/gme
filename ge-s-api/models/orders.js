@@ -11,7 +11,7 @@ const OrdersSchema = mongoose.Schema(
       type: ObjectId,
       $db: 'grems-non-profit',
     },
-    orgSalesPerson: {
+    orgSalesPersonRundRaising: {
       ref: 'Users',
       type: ObjectId,
       $db: 'grems-non-profit',
