@@ -12,8 +12,8 @@ const reducer = (arr) => arr.reduce((acc, currVal) => acc + currVal);
 
 exports.salesPerPeriod = async (req, res) => {
   const { org, startDate, endDate } = req.query;
-  const start = new Date(moment(startDate).format());
-  const end = new Date(moment(endDate).format());
+  const start = new Date(moment(startDate).startOf('day').format());
+  const end = new Date(moment(endDate).endOf('day').format());
 
   try {
     const orders = await Orders.find({
