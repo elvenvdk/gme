@@ -34,7 +34,7 @@ exports.salesPerPeriod = async (req, res) => {
       totals.push(parseInt(o.products.orderTotal, 10));
       salesData.push({ totals: o.products.orderTotal, date: o.dateAdded });
     }
-    console.log(salesData);
+
     const orderTotal = reducer(totals);
 
     res.send({
