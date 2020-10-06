@@ -13,6 +13,7 @@ const reducer = (arr) => arr.reduce((acc, currVal) => acc + currVal);
 exports.salesPerPeriod = async (req, res) => {
   const { org, startDate, endDate } = req.query;
   const start = new Date(moment(startDate).format());
+  const end = new Date(moment(endDate).format());
 
   try {
     const orders = await Orders.find({
@@ -28,13 +29,19 @@ exports.salesPerPeriod = async (req, res) => {
         .status(400)
         .json({ error: 'There are no sales for this period' });
     let totals = [];
+    let salesData = [];
     for (let o of orders) {
       totals.push(parseInt(o.products.orderTotal, 10));
+      salesData.push({ totals: o.products.orderTotal, date: o.dateAdded });
     }
-
+    console.log(salesData);
     const orderTotal = reducer(totals);
 
-    res.send({ salesCount: orders.length, orderTotal });
+    res.send({
+      salesCount: orders.length,
+      orderTotal,
+      salesData,
+    });
   } catch (error) {
     res.status(400).json({
       error,
