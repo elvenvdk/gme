@@ -10,6 +10,38 @@ const Orders = require('../models/orders');
 
 const reducer = (arr) => arr.reduce((acc, currVal) => acc + currVal);
 
+exports.salesPerPeriod = async (req, res) => {
+  const { org, startDate, endDate } = req.query;
+  const start = new Date(moment(startDate).format());
+
+  try {
+    const orders = await Orders.find({
+      org,
+      dateAdded: {
+        $gte: start,
+        $lt: end,
+      },
+    });
+
+    if (!orders || !orders.length)
+      return res
+        .status(400)
+        .json({ error: 'There are no sales for this period' });
+    let totals = [];
+    for (let o of orders) {
+      totals.push(parseInt(o.products.orderTotal, 10));
+    }
+
+    const orderTotal = reducer(totals);
+
+    res.send({ salesCount: orders.length, orderTotal });
+  } catch (error) {
+    res.status(400).json({
+      error,
+    });
+  }
+};
+
 /**
  * @function salesPerDay
  * @description Fetches total sales per in a given day
@@ -20,6 +52,7 @@ const reducer = (arr) => arr.reduce((acc, currVal) => acc + currVal);
 exports.salesPerDay = async (req, res) => {
   const { startDate, endDate, type, org } = req.body;
 
+  let start = moment().startOf('day');
   try {
     const today = moment().startOf('day');
     const orders = await Orders.find({
@@ -34,44 +67,12 @@ exports.salesPerDay = async (req, res) => {
       return res.status(400).json({ error: 'There are no sales today' });
     let totals = [];
     for (let o of orders) {
-      console.log(o);
       totals.push(parseInt(o.products.orderTotal, 10));
     }
-    console.log({ totals });
 
     const orderTotal = reducer(totals);
 
     res.send({ salesCount: orders.length, orderTotal });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-exports.salesPerPeriod = async (req, res) => {
-  const { startDate, endDate, type, org } = req.query;
-  try {
-    const orders = await Orders.find({
-      dateAdded: {
-        $gte: startDate,
-        $lt: endDate,
-      },
-      type: type && type,
-    });
-
-    if (!orders || !orders.length)
-      return res
-        .status(400)
-        .json({ error: 'There are no sales for this period' });
-
-    const totals = [];
-    for (let o of orders) {
-      totals.push(parseInt(o.products.orderTotal, 10));
-    }
-
-    const orderTotal = reducer(totals);
-    const salesCount = totals.length;
-
-    res.send({ orderTotal, salesCount });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
