@@ -42,7 +42,7 @@ const Home = () => {
             kitchen where I’d sit anxiously waiting for that amazing cobbler to
             be done.
           </p>
-          <h1 className='home-about-header'>Try it today.</h1>
+          <h1 className='home-about-header'>Contact Us Today.</h1>
           <p className='home-about-text'>
             The taste is so incredibly rich and flavorful that everyone will
             think it came straight from your oven instead of ours. But we won’t

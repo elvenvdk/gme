@@ -73,7 +73,7 @@ const Survey = () => {
   return (
     <div className='survey' id='survey'>
       <form className='survey-form' onSubmit={(e) => onFormSubmit(e)}>
-        <label
+        {/* <label
           className='survey-form-call-checkboxlabel'
           htmlFor='call-checkbox'
         ></label>
@@ -84,8 +84,8 @@ const Survey = () => {
           name='call'
           onChange={(e) => onInputChange(e)}
           value={data.call && data.call}
-        />
-        <label htmlFor=''>Last Touch - Event Date</label>
+        /> */}
+        <label htmlFor=''>Event Date</label>
         <Date onChange={(date) => onDateChange(date)} />
         <label className='survey-form-label' htmlFor='event-type'>
           Event Type

@@ -59,7 +59,7 @@ const ContactUs = () => {
   return (
     <section className='contact-us'>
       <div className='contact-us-wrapper'>
-        <h1 className='emailform-header'>Try it today</h1>
+        <h1 className='emailform-header'>Contact Us Today</h1>
         <p className='emailform-text'>
           The taste is so incredibly rich and flavorful that everyone will think
           it came straight from your oven instead of ours.
