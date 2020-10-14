@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
-const TestimonialSchema = new mongoose.Schema(
+const SurveySchema = new mongoose.Schema(
   {
     customer: {
       type: ObjectId,
@@ -59,4 +59,4 @@ const TestimonialSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-module.exports = mongoose.model('Testimonial', TestimonialSchema);
+module.exports = mongoose.model('Survey', SurveySchema);

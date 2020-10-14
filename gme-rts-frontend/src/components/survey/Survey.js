@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Date from '../common/date/Date';
 
-import { createTestimony } from '../../api/testimonials';
+import api from '../../api';
 
 import './Survey.scss';
 
@@ -46,7 +46,7 @@ const Survey = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const res = await createTestimony({ data });
+      const res = await api.createSurvey({data})
       setMessage(res);
       setData({
         ...data,
@@ -69,6 +69,8 @@ const Survey = () => {
       setLoading(false);
     }
   };
+
+  console.log({data});
 
   return (
     <div className='survey' id='survey'>

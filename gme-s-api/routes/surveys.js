@@ -1,5 +1,5 @@
 const express = require('express');
-const { createTestimonial } = require('../controllers/testimonials');
+const { createSurvey } = require('../controllers/surveys');
 
 const router = express.Router();
 
@@ -8,6 +8,6 @@ const router = express.Router();
  * @access public
  */
 
-router.post('/create', createTestimonial);
+router.post('/create', createSurvey);
 
 module.exports = router;

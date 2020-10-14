@@ -13,7 +13,7 @@ const ordersRoute = require('./routes/orders');
 const categoryRoute = require('./routes/category');
 const braintreeRoute = require('./routes/braintree');
 const bodyParser = require('body-parser');
-const testmonialsRoute = require('./routes/testimionials');
+const surveysRoute = require('./routes/surveys');
 const messagesRoute = require('./routes/messages');
 const salesRoute = require('./routes/sales');
 
@@ -44,7 +44,7 @@ app.use('/api/products', productRoute);
 app.use('/api/category', categoryRoute);
 app.use('/api/braintree', braintreeRoute);
 app.use('/api/orders', ordersRoute);
-app.use('/api/testimonials', testmonialsRoute);
+app.use('/api/testimonials', surveysRoute);
 app.use('/api/messages', messagesRoute);
 app.use('/api/sales', salesRoute);
 

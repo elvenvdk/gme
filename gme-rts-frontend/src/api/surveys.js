@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const S_API = process.env.REACT_APP_GE_S_API;
 
-export const createTestimony = async ({ data }) => {
+export const createSurvey = async ({ data }) => {
   try {
     const res = await axios.post(
       `http://localhost:8000/api/testimonials/create`,
@@ -13,3 +13,7 @@ export const createTestimony = async ({ data }) => {
     return error.response.data;
   }
 };
+
+export default {
+  createSurvey
+}

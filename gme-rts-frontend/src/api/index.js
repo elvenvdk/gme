@@ -4,6 +4,7 @@ import { getGlobal, setGlobal } from 'reactn';
 import orders from './orders';
 import products from './products';
 import auth from './auth';
+import surveys from './surveys';
 
 // attach token to every request
 // axios.interceptors.request.use(
@@ -29,6 +30,6 @@ import auth from './auth';
 // any processing or manipulation of data before it is passed to component should be done
 // in the actions.js file in the corresponding component folder
 
-const api = { ...auth, ...orders, ...products };
+const api = { ...auth, ...orders, ...products, ...surveys };
 
 export default api;
