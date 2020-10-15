@@ -47,13 +47,13 @@ exports.createSurvey = async (req, res) => {
            <p>Event Date: ${eventDate}</p> 
            <p>First Name: ${firstName}</p> 
            <p>Last Name: ${lastName}</p> 
-           <p>Email: ${eventDate}</p> 
-           <p>Event Date: ${eventDate}</p> 
+           <p>Email: ${email}</p> 
+           <p>Phone Number: ${mobile}</p> 
            <br></br>
-           <p>${role === 'seller' ? sellerLink : link}</p>
+           <p>Testimonial (optional): ${testimony}</p> 
            <br></br>
-           <p>Thank you and Welcome,</p>
-           <p>Grandma Emmas Team`,
+           <p>Thank you,</p>
+           <p>Grandma Emmas Team</p>`,
       });
     }
     res.send({ msg: 'Survey successfully saved' });
