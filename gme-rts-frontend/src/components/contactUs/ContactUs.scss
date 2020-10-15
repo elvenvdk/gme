@@ -6,6 +6,22 @@
   flex-direction: column;
   padding: 5rem 15rem;
 
+  @media screen and (min-width: 375px) {
+    padding: 0 1rem;
+
+    .contact-us-wrapper {
+      padding: 0 1rem;
+    }
+  }
+
+  @media screen and (min-width: 576px) {
+    padding: 0 1rem;
+
+    .contact-us-wrapper {
+      padding: 2rem 2rem;
+    }
+  }
+
   &-wrapper {
     position: relative;
     display: flex;
