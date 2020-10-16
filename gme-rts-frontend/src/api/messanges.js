@@ -10,7 +10,11 @@ export const contactUs = async ({ from, to, subject, text, html }) => {
       html,
     });
   } catch (error) {
-    console.log(error.data.response);
     return error.response.data;
   }
+};
+
+
+export default {
+  contactUs
 };

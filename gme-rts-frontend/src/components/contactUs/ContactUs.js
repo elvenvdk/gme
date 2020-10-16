@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { contactUs } from '../../api/messanges';
+import api from '../../api';
 
 import './ContactUs.scss';
 
@@ -29,9 +29,9 @@ const ContactUs = () => {
   const onFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await contactUs({
+      const res = await api.contactUs({
         from: email,
-        to: 'CustomerService@GrandmaEmmas.com',
+        to: 'customerService@GrandmaEmmas.com',
         subject: `Testimonial from ${name}`,
         phoneNumber,
         html: ` <div>
