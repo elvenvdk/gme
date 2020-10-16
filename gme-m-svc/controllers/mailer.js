@@ -13,6 +13,7 @@ exports.sendMail = async (req, res) => {
 
     res.send({ msg: 'Message Sent...', msgId: confirmation.messageId });
   } catch (error) {
+    console.log({error});
     res.status(400).json({ error: error.message });
   }
 };
