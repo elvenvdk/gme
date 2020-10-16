@@ -1,72 +1,87 @@
 @import '../../utilities//variables.scss';
 
 .contact-us {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 5rem 15rem;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 5rem 15rem;
 
-  @media screen and (min-width: 375px) {
-    padding: 0 1rem;
+	@media screen and (min-width: 375px) {
+		padding: 0 1rem;
 
-    .contact-us-wrapper {
-      padding: 0 1rem;
-    }
-  }
+		.contact-us-wrapper {
+			padding: 0 1rem;
+		}
+	}
 
-  @media screen and (min-width: 576px) {
-    padding: 0 1rem;
+	@media screen and (min-width: 576px) {
+		padding: 0 1rem;
 
-    .contact-us-wrapper {
-      padding: 2rem 2rem;
-    }
-  }
+		.contact-us-wrapper {
+			padding: 2rem 2rem;
+		}
+	}
 
-  &-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 5rem 15rem;
-    background-color: #ffffff;
-    box-shadow: $box-shadow1;
-    top: 10rem;
-    z-index: 999;
-  }
+	&-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding: 5rem 15rem;
+		background-color: #ffffff;
+		box-shadow: $box-shadow1;
+		top: 10rem;
+		z-index: 999;
+	}
 
-  .emailform-header {
-    font-size: 6.6rem;
-    font-family: $font-main2;
-    color: $color-main2;
-  }
+	.emailform-header {
+		font-size: 6.6rem;
+		font-family: $font-main2;
+		color: $color-main2;
+	}
 
-  .emailform-text {
-    font-size: 1.5rem;
-    font-family: $font-main;
-    // font-weight: $font-semiBold;
-  }
+	.emailform-text {
+		font-size: 1.5rem;
+		font-family: $font-main;
+		// font-weight: $font-semiBold;
+	}
 
-  .emailform-form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+	.emailform-form {
+		position: relative;
+		display: flex;
+		flex-direction: column;
 
-    &-input {
-      width: 100%;
-      border: 1px solid #c2c2c2;
-      border-width: 0 0 1px 0;
-      padding: 10px 0;
-      font-size: 16px;
-      color: #646262;
-      margin: 0 0 5rem 0;
-    }
+		&-input {
+			width: 100%;
+			border: 1px solid #c2c2c2;
+			border-width: 0 0 1px 0;
+			padding: 10px 0;
+			font-size: 16px;
+			color: #646262;
+			margin: 0 0 5rem 0;
+		}
 
-    .submit-btn {
-      cursor: pointer;
-    }
+		.submit-btn {
+			cursor: pointer;
+		}
 
-    .survey-btn {
-      margin-top: 1.5rem;
-      cursor: pointer;
-    }
-  }
+		.survey-btn {
+			margin-top: 1.5rem;
+			cursor: pointer;
+		}
+	}
+
+	.confirmation-msg {
+		font-size: 1.8rem;
+		font-weight: 600;
+		font-family: $font-main;
+		text-align: center;
+	}
+
+	.error-msg {
+		color: red;
+		font-size: 1.8rem;
+		font-weight: 600;
+		font-family: $font-main;
+		text-align: center;
+	}
 }

@@ -16,6 +16,7 @@ const ContactUs = () => {
   const { name, email, phoneNumber, message } = mail;
   const [loading, setLoading] = useState(null);
   const [confirmationMessage, setConfirmationMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const goToSurvey = () => history.push('/survey');
 
@@ -29,17 +30,18 @@ const ContactUs = () => {
   const onFormSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await api.contactUs({
         from: email,
-        to: 'customerService@GrandmaEmmas.com',
+        to: 'grandmaemmastech@gmail.com',
         subject: `Testimonial from ${name}`,
         phoneNumber,
         html: ` <div>
-            <div>${name}</div>
+            <p><strong>Name</strong>: ${name}</p>
             <hr />
-            <div>${phoneNumber}</div>
+            <p><strong>Phone Number</strong>: ${phoneNumber}</p>
             <br />
-            <div>${message}</div>
+            <p><strong>Message</strong>: ${message}</p>
           </div>`,
       });
       setMail({
@@ -48,13 +50,14 @@ const ContactUs = () => {
         phoneNumber: '',
         message: '',
       });
-      setConfirmationMessage(res);
+      setConfirmationMessage('Your email has been sent.  Thank you!');
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error);
+      console.log({error})
     }
   };
 
-  console.log(confirmationMessage);
 
   return (
     <section className='contact-us'>
@@ -118,11 +121,13 @@ const ContactUs = () => {
           >
             Please take our survey
           </button>
-          {confirmationMessage && (
+          {confirmationMessage ? (
             <>
-              <h4>{confirmationMessage}</h4>
+              <h4 className='msg confirmation-msg'>{confirmationMessage}</h4>
             </>
-          )}
+          ) : errorMessage ? (<>
+            <h4 className='msg error-msg'>{errorMessage}</h4>
+          </>) : <></>}
         </form>
       </div>
     </section>
