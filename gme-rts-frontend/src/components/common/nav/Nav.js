@@ -10,10 +10,18 @@ const Nav = () => {
   const [selected, setSelected] = useState(null);
   const [collapse, setCollapse] = useState(false);
 
+  useEffect(() => {
+    if (screenWidth <= 768) {
+      setCollapse(true);
+    }
+  }, [screenWidth])
+
   console.log({dimensions: {
     h: window.screen.height,
     w: window.screen.width
   }})
+
+  console.log({collapse});
 
   const screenWidth = window.screen.width;
 

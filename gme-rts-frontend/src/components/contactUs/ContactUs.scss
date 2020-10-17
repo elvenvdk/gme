@@ -61,12 +61,28 @@
 		}
 
 		.submit-btn {
+			background-color: #c24127;
+			color: #ffffff;
 			cursor: pointer;
+			border: none;
+		}
+
+		.submit-btn:hover,
+		.survey-btn:hover {
+			background-color: #f06260;
+		}
+
+		.submit-btn:focus,
+		.survey-btn:focus {
+			background-color: #f06260;
 		}
 
 		.survey-btn {
 			margin-top: 1.5rem;
+			background-color: #c24127;
+			color: #ffffff;
 			cursor: pointer;
+			border: none;
 		}
 	}
 
