@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import Menu from '../menu/Menu';
 
 import './Nav.scss';
 import CartButton from '../../cartButton/CartButton';
 
 const Nav = () => {
   const [selected, setSelected] = useState(null);
+  const [collapse, setCollapse] = useState(false);
+
+  console.log({dimensions: {
+    h: window.screen.height,
+    w: window.screen.width
+  }})
+
+  const screenWidth = window.screen.width;
 
   const menuItems = [
     { name: 'Home', url: 'http://localhost:3000' },
@@ -22,6 +32,7 @@ const Nav = () => {
   ];
 
   const renderMenu = () => (
+    screenWidth <= 768 ? <Menu /> :
     <ul className={`nav-menu`}>
       {menuItems.map((i, idx) => (
         <li
@@ -42,7 +53,7 @@ const Nav = () => {
     </ul>
   );
 
-  return <div className='nav'>{renderMenu()}</div>;
+  return <div className={`${screenWidth <= 768 ? 'transparent' : 'nav'}`}>{renderMenu()}</div>;
 };
 
 export default Nav;

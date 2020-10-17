@@ -31,22 +31,19 @@ const Menu = () => {
 
   const renderMenu = () => (
     <ul className='menu-list'>
-      <li className='menu-list-item logout' onClick={() => handleLogout()}>
-        Log Out
-      </li>
       <li onClick={() => handleSelected()} className='menu-list-item'>
-        <Link className='menu-list-item-link' to='/sales/user-management'>
-          User Management
+        <Link className='menu-list-item-link' to='/'>
+          Home
         </Link>
       </li>
       <li onClick={() => handleSelected()} className='menu-list-item'>
-        <Link className='menu-list-item-link' to='/sales/goals'>
-          Goals
-        </Link>
+          <a className='menu-list-item-link' href='http://localhost:3000#home_about'>
+            About
+          </a>
       </li>
       <li onClick={() => handleSelected()} className='menu-list-item'>
-        <Link className='menu-list-item-link' to='/sales/goal-settings'>
-          Goal Settings
+        <Link className='menu-list-item-link' to='/survey'>
+          Survey
         </Link>
       </li>
     </ul>
