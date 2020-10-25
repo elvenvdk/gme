@@ -77,7 +77,6 @@ exports.login = async (req, res) => {
   try {
     let customer = await Customer.findOne({ email });
     if (!customer) return res.send({ error: 'Invalid credentials...' });
-    console.log({ another_customer: customer.password });
     const isMatch = await bcrypt.compare(password, customer.password);
     if (!isMatch)
       return res.status(400).json({ error: 'Invalid credentials...' });
@@ -93,7 +92,6 @@ exports.login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: 36000 },
       (err, token) => {
-        // console.log({ token, id: customer._id });
         if (err) throw err;
         res.json({ token, id: customer._id });
       },
@@ -176,7 +174,6 @@ exports.resendValidationEmail = async (req, res) => {
 
     // check if vendor/token exists
     const vendor = await Vendor.find({ primary_email: email });
-    console.log({ vendor });
     if (!vendor) return res.send({ error: 'Credentials invalid' });
 
     // create new token for email
@@ -187,8 +184,6 @@ exports.resendValidationEmail = async (req, res) => {
 
     // add token to vendors validation_token
     vendor.validation_token = token;
-    console.log({ newToken: token });
-    console.log({ ValidationToken: vendor.validation_token });
     await vendor.save();
 
     // send vendor confirmation email
@@ -247,16 +242,13 @@ exports.vendorPasswordReset = async (req, res) => {
 exports.vendorForgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
-    console.log({ email });
     // check if vendor exists
     if (!email) return res.send({ error: 'Email is required' });
     const vendor = await Vendor.findOne({ primary_email: email });
-    console.log({ vendor });
     if (!vendor) return res.send({ error: 'Credentials invalid' });
 
     // create new token for email
     const payload = { id: vendor._id };
-    console.log({ VendorId: vendor._id });
     const token = await jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 360000,
     });
@@ -303,7 +295,6 @@ exports.vendorSignup = async (req, res) => {
     let vendor = await Vendor.findOne({
       primary_email: req.body.primary_email,
     });
-    console.log({ primaryEmail: req.body.primary_email });
     if (vendor)
       return res.send({ error: 'This email is currently registered' });
 
@@ -314,7 +305,6 @@ exports.vendorSignup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(setPassword, salt);
     req.body.password = hashedPassword;
-    console.log({ reqBody: req.body });
 
     // create vendor
     vendor = new Vendor({
@@ -333,7 +323,6 @@ exports.vendorSignup = async (req, res) => {
     // update vendors validation_token with token
     vendor.validation_token = token;
     await vendor.save();
-    console.log({ NewVendor: vendor });
 
     // send vendor confirmation email
     const link = `http://localhost:3000/email-verification/${token}`;
