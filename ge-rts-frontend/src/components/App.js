@@ -13,6 +13,7 @@ import Checkout from './checkout/Checkout';
 import CorporateGifts from './corporateGifts/CorporateGifts';
 import WeddingEventGifts from './weddingEventGifts/WeddingEventGifts';
 import Contact from './contact/Contact';
+import Survey from './survey/Survey';
 import ProductDetail from './shop/productDetail/ProductDetail';
 import Cart from './cart/Cart';
 
@@ -29,11 +30,11 @@ const App = () => {
         <PageHeader />
         <Nav classname='app__nav' />
         <Switch>
-          <Route path='/signin' exact component={Signin} />
-          <Route path='/signup' exact component={Signup} />
+          {/* <Route path='/signin' exact component={Signin} />
+          <Route path='/signup' exact component={Signup} /> */}
 
           <Route path='/' exact component={HomePage} />
-          <Route path='/shop' exact component={Shop} />
+          {/* <Route path='/shop' exact component={Shop} />
           <Route path='/product/:productId' exact component={ProductDetail} />
           <Route path='/flavors' exact component={Flavors} />
           <Route path='/corporate-gifts' exact component={CorporateGifts} />
@@ -41,10 +42,11 @@ const App = () => {
             path='/wedding-and-event-gifts'
             exact
             component={WeddingEventGifts}
-          />
+          /> */}
           <Route path='/contact-us' exact component={Contact} />
-          <Route path='/cart' exact component={Cart} />
-          <Route path='/checkout' exact component={Checkout} />
+          <Route path='/survey' exact component={Survey} />
+          {/* <Route path='/cart' exact component={Cart} />
+          <Route path='/checkout' exact component={Checkout} /> */}
         </Switch>
       </Router>
       <Footer />

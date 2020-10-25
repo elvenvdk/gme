@@ -12,14 +12,14 @@ const gateway = new braintree.BraintreeGateway({
 });
 
 exports.getBraintreeToken = async (req, res) => {
-  const { custId } = req.params;
-  console.log({ custId });
-  try {
-    const customer = await Customer.findOne({ _id: custId });
-    if (!customer) return res.send({ error: 'Customer not found' });
-  } catch (err) {
-    res.send(400).json({ error: err.message });
-  }
+  // const { custId } = req.params;
+  // console.log({ custId });
+  // try {
+  //   const customer = await Customer.findOne({ _id: custId });
+  //   if (!customer) return res.send({ error: 'Customer not found' });
+  // } catch (err) {
+  //   res.send(400).json({ error: err.message });
+  // }
 
   // connect to gateway
   gateway.clientToken.generate({}, (err, response) => {

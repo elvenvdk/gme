@@ -8,7 +8,7 @@ import './PageHeader.scss';
 const PageHeader = () => {
   return (
     <div className='pageHeader'>
-      <p className='pageHeader-phone'>973.544.8032</p>
+      {/* <p className='pageHeader-phone'>973.544.8032</p> */}
       <Link className='pageHeader-mainlink' to='/'>
         <img
           className='pageHeader-mainlink'
@@ -16,12 +16,12 @@ const PageHeader = () => {
           alt="Grandma Emma's Header Logo"
         />
       </Link>
-      <Link className='pageHeader-login' to='/signin'>
+      {/* <Link className='pageHeader-login' to='/signin'>
         Login
       </Link>
       <Link className='pageHeader-login' to='/signup'>
         Signup
-      </Link>
+      </Link> */}
     </div>
   );
 };
